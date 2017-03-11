@@ -1,6 +1,7 @@
 /node_modules
 /public/storage
 /public/hot
+/public/theme-demo
 /storage/*.key
 /vendor
 /.idea
