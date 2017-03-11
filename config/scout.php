@@ -41,7 +41,7 @@ return [
     |
     */
 
-    'queue' => true,
+    'queue' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -68,6 +68,15 @@ return [
             'distance' => 2
         ],
         'asYouType' => false,
+    ],
+
+    'mysql' => [
+        'mode' => 'NATURAL_LANGUAGE',
+        'model_directories' => [app_path()],
+        'min_search_length' => 0,
+        'min_fulltext_search_length' => 4,
+        'min_fulltext_search_fallback' => 'LIKE',
+        'query_expansion' => false
     ],
 
 ];

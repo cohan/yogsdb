@@ -182,6 +182,7 @@ return [
         Laravel\Scout\ScoutServiceProvider::class,
         TeamTNT\Scout\TNTSearchScoutServiceProvider::class,
 
+        DamianTW\MySQLScout\Providers\MySQLScoutServiceProvider::class,
 
         'App\Providers\HelperServiceProvider',
 
