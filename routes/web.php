@@ -12,5 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('ydb.master');
+    return view('ydb.welcome');
 });

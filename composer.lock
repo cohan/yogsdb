@@ -4,9 +4,55 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "29279c472297481ef51fd740f544b93b",
-    "content-hash": "cff190f35adcf19472a2e9aae652be40",
+    "hash": "8b1158b40a31eb6f099176ab60e8ea4f",
+    "content-hash": "a84b804f9de38df9e4ef15bfac3a0d2b",
     "packages": [
+        {
+            "name": "alaouy/youtube",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alaouy/Youtube.git",
+                "reference": "4a15c43f39432bf721e6d9198b47bacbc82580cd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alaouy/Youtube/zipball/4a15c43f39432bf721e6d9198b47bacbc82580cd",
+                "reference": "4a15c43f39432bf721e6d9198b47bacbc82580cd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*@stable"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Alaouy\\Youtube\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mustapha Alaouy",
+                    "email": "alaouym@gmail.com"
+                }
+            ],
+            "description": "Laravel PHP Facade/Wrapper for the Youtube Data API v3",
+            "keywords": [
+                "alaouy",
+                "api",
+                "laravel",
+                "video",
+                "youtube"
+            ],
+            "time": "2017-02-20 11:44:09"
+        },
         {
             "name": "aws/aws-sdk-php",
             "version": "3.22.11",
@@ -3784,6 +3830,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "alaouy/youtube": 20,
         "laracasts/generators": 20
     },
     "prefer-stable": false,

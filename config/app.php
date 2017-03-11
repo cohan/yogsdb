@@ -177,6 +177,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Alaouy\Youtube\YoutubeServiceProvider::class,
+
     ],
 
     /*
@@ -225,6 +227,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        'Youtube' => Alaouy\Youtube\Facades\Youtube::class,
+        'YouTube' => Alaouy\Youtube\Facades\Youtube::class,
 
     ],
 
