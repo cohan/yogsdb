@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 
 use App\Video;
+use App\Channel;
 
 use YouTube;
 use Storage;
@@ -51,12 +52,12 @@ class FetchYouTubeVideo extends Command
 
 		$this->logit($video_id, "Fetching data from YouTube API");
 
-
 		$youtubeVideo = YouTube::getVideoInfo($video_id);
 
 		$video->youtube_id = $youtubeVideo->id;
 		$video->title = $youtubeVideo->snippet->title;
 		$video->description = $youtubeVideo->snippet->description;
+		$video->upload_date = date("Y-m-d H:i:s", strtotime($youtubeVideo->snippet->publishedAt));
 
 		$this->logit($video_id, "Title: ".$video->title);
 
@@ -79,6 +80,29 @@ class FetchYouTubeVideo extends Command
 
 		$this->logit($video_id, "Thumbnail: ".$video->thumbnail);
 
+		if (!empty($youtubeVideo->snippet->channelId)) {
+			$channel = Channel::where('youtube_id', '=', $youtubeVideo->snippet->channelId)->first();
+
+			if (empty($channel) && !empty($youtubeVideo->snippet->channelTitle)) {
+				$channel = new Channel;
+
+				$channel->title = $youtubeVideo->snippet->channelTitle;
+				$channel->youtube_id = $youtubeVideo->snippet->channelId;
+				$channel->description = "";
+				$channel->slug = str_slug($channel->title);
+
+				$this->logit($video_id, "Created channel for ".$channel->title);
+
+				$channel->save();
+			}
+
+
+			$video->channel_id = $channel->id;
+			$this->logit($video_id, "Attached video to channel");
+		}
+
+		$video->slug = str_slug($video->title);
+
 		$video->save();
 
 		$this->logit($video_id, "Video Imported");
@@ -86,7 +110,7 @@ class FetchYouTubeVideo extends Command
 		echo "\n";
 	}
 
-	public function logit($video_id, $message = "") {
-		echo "[".$video_id."] ".$message."\n";
+	public function logit($id, $message = "") {
+		echo "[".$id."] ".$message."\n";
 	}
 }

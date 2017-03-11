@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
-        Commands\FetchYouTubeVideo::class
+        Commands\FetchYouTubeVideo::class,
+        Commands\FetchYouTubeChannel::class,
     ];
 
     /**

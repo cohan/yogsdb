@@ -11,6 +11,11 @@
 |
 */
 
+use App\Video;
+
 Route::get('/', function () {
-    return view('ydb.welcome');
+	
+	$videos = Video::has('channel')->orderBy('upload_date', 'desc')->paginate(6);
+
+    return view('ydb.welcome')->with('videos', $videos);
 });
