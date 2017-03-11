@@ -1,6 +1,6 @@
 #!/bin/bash
 
 while true; do
-    php artisan schedule:run
+    php artisan schedule:run >/dev/null
     sleep 60
 done
