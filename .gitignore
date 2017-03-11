@@ -9,3 +9,5 @@ Homestead.json
 Homestead.yaml
 .env
 .env.*
+
+/storage/videos.index
