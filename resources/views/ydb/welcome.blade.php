@@ -13,9 +13,9 @@
 					<div class="media-length">17:30</div> -->
 				</div></a>
 				<div class="row m0 post_data">
-				<div class="row m0"><a href="/{{ $video->channel->slug }}/{{ $video->slug }}" class="post_title">{{ $video->title }}</a></div>
-					<div class="row m0">
-						<div class="fleft author"><a href="/{{ $video->channel->slug }}">{{ $video->channel->title }}</a></div>
+				<div class="row m0"><a href="/{{ $video->channel->slug }}/{{ $video->slug }}" class="post_title">{{ str_pad_html($video->title,48,"&nbsp; ") }}</a></div>
+					<div class="row m0" style='bottom:0px;position:relative;'>
+						<div class="fleft author"><a href="/{{ $video->channel->slug }}">{{ str_limit($video->channel->title, 25) }}</a></div>
 						<div class="fright date">{{ date("Y/m/d", strtotime($video->upload_date)) }}</div>
 					</div>
 				</div>

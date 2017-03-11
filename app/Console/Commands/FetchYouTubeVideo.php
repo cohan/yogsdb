@@ -60,7 +60,7 @@ class FetchYouTubeVideo extends Command
 		$video->upload_date = date("Y-m-d H:i:s", strtotime($youtubeVideo->snippet->publishedAt));
 
 		$this->logit($video_id, "Title: ".$video->title);
-
+		$this->logit($video_id, "Uploaded: ".$video->upload_date);
 
 		if (empty($youtubeVideo->snippet->thumbnails->maxres->url)) {
 			$thumbnailUrl = $youtubeVideo->snippet->thumbnails->high->url;
@@ -108,6 +108,10 @@ class FetchYouTubeVideo extends Command
 		$this->logit($video_id, "Video Imported");
 
 		echo "\n";
+
+		$rand = rand(1,3);
+		$this->logit($video_id, "Pausing a moment (${rand}s)");
+		sleep($rand);
 	}
 
 	public function logit($id, $message = "") {

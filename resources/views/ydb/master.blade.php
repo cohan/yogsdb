@@ -78,9 +78,9 @@
 				<div class="row m0">
 					<!--Search Form-->
 					<div class="btn-group col-md-8 col-md-offset-2">
-						<form action="/" role="search" class="search_form widget widget_search">
+						<form action="/search" role="search" class="search_form widget widget_search">
 							<div class="input-group">
-								<input type="text" name='q' class="form-control" placeholder="Search for stuff" >
+								<input id='header-search' type="text" name='q' class="form-control" placeholder="Search for stuff" >
 								<span class="input-group-addon"><button type="submit"><img src="/images/icons/search.png" alt=""></button></span>
 							</div>
 						</form>
@@ -106,7 +106,7 @@
 			<div class="container">
 				<div class="row sidebar sidebar_footer">
 					<div class="col-sm-3 widget widget1 w_in_footer widget_about">
-						<h5 class="widget_title">About Video Cafe</h5>
+						<h5 class="widget_title">About Yogs DB</h5>
 						<div class="row m0 inner">
 							<a href="/"><img style='width:100%' src="https://i.imgsir.com/G54X.png" alt=""></a><br>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit</p>

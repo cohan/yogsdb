@@ -15,7 +15,7 @@ class FetchYouTubeChannel extends Command
 	 *
 	 * @var string
 	 */
-	protected $signature = 'video:import:channel {channelid : YouTube channel ID}';
+	protected $signature = 'video:import:channel {channelid : YouTube channel ID} {--l|latest : Only fetch latest videos}';
 
 	/**
 	 * The console command description.
@@ -41,30 +41,39 @@ class FetchYouTubeChannel extends Command
 	 */
 	public function handle()
 	{
+		$latestOnly = $this->option('latest');
+
+		$resultsPerPage = empty($latestOnly) ? $resultsPerPage = 50 : $resultsPerPage = 5;
+
 		$channel_id = $this->argument('channelid');
 
-		$this->logit($channel_id, "Loading all videos from channel");
+		$howManyWeAreLoading = empty($latestOnly) ? "all" : "latest";
+
+		$this->logit($channel_id, "Loading $howManyWeAreLoading videos from channel");
 
 		//
 		$params = array(
-			'channelId'             => $channel_id,
+			'channelId'  	=> $channel_id,
 			'type'          => 'video',
 			'part'          => 'id, snippet',
-			'maxResults'    => 50
+			'maxResults'    => $resultsPerPage,
+			'order'			=> 'date',
 		);
 
 		$pageTokens = array();
-		$i = 1;
+		$i = 0;
+		$search = YouTube::paginateResults($params, null);
 
 		while (true) {
-			$search = YouTube::paginateResults($params, null);
 			$this->logit($channel_id, "Retrieved page $i of videos");
 
-			if (empty($search['info']['nextPageToken'])) {
+			if (empty($search['info']['nextPageToken']) || empty($search['results'])) {
 				$this->logit($channel_id, "That's the lot. Breaking out of this loop!");
 				break;
 			}
 			$pageTokens[] = $search['info']['nextPageToken'];
+
+			// $this->logit($channel_id, "Page tokens ".implode(" ", $pageTokens));
 
 			foreach ($search['results'] as $video) {
 				$this->logit($channel_id, "Queueing ".$video->id->videoId." for import");
@@ -74,11 +83,13 @@ class FetchYouTubeChannel extends Command
 					]);
 			}
 
-			$i++;
+			if (!empty($latestOnly)) { break; }
 
-			$rand = rand(1,60);
+			$rand = rand(1,5);
 			$this->logit($channel_id, "Pausing a moment (${rand}s)");
 			sleep($rand);
+			$search = YouTube::paginateResults($params, $pageTokens[$i]);
+			$i++;
 		}
 	}
 

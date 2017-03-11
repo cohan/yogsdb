@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         //
         Commands\FetchYouTubeVideo::class,
         Commands\FetchYouTubeChannel::class,
+        Commands\RefreshYouTubeChannels::class,
     ];
 
     /**
@@ -28,6 +29,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+
+        $schedule->command("channel:refresh")->hourly();
     }
 
     /**
