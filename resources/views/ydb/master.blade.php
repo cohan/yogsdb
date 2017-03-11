@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Video Cafe | The Best Media Uploader</title>
+	<title>{{ $title or "Yogscast Database" }}</title>
 	
 	<!--Favicons-->
 	<link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
@@ -108,42 +108,30 @@
 					<div class="col-sm-3 widget widget1 w_in_footer widget_about">
 						<h5 class="widget_title">About Yogs DB</h5>
 						<div class="row m0 inner">
-							<a href="/"><img style='width:100%' src="https://i.imgsir.com/G54X.png" alt=""></a><br>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit</p>
+							<p>Yogscast Database is a <strong>fan project</strong> to tag, organize and eventually allow you to alert on Yogscast videos. Ever wanted an alert when a video starring Simon and Sips appears across the network? That's the plan!</p>
+						</div>
+						<br />
+						<h5 class="widget_title">Developers</h5>
+						<div class="row m0 inner">
+							<p>We're also looking at allowing access to the metadata we create via an API. <a href="mailto:hello@yogsdb.com">Get in touch</a> if you're interested!</p>
 						</div>
 					</div>
 					<div class="col-sm-3 widget widget2 w_in_footer widget_subscribe">
-						<h5 class="widget_title">subscribe to our newsletter</h5>
+<!-- 						<h5 class="widget_title">subscribe to our newsletter</h5>
 						<div class="row m0 inner">
 							<form action="#" class="row m0" method="post">
 								<input type="email" class="form-control" placeholder="Enter Email Address">
 								<input type="submit" value="Submit Now" class="form-control btn btn-default">
 							</form>
-						</div>
+						</div> -->
 					</div>
-					<div class="col-sm-3 widget widget3 w_in_footer widget_tags">
-						<h5 class="widget_title">popular tags</h5>
-						<div class="row m0 inner">
-							<a href="#" class="tag">business</a>
-							<a href="#" class="tag">osx</a>
-							<a href="#" class="tag">windows 10</a>
-							<a href="#" class="tag">osx yosemite</a>
-							<a href="#" class="tag">photoshop</a>
-							<a href="#" class="tag">css</a>
-							<a href="#" class="tag">business</a>
-							<a href="#" class="tag">osx</a>
-							<a href="#" class="tag">windows 10</a>
-							<a href="#" class="tag">osx yosemite</a>
-							<a href="#" class="tag">photoshop</a>
-							<a href="#" class="tag">css</a>
-						</div>
+					<div class="col-sm-3 widget widget2 w_in_footer widget_subscribe">
+
 					</div>
-					<div class="col-sm-3 widget widget4 w_in_footer widget_twitter">
-						<h5 class="widget_title">twitter feed</h5>
+					<div class="col-sm-3 widget widget3 w_in_footer widget_about">
+						<h5 class="widget_title">Disclaimer</h5>
 						<div class="row m0 inner">
-							<div class="row m0 tweet"><a href="#">@masum_rana:</a>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat</div>
-							<div class="row m0 tweet"><a href="#">@masum_rana:</a>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat</div>
-							<div class="row m0 tweet"><a href="#">@masum_rana:</a>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat</div>
+							<p>This is a fan site run by fans of The Yogscast. Video and content copyright along with any and all brands featured on this site belong to Yogscast Ltd or the appropriate channel owner. We make no claim to be associated with or endorsed by The Yogscast or their associates.</p>
 						</div>
 					</div>
 				</div>

@@ -31,6 +31,8 @@ class Kernel extends ConsoleKernel
         //          ->hourly();
 
         $schedule->command("channel:refresh")->hourly();
+
+        $schedule->command("php artisan tntsearch:import App\Post")->daily();
     }
 
     /**
