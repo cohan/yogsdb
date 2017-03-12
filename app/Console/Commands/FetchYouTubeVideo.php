@@ -52,19 +52,13 @@ class FetchYouTubeVideo extends Command
 
 		$this->logit($video_id, "Importing video ".$video_id);
 
-		if ($latestOnly) {
-			$video = Video::where(['youtube_id' => $video_id]);
+		$video = Video::firstOrNew(['youtube_id' => $video_id]);
 
-			if (!empty($video)) {
-				$this->logit($video_id, "Abort. We've got the latest flag and we already have ".$video_id);
-				return;
-			}
+		if ($latestOnly && !empty($video->title)) {
+			$this->logit($video_id, "Abort. We've got the latest flag and we already have ".$video_id);
+			return;
 		}
-		else {
-			$video = Video::firstOrNew(['youtube_id' => $video_id]);			
-		}
-
-
+		
 		$this->logit($video_id, "Fetching data from YouTube API");
 
 		$youtubeVideo = YouTube::getVideoInfo($video_id);
