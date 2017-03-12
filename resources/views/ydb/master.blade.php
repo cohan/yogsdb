@@ -92,7 +92,7 @@
 							<div class="input-group">
 								<input id='header-search' type="text" name='q' class="form-control" placeholder="Search for stuff" 
 								@if (Request::get('q'))
-									value="{{ Request::get('q') }}"
+								value="{{ Request::get('q') }}"
 								@endif
 								>
 								<span class="input-group-addon"><button type="submit"><img src="/images/icons/search.png" alt=""></button></span>
@@ -124,20 +124,12 @@
 						<div class="row m0 inner">
 							<p>Yogscast Database is a <strong>fan project</strong> to tag, organize and eventually allow you to alert on Yogscast videos. Ever wanted an alert when a video starring Simon and Sips appears across the network? That's the plan!</p>
 						</div>
-						<br />
+					</div>
+					<div class="col-sm-3 widget widget2 w_in_footer widget_about">
 						<h5 class="widget_title">Developers</h5>
 						<div class="row m0 inner">
-							<p>We're also looking at allowing access to the metadata we create via an API. <a href="mailto:hello@yogsdb.com">Get in touch</a> if you're interested!</p>
+							<p>We're also looking at allowing access to the series, stars, tags, etc metadata we create via an API. <a href="mailto:hello@yogsdb.com">Get in touch</a> if you're interested!</p>
 						</div>
-					</div>
-					<div class="col-sm-3 widget widget2 w_in_footer widget_subscribe">
-<!-- 						<h5 class="widget_title">subscribe to our newsletter</h5>
-						<div class="row m0 inner">
-							<form action="#" class="row m0" method="post">
-								<input type="email" class="form-control" placeholder="Enter Email Address">
-								<input type="submit" value="Submit Now" class="form-control btn btn-default">
-							</form>
-						</div> -->
 					</div>
 					<div class="col-sm-3 widget widget2 w_in_footer widget_subscribe">
 

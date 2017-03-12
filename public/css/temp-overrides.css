@@ -30,3 +30,11 @@ dd {
     border-radius: 1em;
     margin-left:3px;
 }
+
+.widget.widget_recommended_to_follow .media .media-body .btn-group a {
+	padding: 0 18px;
+}
+
+.widget.w_in_footer.widget_about a {
+	margin-bottom: inherit;
+}

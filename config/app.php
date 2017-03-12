@@ -188,6 +188,9 @@ return [
 
         Collective\Html\HtmlServiceProvider::class,
 
+        Indal\Markdown\MarkdownServiceProvider::class,
+
+
     ],
 
     /*
@@ -242,6 +245,8 @@ return [
 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+
+        'Markdown' => Indal\Markdown\Facade::class,
 
     ],
 

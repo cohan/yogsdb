@@ -92,7 +92,7 @@
 					</div>
 				</div>
 				<div class="media-body author_desc_by_author">
-					{!! nl2br($video->description) !!}
+					@markdown($video->description)
 				</div>
 			</div>
 		</div>
