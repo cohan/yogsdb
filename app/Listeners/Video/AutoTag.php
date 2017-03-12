@@ -6,8 +6,11 @@ use App\Events\Video\VideoUpdated;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class AutoTag
+class AutoTag implements ShouldQueue
 {
+
+    public $queue = 'low';
+
     /**
      * Create the event listener.
      *
