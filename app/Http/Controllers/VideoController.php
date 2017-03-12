@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Video;
+use App\Star;
+
+use Auth;
+
 use Illuminate\Http\Request;
 
 class VideoController extends Controller
@@ -74,7 +78,15 @@ class VideoController extends Controller
 	public function update(Request $request, Video $video)
 	{
 		//
-		return dd($video);
+		$user = Auth::user();
+
+		if (!$user->hasAnyRole(['admin', 'moderator'])) {
+			die('wat');
+		}
+
+		$video->stars()->sync($request->get('starring'));
+
+		return redirect("/".$video->channel->slug."/".$video->slug);
 	}
 
 	/**

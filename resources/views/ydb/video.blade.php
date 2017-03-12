@@ -14,7 +14,7 @@
 				<div class="media-left about_social">
 					<div class="row m0 section_row author_section widget widget_recommended_to_follow">
 						<div class="media">
-							<div class="media-left"><a href="page-author.html"><img src="//cdn.yogsdb.com/channel/{{ $video->channel->youtube_id }}.jpg" alt="" class="circle"></a></div>
+							<div class="media-left"><a href="/{{ $video->channel->slug }}"><img src="//cdn.yogsdb.com/channel/{{ $video->channel->youtube_id }}.jpg" alt="" class="circle"></a></div>
 							<div class="media-body media-middle">
 								<a href="/{{ $video->channel->slug }}"><h5>{{ $video->channel->title }}</h5></a>
 								<div class="btn-group">
@@ -24,23 +24,6 @@
 							</div>
 						</div>                                    
 					</div>
-<!-- 					<div class="row m0 social_section section_row">
-						<h5>Social Accounts</h5>
-						<ul class="list-inline">
-							<li><a href="#"><img src="images/icons/social/1.jpg" alt=""></a></li>
-							<li><a href="#"><img src="images/icons/social/2.jpg" alt=""></a></li>
-							<li><a href="#"><img src="images/icons/social/3.jpg" alt=""></a></li>
-							<li><a href="#"><img src="images/icons/social/4.jpg" alt=""></a></li>
-							<li><a href="#"><img src="images/icons/social/5.jpg" alt=""></a></li>
-							<li><a href="#"><img src="images/icons/social/6.jpg" alt=""></a></li>
-							<li><a href="#"><img src="images/icons/social/7.jpg" alt=""></a></li>
-							<li><a href="#"><img src="images/icons/social/8.jpg" alt=""></a></li>
-							<li><a href="#"><img src="images/icons/social/9.jpg" alt=""></a></li>
-							<li><a href="#"><img src="images/icons/social/10.jpg" alt=""></a></li>
-							<li><a href="#"><img src="images/icons/social/11.jpg" alt=""></a></li>
-							<li><a href="#"><img src="images/icons/social/12.jpg" alt=""></a></li>
-						</ul>
-					</div> -->
 					<div class="row m0 about_section section_row single_video_info">
 						<dl class="dl-horizontal">
 							<dt>Publish Date:</dt>
@@ -59,7 +42,7 @@
 									@endforeach
 								</div>
 							</dd>
-
+<!-- 
 							<dt>Series</dt>
 							<dd>
 								<div class='series'>
@@ -83,6 +66,7 @@
 									@endforeach
 								</div>
 							</dd>
+-->
 						</dl>
 						@hasanyrole(['admin', 'moderator'])
 						<a href='/video/{{ $video->id }}/edit' class='btn btn-primary'>

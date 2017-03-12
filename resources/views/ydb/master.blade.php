@@ -29,6 +29,7 @@
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="/css/magnific-popup.css">
+	<link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="/vendors/bootstrap-select/css/bootstrap-select.min.css" media="screen">
 	
@@ -42,121 +43,123 @@
 	<!--[if lt IE 9]>
 	  <script src="/js/html5shiv.min.js"></script>
 	  <script src="/js/respond.min.js"></script>
-	  <![endif]-->
+	  <![endif]
+	-->
 
 
-	  <link rel="stylesheet" href="/css/temp-overrides.css">
+	<!--jQuery, Bootstrap and other vendor JS-->
 
-	</head>
-	<body class="home">
+	<!--jQuery-->
+	<script src="/js/jquery-2.1.4.min.js"></script>
 
-		<nav class="navbar navbar-default navbar-static-top">
-			<div class="container">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<a class="navbar-brand" href="/"><img style='width:100%' src="https://i.imgsir.com/G54X.png" alt=""></a>
-				</div>        
-				<ul class="nav navbar-nav navbar-right login_drop">
-					@if (Auth::check())
-					<li class=''>
-						<a href='/alerts'><i class='fa fa-bell'></i> Alerts</a>
-					</li>
-					@else
-					<li class=''>
-						<a href='/login'><i class='fa fa-bell'></i> Alerts</a>
-					</li>
-					@endif
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-							<span class="login_icon"></span> My Account
-						</a>
-						<ul class="dropdown-menu">
-							@if (Auth::check())
-							<li><a href="/home">Dashboard</a></li>
-							@else
-							<li><a href="/login">Login</a></li>
-							<li><a href="/register">Sign Up</a></li>
+	<!--Bootstrap JS-->
+	<script src="/js/bootstrap.min.js"></script>
+
+	<!--Magnific Popup-->
+	<script src="/js/jquery.magnific-popup.min.js"></script>
+
+	<!--Bootstrap Select-->
+	<script src="/js/chosen.jquery.js"></script>
+
+	<link rel="stylesheet" href="/css/chosen.css">
+
+	<link rel="stylesheet" href="/css/temp-overrides.css">
+
+</head>
+<body class="home">
+
+	<nav class="navbar navbar-default navbar-static-top">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/"><img style='width:100%' src="https://i.imgsir.com/G54X.png" alt=""></a>
+			</div>        
+			<ul class="nav navbar-nav navbar-right login_drop">
+				@if (Auth::check())
+				<li class=''>
+					<a href='/alerts'><i class='fa fa-bell'></i> Alerts</a>
+				</li>
+				@else
+				<li class=''>
+					<a href='/login'><i class='fa fa-bell'></i> Alerts</a>
+				</li>
+				@endif
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						<span class="login_icon"></span> My Account
+					</a>
+					<ul class="dropdown-menu">
+						@if (Auth::check())
+						<li><a href="/home">Dashboard</a></li>
+						@else
+						<li><a href="/login">Login</a></li>
+						<li><a href="/register">Sign Up</a></li>
+						@endif
+					</ul>
+				</li>
+			</ul>
+		</div><!-- /.container-fluid -->
+	</nav> <!--Navigation-->
+
+	<section class="row search_filter search_filter_type2">
+		<div class="container">
+			<div class="row m0">
+				<!--Search Form-->
+				<div class="btn-group col-md-8 col-md-offset-2">
+					<form action="/search" role="search" class="search_form widget widget_search">
+						<div class="input-group">
+							<input id='header-search' type="text" name='q' class="form-control" placeholder="Search for stuff" 
+							@if (Request::get('q'))
+							value="{{ Request::get('q') }}"
 							@endif
-						</ul>
-					</li>
-				</ul>
-			</div><!-- /.container-fluid -->
-		</nav> <!--Navigation-->
+							>
+							<span class="input-group-addon"><button type="submit"><img src="/images/icons/search.png" alt=""></button></span>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section> <!--Search Filter-->
 
-		<section class="row search_filter search_filter_type2">
-			<div class="container">
-				<div class="row m0">
-					<!--Search Form-->
-					<div class="btn-group col-md-8 col-md-offset-2">
-						<form action="/search" role="search" class="search_form widget widget_search">
-							<div class="input-group">
-								<input id='header-search' type="text" name='q' class="form-control" placeholder="Search for stuff" 
-								@if (Request::get('q'))
-								value="{{ Request::get('q') }}"
-								@endif
-								>
-								<span class="input-group-addon"><button type="submit"><img src="/images/icons/search.png" alt=""></button></span>
-							</div>
-						</form>
+	<section class="row post_page_sidebar post_page_sidebar1">
+		<div class="container">
+			<div class="row">
+
+				@yield('content')
+
+				@include('ydb.sidebar')
+
+			</div>
+		</div>
+	</section> <!--Uploads-->
+
+
+	<footer class="row">
+		<div class="container">
+			<div class="row sidebar sidebar_footer">
+				<div class="col-sm-3 widget widget1 w_in_footer widget_about">
+					<h5 class="widget_title">About Yogs DB</h5>
+					<div class="row m0 inner">
+						<p>Yogscast Database is a <strong>fan project</strong> to tag, organize and eventually allow you to alert on Yogscast videos. Ever wanted an alert when a video starring Simon and Sips appears across the network? That's the plan!</p>
+					</div>
+				</div>
+				<div class="col-sm-3 widget widget2 w_in_footer widget_about">
+					<h5 class="widget_title">Developers</h5>
+					<div class="row m0 inner">
+						<p>We're also looking at allowing access to the series, stars, tags, etc metadata we create via an API. <a href="mailto:hello@yogsdb.com">Get in touch</a> if you're interested!</p>
+					</div>
+				</div>
+				<div class="col-sm-3 widget widget2 w_in_footer widget_subscribe">
+
+				</div>
+				<div class="col-sm-3 widget widget3 w_in_footer widget_about">
+					<h5 class="widget_title">Disclaimer</h5>
+					<div class="row m0 inner">
+						<p>This is a fan site run by fans of The Yogscast. Video and content copyright along with any and all brands featured on this site belong to Yogscast Ltd or the appropriate channel owner. We make no claim to be associated with or endorsed by The Yogscast or their associates.</p>
 					</div>
 				</div>
 			</div>
-		</section> <!--Search Filter-->
-
-		<section class="row post_page_sidebar post_page_sidebar1">
-			<div class="container">
-				<div class="row">
-
-					@yield('content')
-
-					@include('ydb.sidebar')
-
-				</div>
-			</div>
-		</section> <!--Uploads-->
-
-
-		<footer class="row">
-			<div class="container">
-				<div class="row sidebar sidebar_footer">
-					<div class="col-sm-3 widget widget1 w_in_footer widget_about">
-						<h5 class="widget_title">About Yogs DB</h5>
-						<div class="row m0 inner">
-							<p>Yogscast Database is a <strong>fan project</strong> to tag, organize and eventually allow you to alert on Yogscast videos. Ever wanted an alert when a video starring Simon and Sips appears across the network? That's the plan!</p>
-						</div>
-					</div>
-					<div class="col-sm-3 widget widget2 w_in_footer widget_about">
-						<h5 class="widget_title">Developers</h5>
-						<div class="row m0 inner">
-							<p>We're also looking at allowing access to the series, stars, tags, etc metadata we create via an API. <a href="mailto:hello@yogsdb.com">Get in touch</a> if you're interested!</p>
-						</div>
-					</div>
-					<div class="col-sm-3 widget widget2 w_in_footer widget_subscribe">
-
-					</div>
-					<div class="col-sm-3 widget widget3 w_in_footer widget_about">
-						<h5 class="widget_title">Disclaimer</h5>
-						<div class="row m0 inner">
-							<p>This is a fan site run by fans of The Yogscast. Video and content copyright along with any and all brands featured on this site belong to Yogscast Ltd or the appropriate channel owner. We make no claim to be associated with or endorsed by The Yogscast or their associates.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-
-		<!--jQuery, Bootstrap and other vendor JS-->
-
-		<!--jQuery-->
-		<script src="/js/jquery-2.1.4.min.js"></script>
-
-		<!--Bootstrap JS-->
-		<script src="/js/bootstrap.min.js"></script>
-
-		<!--Magnific Popup-->
-		<script src="/js/jquery.magnific-popup.min.js"></script>
-
-		<!--Bootstrap Select-->
-		<script src="/vendors/bootstrap-select/js/bootstrap-select.min.js"></script>
-
-	</body>
-	</html>
+		</div>
+	</footer>
+</body>
+</html>
