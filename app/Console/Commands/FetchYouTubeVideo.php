@@ -112,6 +112,8 @@ class FetchYouTubeVideo extends Command
 
 		$video->slug = str_slug($video->title);
 
+		$video->updated_at = \Carbon\Carbon::now();
+
 		$video->save();
 
 		$this->logit($video_id, "Video Imported");
