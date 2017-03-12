@@ -13,7 +13,12 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-
+        'App\Events\Video\VideoUpdated' => [
+            'App\Listeners\Video\AutoTag',
+        ],
+        'App\Events\Video\MetaDataUpdated' => [
+            'App\Listeners\Video\NotifyCheck',
+        ]
     ];
 
     /**

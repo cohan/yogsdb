@@ -30,10 +30,6 @@ class Video extends Model
 	{
 		return $this->belongsToMany('App\Star');
 	}
-	public function starCount()
-	{
-		return $this->belongsToMany('App\Star')->selectRaw('count(stars.id) as aggregate');
-	}
 
 	/**
 	 * Get the series this video is in.
