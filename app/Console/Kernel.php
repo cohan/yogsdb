@@ -31,9 +31,11 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
 
-        $schedule->command("channel:refresh")->hourly();
+        $schedule->command("channel:refresh")
+            ->hourlyAt(10);
 
-        $schedule->command("php artisan video:refresh")->twiceDaily(1, 13);
+        $schedule->command("php artisan video:refresh")
+            ->twiceDaily(1, 13);
     }
 
     /**
