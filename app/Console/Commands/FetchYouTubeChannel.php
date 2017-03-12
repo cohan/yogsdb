@@ -83,7 +83,7 @@ class FetchYouTubeChannel extends Command
 				];
 
 				if ($latestOnly) {
-					$params['--latest'] = true;
+					$artisanParams['--latest'] = true;
 				}
 
 				Artisan::queue('video:import', $artisanParams);
