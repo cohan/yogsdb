@@ -21,9 +21,11 @@ Route::get('/', "HomeController@welcome");
 
 Route::get('/search', "SearchController@search");
 
-Route::get('/tag/{tag}', function() { return "tbc"; } );
+//Route::resource('series', 'SeriesController');
 
-Route::get('/series/{tag}', function() { return "tbc"; } );
+Route::resource('video', 'VideoController', [ 'only' => ['edit', 'update'] ]);
+
+Route::get('/tag/{tag}', function() { return "tbc"; } );
 
 Route::get('/{channel}', "ChannelController@show");
 

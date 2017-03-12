@@ -180,11 +180,13 @@ return [
         Alaouy\Youtube\YoutubeServiceProvider::class,
 
         Laravel\Scout\ScoutServiceProvider::class,
-        TeamTNT\Scout\TNTSearchScoutServiceProvider::class,
-
         DamianTW\MySQLScout\Providers\MySQLScoutServiceProvider::class,
 
+        Spatie\Permission\PermissionServiceProvider::class,
+
         'App\Providers\HelperServiceProvider',
+
+        Collective\Html\HtmlServiceProvider::class,
 
     ],
 
@@ -237,6 +239,9 @@ return [
 
         'Youtube' => Alaouy\Youtube\Facades\Youtube::class,
         'YouTube' => Alaouy\Youtube\Facades\Youtube::class,
+
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 

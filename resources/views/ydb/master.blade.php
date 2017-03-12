@@ -160,9 +160,6 @@
 		<!--Bootstrap JS-->
 		<script src="/js/bootstrap.min.js"></script>
 
-		<!--jScroll-->
-		<script src="/js/jquery.jscroll.min.js"></script>
-
 		<!--Magnific Popup-->
 		<script src="/js/jquery.magnific-popup.min.js"></script>
 

@@ -1,6 +1,7 @@
 @extends('ydb.master')
 
 @section('content')
+{!! Form::open(['url' => '/video/'.$video->id, 'method' => 'put']) !!}
 <div class="col-sm-9 post_page_uploads">
 	<div class="row">
 		<div class="author_details post_details row m0">
@@ -84,18 +85,20 @@
 								</div>
 							</dd>
 						</dl>
-						@hasanyrole(['admin', 'moderator'])
-						<a href='/video/{{ $video->id }}/edit' class='btn btn-primary'>
-							Edit
-						</a>
-						@endrole
 					</div>
 				</div>
 				<div class="media-body author_desc_by_author">
 					{!! nl2br($video->description) !!}
 				</div>
+				@hasanyrole(['admin', 'moderator'])
+				<div class="btn-group pull-right" role="group" aria-label="...">
+					<input type='submit' type="button" class="btn btn-primary" value='Save' />
+					<a href='javascript:history.go(-1);' type="button" class="btn btn-danger">Cancel</a>
+				</div>
+				@endrole
 			</div>
 		</div>
 	</div>
 </div>
+</form>
 @endsection
