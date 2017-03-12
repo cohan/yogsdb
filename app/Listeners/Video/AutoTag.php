@@ -12,45 +12,51 @@ use App\Video;
 class AutoTag implements ShouldQueue
 {
 
-    public $queue = 'low';
+	public $queue = 'low';
 
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
+	/**
+	 * Create the event listener.
+	 *
+	 * @return void
+	 */
+	public function __construct()
+	{
+		//
+	}
 
-    /**
-     * Handle the event.
-     *
-     * @param  VideoUpdated  $event
-     * @return void
-     */
-    public function handle(VideoUpdated $event)
-    {
-        $video = Video::where(['id' => $event->video->id])->first();
-        $channel = Channel::where(['id' => $event->video->channel->id])
-            ->with('stars')
-            ->withCount('stars')
-            ->first();
+	/**
+	 * Handle the event.
+	 *
+	 * @param  VideoUpdated  $event
+	 * @return void
+	 */
+	public function handle(VideoUpdated $event)
+	{
+		$video = Video::where(['id' => $event->video->id])->first();
+		$channel = Channel::where(['id' => $event->video->channel->id])
+		->with('stars')
+		->withCount('stars')
+		->first();
 
-        $this->logit("AutoTag", $video->title." was updated");
+		$this->logit("AutoTag", $video->title." was updated");
 
-        if ($channel->stars_count == 1) {
-            $this->logit("AutoTag","Channel only has one Star attached as their primary channel. Attaching");
-            $video->stars()->attach($channel->stars->pluck('id')->toArray());
-        }
-        else {
-            $this->logit('AutoTag', "Can't auto-attach stars, ".$channel->title." there are ".$channel->stars_count." Stars with this channel as their primary channel");
-        }
-    }
+		if ($channel->stars_count == 1) {
+			$this->logit("AutoTag","Channel only has one Star attached as their primary channel. Attaching");
+
+			try {
+				$video->stars()->attach($channel->stars->pluck('id')->toArray());
+			}
+			catch(\Exception $e) {
+				$this->logit('AutoLog', "That Star is already attached to this video. Good times.");
+			}
+		}
+		else {
+			$this->logit('AutoTag', "Can't auto-attach stars, ".$channel->title." there are ".$channel->stars_count." Stars with this channel as their primary channel");
+		}
+	}
 
 
-    public function logit($id, $message = "") {
-        echo "[".$id."] ".$message."\n";
-    }
+	public function logit($id, $message = "") {
+		echo "[".$id."] ".$message."\n";
+	}
 }
