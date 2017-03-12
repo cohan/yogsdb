@@ -47,7 +47,18 @@
 							<dd>{{ date("Y-m-d", strtotime($video->upload_date)) }}</dd>
 
 							<dt>Starring</dt>
-							<dd>???</dd>
+							<dd>
+								<div class='starring'>
+									@foreach($video->stars as $star)
+									<div class='star'>
+										<a href='/{{ $star->channel->slug }}'>
+										<img src='//cdn.yogsdb.com/channel/{{ $star->youtube_id }}.jpg' />
+										{{ $star->title }}
+										</a>
+									</div>
+									@endforeach
+								</div>
+							</dd>
 
 							<dt>Series</dt>
 							<dd>???</dd>

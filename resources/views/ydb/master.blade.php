@@ -57,16 +57,26 @@
 					<a class="navbar-brand" href="/"><img style='width:100%' src="https://i.imgsir.com/G54X.png" alt=""></a>
 				</div>        
 				<ul class="nav navbar-nav navbar-right login_drop">
+					@if (Auth::check())
 					<li class=''>
 						<a href='/alerts'><i class='fa fa-bell'></i> Alerts</a>
 					</li>
+					@else
+					<li class=''>
+						<a href='/login'><i class='fa fa-bell'></i> Alerts</a>
+					</li>
+					@endif
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 							<span class="login_icon"></span> My Account
 						</a>
 						<ul class="dropdown-menu">
+							@if (Auth::check())
+							<li><a href="/home">Dashboard</a></li>
+							@else
 							<li><a href="/login">Login</a></li>
 							<li><a href="/register">Sign Up</a></li>
+							@endif
 						</ul>
 					</li>
 				</ul>

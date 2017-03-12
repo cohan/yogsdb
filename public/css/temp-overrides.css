@@ -9,3 +9,11 @@
 #header-search {
 	color: white;
 }
+
+.starring .star img {
+	height: 32px;
+}
+
+.starring .star a {
+	color: black;
+}

@@ -58,7 +58,7 @@ class FetchYouTubeChannel extends Command
 			'part'          => 'id, snippet',
 			'maxResults'    => $resultsPerPage,
 			'order'			=> 'date',
-		);
+			);
 
 		$pageTokens = array();
 		$i = 0;
@@ -78,9 +78,15 @@ class FetchYouTubeChannel extends Command
 			foreach ($search['results'] as $video) {
 				$this->logit($channel_id, "Queueing ".$video->id->videoId." for import");
 
-				Artisan::queue('video:import', [
+				$params = [
 					'videoid' => $video->id->videoId
-					]);
+				];
+
+				if ($latestOnly) {
+					$params['--latest'] = true;
+				}
+
+				Artisan::queue('video:import', $params);
 			}
 
 			if (!empty($latestOnly)) { break; }

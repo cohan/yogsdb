@@ -7,7 +7,7 @@
 								@foreach (App\Channel::orderBy('slug', 'asc')->get() as $channel)
 								<div class='sidebar-channel col-sm-12'>
 									<a href='/{{ $channel->slug }}'>
-									{{ $channel->title }}
+										{{ $channel->title }}
 									</a>
 								</div>
 								@endforeach

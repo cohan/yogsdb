@@ -10,4 +10,12 @@ class Series extends Model
     //
     use SoftDeletes;
 
+
+    /**
+     * Get the videos the star is in.
+     */
+    public function videos()
+    {
+    	return $this->belongsToMany('App\Video')->orderBy("upload_date", "desc");
+    }
 }

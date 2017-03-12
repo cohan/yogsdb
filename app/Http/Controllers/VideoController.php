@@ -47,7 +47,7 @@ class VideoController extends Controller
     public function show($channel, $video)
     {
         //
-        $video = Video::where(['slug' => $video])->first();
+        $video = Video::where(['slug' => $video])->with('stars')->first();
 
         return view('ydb.video')->with('video', $video);
     }

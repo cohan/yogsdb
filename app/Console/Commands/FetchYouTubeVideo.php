@@ -10,6 +10,8 @@ use App\Channel;
 use YouTube;
 use Storage;
 
+use App\Events\Video\VideoUpdated;
+
 class FetchYouTubeVideo extends Command
 {
 	/**
@@ -17,7 +19,7 @@ class FetchYouTubeVideo extends Command
 	 *
 	 * @var string
 	 */
-	protected $signature = 'video:import {videoid : The YouTube ID of this video}';
+	protected $signature = 'video:import {videoid : The YouTube ID of this video} {--l|latest : Only check the video if we dont already have it}';
 
 	/**
 	 * The console command description.
@@ -43,12 +45,25 @@ class FetchYouTubeVideo extends Command
 	 */
 	public function handle()
 	{
+		$latestOnly = $this->option('latest');
+
 		//
 		$video_id = $this->argument('videoid');
 
-		$this->logit($video_id, "Video Imported");
+		$this->logit($video_id, "Importing video ".$video_id);
 
-		$video = Video::firstOrNew(['youtube_id' => $video_id]);
+		if ($latestOnly) {
+			$video = Video::where(['youtube_id' => $video_id]);
+
+			if (!empty($video)) {
+				$this->logit($video_id, "Abort. We've got the latest flag and we already have ".$video_id);
+				return;
+			}
+		}
+		else {
+			$video = Video::firstOrNew(['youtube_id' => $video_id]);			
+		}
+
 
 		$this->logit($video_id, "Fetching data from YouTube API");
 

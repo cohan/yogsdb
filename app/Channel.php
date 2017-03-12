@@ -19,4 +19,12 @@ class Channel extends Model
     {
         return $this->hasMany('App\Video')->orderBy("upload_date", "desc");
     }
+
+    /**
+     * Get the assumed stars for the channel
+     */
+    public function stars()
+    {
+        return $this->hasMany('App\Star', 'youtube_id', 'youtube_id');
+    }
 }

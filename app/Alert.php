@@ -16,4 +16,8 @@ class Alert extends Model
 		'not_stars' => 'array',
 		'not_series' => 'array',
 	];
+
+	public function user() {
+		return $this->belongsTo('App\User');
+	}
 }
