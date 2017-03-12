@@ -43,7 +43,7 @@ class FetchYouTubeChannel extends Command
 	{
 		$latestOnly = $this->option('latest');
 
-		$resultsPerPage = empty($latestOnly) ? $resultsPerPage = 50 : $resultsPerPage = 5;
+		$resultsPerPage = empty($latestOnly) ? $resultsPerPage = 50 : $resultsPerPage = 30;
 
 		$channel_id = $this->argument('channelid');
 
