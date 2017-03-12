@@ -44,9 +44,12 @@ class VideoController extends Controller
      * @param  \App\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function show(Video $video)
+    public function show($channel, $video)
     {
         //
+        $video = Video::where(['slug' => $video])->first();
+
+        return view('ydb.video')->with('video', $video);
     }
 
     /**

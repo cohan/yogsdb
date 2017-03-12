@@ -7,7 +7,7 @@
 		@foreach($videos as $video)
 		<article class="col-sm-4 video_post postType2">
 			<div class="inner row m0">
-				<a href="/{{ $video->channel->slug }}/{{ $video->slug }}"><div class="row screencast m0">
+				<a href="/single-video"><div class="row screencast m0">
 					<img src="//cdn.yogsdb.com/{{ $video->youtube_id }}.jpg" alt="" class="cast img-responsive">
 <!-- 					<div class="play_btn"></div>
 					<div class="media-length">17:30</div> -->

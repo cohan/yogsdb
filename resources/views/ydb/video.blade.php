@@ -1,0 +1,67 @@
+@extends('ydb.master')
+
+@section('content')
+<div class="col-sm-9 post_page_uploads">
+	<div class="row">
+		<div class="author_details post_details row m0">
+			<div class="embed-responsive embed-responsive-16by9">
+				<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ $video->youtube_id }}"></iframe>
+			</div>
+			<div class="row post_title_n_view">
+				<h2 class="col-sm-12 post_title">{{ $video->title }}</h2>
+			</div>
+			<div class="media bio_section">
+				<div class="media-left about_social">
+					<div class="row m0 section_row author_section widget widget_recommended_to_follow">
+						<div class="media">
+							<div class="media-left"><a href="page-author.html"><img src="//cdn.yogsdb.com/channel/{{ $video->channel->youtube_id }}.jpg" alt="" class="circle"></a></div>
+							<div class="media-body media-middle">
+								<a href="page-author.html"><h5>{{ $video->channel->title }}</h5></a>
+								<div class="btn-group">
+									<a href="#" class="btn follower_count">???</a>
+									<a target="_blank" href="https://www.youtube.com/channel/{{ $video->channel->youtube_id }}?sub_confirmation=1" class="btn follow">follow</a>
+								</div>
+							</div>
+						</div>                                    
+					</div>
+<!-- 					<div class="row m0 social_section section_row">
+						<h5>Social Accounts</h5>
+						<ul class="list-inline">
+							<li><a href="#"><img src="images/icons/social/1.jpg" alt=""></a></li>
+							<li><a href="#"><img src="images/icons/social/2.jpg" alt=""></a></li>
+							<li><a href="#"><img src="images/icons/social/3.jpg" alt=""></a></li>
+							<li><a href="#"><img src="images/icons/social/4.jpg" alt=""></a></li>
+							<li><a href="#"><img src="images/icons/social/5.jpg" alt=""></a></li>
+							<li><a href="#"><img src="images/icons/social/6.jpg" alt=""></a></li>
+							<li><a href="#"><img src="images/icons/social/7.jpg" alt=""></a></li>
+							<li><a href="#"><img src="images/icons/social/8.jpg" alt=""></a></li>
+							<li><a href="#"><img src="images/icons/social/9.jpg" alt=""></a></li>
+							<li><a href="#"><img src="images/icons/social/10.jpg" alt=""></a></li>
+							<li><a href="#"><img src="images/icons/social/11.jpg" alt=""></a></li>
+							<li><a href="#"><img src="images/icons/social/12.jpg" alt=""></a></li>
+						</ul>
+					</div> -->
+					<div class="row m0 about_section section_row single_video_info">
+						<dl class="dl-horizontal">
+							<dt>Publish Date:</dt>
+							<dd>{{ date("Y-m-d", strtotime($video->upload_date)) }}</dd>
+
+							<dt>Starring</dt>
+							<dd>???</dd>
+
+							<dt>Series</dt>
+							<dd>???</dd>
+
+							<dt>Tagged</dt>
+							<dd>???</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="media-body author_desc_by_author">
+					{!! nl2br($video->description) !!}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+@endsection

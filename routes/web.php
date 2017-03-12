@@ -11,25 +11,17 @@
 |
 */
 
-use App\Video;
-use Illuminate\Http\Request;
+Auth::routes();
 
-Route::get('/', function () {
-	
-	$videos = Video::has('channel')->orderBy('upload_date', 'desc')->paginate(12);
-
-    return view('ydb.welcome')->with('videos', $videos);
+Route::get('/home', function() {
+	return view('home');
 });
 
+Route::get('/', "HomeController@welcome");
 
-Route::get('/search', function (Request $request) {
-    return App\Order::search($request->search)->get();
-});
+Route::get('/search', "SearchController@search");
 
-Route::get('/search', function (Request $request) {
+Route::get('/{channel}', "ChannelController@show");
 
-	$videos = Video::search($request->q)->orderBy('upload_date', 'desc')->paginate(12);
-
-    return view('ydb.welcome')->with('videos', $videos);
-});
+Route::get('/{channel}/{video}', "VideoController@show");
 
