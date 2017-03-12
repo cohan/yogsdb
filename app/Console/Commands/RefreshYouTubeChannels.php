@@ -65,7 +65,7 @@ class RefreshYouTubeChannels extends Command
                 $channel->thumbnail = Storage::url("channel/".$channel->youtube_id.'.jpg');
             }
 
-            $channel->thumbnail = $channel->thumbnail;
+            $channel->description = $channelMeta->snippet->description;
 
             // Statistics update
             $channel->view_count = $channelMeta->statistics->viewCount;

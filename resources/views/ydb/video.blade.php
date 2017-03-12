@@ -16,10 +16,10 @@
 						<div class="media">
 							<div class="media-left"><a href="page-author.html"><img src="//cdn.yogsdb.com/channel/{{ $video->channel->youtube_id }}.jpg" alt="" class="circle"></a></div>
 							<div class="media-body media-middle">
-								<a href="page-author.html"><h5>{{ $video->channel->title }}</h5></a>
+								<a href="/{{ $video->channel->slug }}"><h5>{{ $video->channel->title }}</h5></a>
 								<div class="btn-group">
-									<a href="#" class="btn follower_count">???</a>
-									<a target="_blank" href="https://www.youtube.com/channel/{{ $video->channel->youtube_id }}?sub_confirmation=1" class="btn follow">follow</a>
+									<a href="#" class="btn follower_count">{{ comp_numb($video->channel->subscriber_count) }}</a>
+									<a target="_blank" href="https://www.youtube.com/channel/{{ $video->channel->youtube_id }}?sub_confirmation=1" class="btn follow">Subscribe</a>
 								</div>
 							</div>
 						</div>                                    
