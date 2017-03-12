@@ -16,8 +16,8 @@
 					</div>
 				</div>
 				<div class="row m0 taxonomy">
-					<div class="fleft category"><a href="/category"><img src="/images/icons/cat.png" alt="">???</a></div>
-					<div class="fright views"><a href="#"><img src="/images/icons/views.png" alt="">???</a></div>
+					<div class="fleft category"><a href="/game/{{ $video->game->slug }}"><i class='fa fa-gamepad'></i> {{ $video->game->title }}</a></div>
+					<div class="fright views"><a href="/{{ $video->channel->slug }}/{{ $video->slug }}"><i class='fa fa-eye'></i> {{ comp_numb($video->view_count) }}</a></div>
 				</div>
 			</div>
 		</article>

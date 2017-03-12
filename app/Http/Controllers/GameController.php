@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Video;
+use App\Game;
 use Illuminate\Http\Request;
 
-class VideoController extends Controller
+class GameController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,24 +41,21 @@ class VideoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Video  $video
+     * @param  \App\Game  $game
      * @return \Illuminate\Http\Response
      */
-    public function show($channel, $video)
+    public function show(Game $game)
     {
         //
-        $video = Video::where(['slug' => $video])->with('stars')->with('series')->with('game')->with('channel')->first();
-
-        return view('ydb.video')->with('video', $video);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Video  $video
+     * @param  \App\Game  $game
      * @return \Illuminate\Http\Response
      */
-    public function edit(Video $video)
+    public function edit(Game $game)
     {
         //
     }
@@ -67,10 +64,10 @@ class VideoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Video  $video
+     * @param  \App\Game  $game
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Video $video)
+    public function update(Request $request, Game $game)
     {
         //
     }
@@ -78,10 +75,10 @@ class VideoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Video  $video
+     * @param  \App\Game  $game
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Video $video)
+    public function destroy(Game $game)
     {
         //
     }

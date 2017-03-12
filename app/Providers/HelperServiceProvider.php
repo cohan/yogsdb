@@ -25,6 +25,7 @@ class HelperServiceProvider extends ServiceProvider
     {
         //
         require_once app_path('Helpers/str_pad_html.php');
+        require_once app_path('Helpers/comp_numb.php');
 
     }
 }

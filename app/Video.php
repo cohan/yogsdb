@@ -48,6 +48,14 @@ class Video extends Model
 	}
 
 	/**
+	 * Get the game in this video.
+	 */
+	public function game()
+	{
+		return $this->belongsTo('App\Game');
+	}
+
+	/**
 	 * Get the indexable data array for the model.
 	 *
 	 * @return array

@@ -14,7 +14,7 @@ class RefreshVideoData extends Command
      *
      * @var string
      */
-    protected $signature = 'video:refresh';
+    protected $signature = 'video:refresh {--all : Refresh every video (probs dont do this) }';
 
     /**
      * The console command description.
@@ -41,7 +41,14 @@ class RefreshVideoData extends Command
     public function handle()
     {
         //
-        $videos = Video::where("updated_at", "<", date("Y-m-d H:i:s", strtotime("1 week ago")))->orderBy("updated_at", "asc")->limit(10)->get();
+        $refreshAll = $this->option('all');
+
+        if ($refreshAll) {
+            $videos = Video::orderBy("upload_date", "desc")->get();
+        }
+        else {
+            $videos = Video::where("updated_at", "<", date("Y-m-d H:i:s", strtotime("1 week ago")))->orderBy("updated_at", "asc")->limit(10)->get();            
+        }
 
         foreach ($videos as $video) {
 
