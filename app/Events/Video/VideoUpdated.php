@@ -10,8 +10,6 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-use App\Video;
-use App\Channel as YTChannel;
 
 class VideoUpdated
 {
@@ -27,8 +25,7 @@ class VideoUpdated
     public function __construct($video)
     {
         //
-        $this->video = Video::where(['id' => $video->id])->first();
-        $this->channel = YTChannel::where(['id' => $video->channel->id])->with('stars')->withCount('stars')->first();
+        $this->video = $video;
     }
 
     /**
