@@ -78,7 +78,7 @@ class FetchYouTubeChannel extends Command
 			foreach ($search['results'] as $video) {
 				$this->logit($channel_id, "Queueing ".$video->id->videoId." for import");
 
-				$params = [
+				$artisanParams = [
 					'videoid' => $video->id->videoId
 				];
 
@@ -86,7 +86,7 @@ class FetchYouTubeChannel extends Command
 					$params['--latest'] = true;
 				}
 
-				Artisan::queue('video:import', $params);
+				Artisan::queue('video:import', $artisanParams);
 			}
 
 			if (!empty($latestOnly)) { break; }
