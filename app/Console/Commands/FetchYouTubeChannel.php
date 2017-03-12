@@ -57,7 +57,7 @@ class FetchYouTubeChannel extends Command
 			'type'          => 'video',
 			'part'          => 'id, snippet',
 			'maxResults'    => $resultsPerPage,
-			'order'			=> 'date',
+			'order'			=> 'date'
 			);
 
 		$pageTokens = array();
@@ -67,13 +67,10 @@ class FetchYouTubeChannel extends Command
 		while (true) {
 			$this->logit($channel_id, "Retrieved page $i of videos");
 
-			if (empty($search['info']['nextPageToken']) || empty($search['results'])) {
+			if (empty($search['results'])) {
 				$this->logit($channel_id, "That's the lot. Breaking out of this loop!");
 				break;
 			}
-			$pageTokens[] = $search['info']['nextPageToken'];
-
-			// $this->logit($channel_id, "Page tokens ".implode(" ", $pageTokens));
 
 			foreach ($search['results'] as $video) {
 				$this->logit($channel_id, "Queueing ".$video->id->videoId." for import");
@@ -89,7 +86,13 @@ class FetchYouTubeChannel extends Command
 				Artisan::queue('video:import', $artisanParams);
 			}
 
-			if (!empty($latestOnly)) { break; }
+			if (empty($search['info']['nextPageToken'])) {
+				$this->logit($channel_id, "That's the lot. Breaking out of this loop!");
+				break;
+			}
+			$pageTokens[] = $search['info']['nextPageToken'];
+
+			if ($latestOnly) { break; }
 
 			$rand = rand(1,5);
 			$this->logit($channel_id, "Pausing a moment (${rand}s)");
