@@ -7,40 +7,31 @@
 		@foreach($videos as $video)
 		<article class="col-sm-4 video_post postType2">
 			<div class="inner row m0">
-				<a href="/{{ $video->channel->slug }}/{{ $video->slug }}"><div class="row screencast m0">
-					<img src="//cdn.yogsdb.com/{{ $video->youtube_id }}.jpg" alt="" class="cast img-responsive">
-<!-- 					<div class="play_btn"></div>
-	<div class="media-length">17:30</div> -->
-</div></a>
-<div class="row m0 post_data">
-	<div class="row m0"><a href="/{{ $video->channel->slug }}/{{ $video->slug }}" class="post_title">{{ str_pad_html(str_limit($video->title,50),48,"&nbsp; ") }}</a></div>
-	<div class="row m0" style='bottom:0px;position:relative;'>
-		<div class="fleft author"><a href="/{{ $video->channel->slug }}">{{ str_limit($video->channel->title, 25) }}</a></div>
-		<div class="fright date">
-			{{ \Carbon\Carbon::createFromTimeStamp(strtotime($video->upload_date))->diffForHumans() }}
-		</div>
-	</div>
-</div>
-<div class="row m0 taxonomy">
-	<div class="fleft category"><a href="/category"><img src="/images/icons/cat.png" alt="">???</a></div>
-	<div class="fright views"><a href="#"><img src="/images/icons/views.png" alt="">???</a></div>
-</div>
-</div>
-</article>
-@endforeach
+				<a href="/{{ $video->channel->slug }}/{{ $video->slug }}">
+					<div class="row screencast m0">
+						<img src="//cdn.yogsdb.com/{{ $video->youtube_id }}.jpg" alt="" class="cast img-responsive">
+					</div>
+				</a>
+				<div class="row m0 post_data">
+					<div class="row m0"><a href="/{{ $video->channel->slug }}/{{ $video->slug }}" class="post_title">{{ str_pad_html(str_limit($video->title,50),48,"&nbsp; ") }}</a></div>
+					<div class="row m0" style='bottom:0px;position:relative;'>
+						<div class="fleft author"><a href="/{{ $video->channel->slug }}">{{ str_limit($video->channel->title, 25) }}</a></div>
+						<div class="fright date">
+							{{ \Carbon\Carbon::createFromTimeStamp(strtotime($video->upload_date))->diffForHumans() }}
+						</div>
+					</div>
+				</div>
+				<div class="row m0 taxonomy">
+					<div class="fleft category"><a href="/category"><img src="/images/icons/cat.png" alt="">???</a></div>
+					<div class="fright views"><a href="#"><img src="/images/icons/views.png" alt="">???</a></div>
+				</div>
+			</div>
+		</article>
+		@endforeach
 
-</div>
-<div class="row pagination_row">
-	{{ $videos->links() }}
-<!-- 		<ul class="pagination">
-			<li><a href="#">previous</a></li>
-			<li class="active"><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li class="disabled"><a href="#">...</a></li>
-			<li><a href="#">next</a></li>
-		</ul> -->
+	</div>
+	<div class="row pagination_row">
+		{{ $videos->links() }}
 	</div>
 </div>
 @endsection

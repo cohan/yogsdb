@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
         Commands\FetchYouTubeVideo::class,
         Commands\FetchYouTubeChannel::class,
         Commands\RefreshYouTubeChannels::class,
+        Commands\RefreshVideoData::class,
     ];
 
     /**
@@ -32,7 +33,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->command("channel:refresh")->hourly();
 
-        $schedule->command("php artisan tntsearch:import App\Post")->daily();
+        $schedule->command("php artisan video:refresh")->twiceDaily(1, 13);
     }
 
     /**

@@ -52,8 +52,8 @@
 									@foreach($video->stars as $star)
 									<div class='star'>
 										<a href='/{{ $star->channel->slug }}'>
-										<img src='//cdn.yogsdb.com/channel/{{ $star->youtube_id }}.jpg' />
-										{{ $star->title }}
+											<img src='//cdn.yogsdb.com/channel/{{ $star->youtube_id }}.jpg' />
+											{{ $star->title }}
 										</a>
 									</div>
 									@endforeach
@@ -61,10 +61,28 @@
 							</dd>
 
 							<dt>Series</dt>
-							<dd>???</dd>
+							<dd>
+								<div class='series'>
+									@foreach($video->series as $series)
+									<div class='series-inner'>
+										<a href='/series/{{ str_slug($series->title) }}'>
+											<img src='//cdn.yogsdb.com/{{ $series->videos->first()->youtube_id }}.jpg' title="{{ $series->title }}" alt="{{ $series->title }}" />
+										</a>
+									</div>
+									@endforeach
+								</div>
+							</dd>
 
 							<dt>Tagged</dt>
-							<dd>???</dd>
+							<dd>
+								<div class='tags'>
+									@foreach(["test", "yogscast"] as $label)
+									<a class='label label-success label-as-badge' href='/tag/{{ str_slug($label) }}'>
+										{{ $label }}
+									</a>
+									@endforeach
+								</div>
+							</dd>
 						</dl>
 					</div>
 				</div>
