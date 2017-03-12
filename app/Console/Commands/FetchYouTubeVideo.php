@@ -68,6 +68,13 @@ class FetchYouTubeVideo extends Command
 		$video->description = $youtubeVideo->snippet->description;
 		$video->upload_date = date("Y-m-d H:i:s", strtotime($youtubeVideo->snippet->publishedAt));
 
+		// Stats
+		$video->duration = $this->getDurationSeconds($youtubeVideo->contentDetails->duration);
+		$video->view_count = $youtubeVideo->statistics->viewCount;
+		$video->like_count = $youtubeVideo->statistics->likeCount;
+		$video->dislike_count = $youtubeVideo->statistics->dislikeCount;
+		$video->comment_count = $youtubeVideo->statistics->commentCount;
+
 		$this->logit($video_id, "Title: ".$video->title);
 		$this->logit($video_id, "Uploaded: ".$video->upload_date);
 
@@ -123,6 +130,33 @@ class FetchYouTubeVideo extends Command
 		$rand = rand(1,3);
 		$this->logit($video_id, "Pausing a moment (${rand}s)");
 		sleep($rand);
+	}
+
+	function getDurationSeconds($duration){
+	    preg_match_all('/[0-9]+[HMS]/',$duration,$matches);
+	    $duration=0;
+	    foreach($matches as $match){
+	        //echo '<br> ========= <br>';       
+	        //print_r($match);      
+	        foreach($match as $portion){        
+	            $unite=substr($portion,strlen($portion)-1);
+	            switch($unite){
+	                case 'H':{  
+	                    $duration +=    substr($portion,0,strlen($portion)-1)*60*60;            
+	                }break;             
+	                case 'M':{                  
+	                    $duration +=substr($portion,0,strlen($portion)-1)*60;           
+	                }break;             
+	                case 'S':{                  
+	                    $duration +=    substr($portion,0,strlen($portion)-1);          
+	                }break;
+	            }
+	        }
+	    //  echo '<br> duratrion : '.$duration;
+	    //echo '<br> ========= <br>';
+	    }
+	     return $duration;
+
 	}
 
 	public function logit($id, $message = "") {
