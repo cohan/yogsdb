@@ -67,6 +67,12 @@ class RefreshYouTubeChannels extends Command
 
             $channel->thumbnail = $channel->thumbnail;
 
+            // Statistics update
+            $channel->view_count = $channelMeta->statistics->viewCount;
+            $channel->comment_count = $channelMeta->statistics->commentCount;
+            $channel->subscriber_count = $channelMeta->statistics->subscriberCount;
+            $channel->video_count = $channelMeta->statistics->videoCount;
+
             $channel->save();
             $this->logit("ChannelRefresh", "Updated channel thumbnail for ".$channel->title);
 
