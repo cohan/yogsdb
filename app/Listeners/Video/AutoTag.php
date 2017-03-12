@@ -12,7 +12,7 @@ use App\Video;
 class AutoTag implements ShouldQueue
 {
 
-    public $queue = 'high';
+    public $queue = 'low';
 
     /**
      * Create the event listener.
