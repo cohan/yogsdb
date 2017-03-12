@@ -38,14 +38,19 @@ class AutoTag implements ShouldQueue
             ->withCount('stars')
             ->first();
 
-        echo $video->title." was updated\n";
+        $this->logit("AutoTag", $video->title." was updated");
 
         if ($channel->stars_count == 1) {
-            echo "Channel only has one Star attached as their primary channel. Attaching\n";
+            $this->logit("AutoTag","Channel only has one Star attached as their primary channel. Attaching");
             $video->stars()->attach($channel->stars->pluck('id')->toArray());
         }
         else {
-            echo "Can't auto-attach stars, ".$channel->title." there are ".$channel->stars_count." Stars with this channel as their primary channel\n";
+            $this->logit('AutoTag', "Can't auto-attach stars, ".$channel->title." there are ".$channel->stars_count." Stars with this channel as their primary channel");
         }
+    }
+
+
+    public function logit($id, $message = "") {
+        echo "[".$id."] ".$message."\n";
     }
 }
