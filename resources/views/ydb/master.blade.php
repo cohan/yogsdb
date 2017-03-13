@@ -7,9 +7,9 @@
 	<title>{{ $title or "Yogscast Database" }}</title>
 
 	@if (!empty($pageType) && $pageType == "video")
-		<link rel="canonical" href="https://www.youtube.com/watch?v={{ $video->youtube_id }}">
+	<link rel="canonical" href="https://www.youtube.com/watch?v={{ $video->youtube_id }}">
 	@else
-		<link rel="canonical" href="{{ Request::url() }}">		
+	<link rel="canonical" href="{{ Request::url() }}">		
 	@endif
 	
 	<!--Favicons-->
@@ -73,6 +73,17 @@
 
 </head>
 <body class="home">
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-80857446-2', 'auto');
+		ga('send', 'pageview');
+
+	</script>
+
 
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="container">
