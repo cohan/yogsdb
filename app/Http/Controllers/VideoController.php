@@ -59,6 +59,8 @@ class VideoController extends Controller
 			->with('channel')
 			->first();
 
+		if (empty($video)) { abort(404); }
+
 		return view('ydb.video')->with('video', $video)->with('pageType', 'video');
 	}
 
