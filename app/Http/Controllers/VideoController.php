@@ -59,7 +59,7 @@ class VideoController extends Controller
 			->with('channel')
 			->first();
 
-		return view('ydb.video')->with('video', $video);
+		return view('ydb.video')->with('video', $video)->with('pageType', 'video');
 	}
 
 	/**
