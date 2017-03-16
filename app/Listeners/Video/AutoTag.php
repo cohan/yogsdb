@@ -118,7 +118,7 @@ class AutoTag implements ShouldQueue
 
 		$video->save();
 
-		$this->logit("GameTagger", "Attached ".$game->title." to ".$video->title);
+		$this->logit("GameTagger", "Attached ".$game->title." to ".$video->title." on ".$video->channel->title);
 
 		// We're being a little harsh on YouTube here as we're not using the API
 		// Lets give it a breather
