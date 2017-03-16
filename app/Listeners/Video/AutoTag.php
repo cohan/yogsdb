@@ -82,7 +82,12 @@ class AutoTag implements ShouldQueue
 
 		$videoMeta[0] = trim($videoMeta[0]);
 
-		if ($videoMeta[0] == "Gaming") {
+		$unknownCats = [
+			'Gaming',
+			'YouTube Gaming',
+		];
+
+		if (in_array($videoMeta[0], $unknownCats)) {
 			$videoMeta[0] = "Unknown";
 		}
 
