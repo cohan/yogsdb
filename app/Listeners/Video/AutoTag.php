@@ -86,8 +86,8 @@ class AutoTag implements ShouldQueue
 		$videoMeta[0] = trim($videoMeta[0]);
 
 		$unknownCats = [
-			'Gaming',
-			'YouTube Gaming',
+		'Gaming',
+		'YouTube Gaming',
 		];
 
 		if (in_array($videoMeta[0], $unknownCats)) {
@@ -134,40 +134,59 @@ class AutoTag implements ShouldQueue
 	}
 
 	public function findStars($video) {
-		$stars = Star::all();
 
-		$tooPopular = ["Simon"];
+		////
+		//// Definitely needs more work :(
+		////
 
-		$tooNoisy = ["Yogscast Live"];
+		// $stars = Star::all();
 
-		foreach ($stars as $star) {
-			if (in_array($star->title, $tooPopular)) {
-				// $this->logit("StarTagger", "Can't tag ".$star->title." on ".$video->channel->title." as they're mentioned frequently even when they're not in videos");
-				continue;
-			}
-			if (in_array($video->channel->title, $tooNoisy)) {
-				// $this->logit("StarTagger", "Can't tag ".$star->title." because ".$video->channel->title." lists people even not in videos");
-				continue;
-			}
-			if (strpos($video->description, $star->title) !== false) {
-			    $this->logit("StarTagger", "Found ".$star->title." in the description of ".$video->title);
-			    try {
-			    	$video->stars()->attach([$star->id]);
-			    }
-			    catch(\Exception $e) {
-			    	continue;
-			    }
-			}
-			if (strpos($video->title, $star->title) !== false) {
-			    $this->logit("StarTagger", "Found ".$star->title." in the title of ".$video->title);
-				try {
-			    	$video->stars()->attach([$star->id]);
-				}
-				catch(\Exception $e) {
-					continue;
-				}
-			}
-		}
+		// $tooPopular = ["Simon"];
+
+		// $tooNoisy = ["Yogscast Live"];
+
+		// foreach ($stars as $star) {
+
+		// 	if (in_array($star->title, $tooPopular)) {
+		// 		// $this->logit("StarTagger", "Can't tag ".$star->title." on ".$video->channel->title." as they're mentioned frequently even when they're not in videos");
+		// 		continue;
+		// 	}
+		// 	if (in_array($video->channel->title, $tooNoisy)) {
+		// 		// $this->logit("StarTagger", "Can't tag ".$star->title." because ".$video->channel->title." lists people even not in videos");
+		// 		continue;
+		// 	}
+
+		// 	if (strpos($video->description, "&list=") !== false) {
+		// 		$this->logit("StarTagger", "Description contains a playlist URL. Playing it safe and bailing out");
+		// 		break;
+		// 	}
+
+		// 	$search = '/\b' . preg_quote($star->title) . '\b/i';
+		// 	if (preg_match($search, $video->description) === 1)
+		// 	{
+		// 		$this->logit("StarTagger", "Found ".$star->title." in the description of ".$video->title);
+
+		// 		try {
+		// 			$video->stars()->attach([$star->id]);
+		// 		}
+		// 		catch(\Exception $e) {
+		// 			continue;
+		// 		}
+		// 	}
+
+		// 	$search = '/\b' . preg_quote($star->title) . '\b/i';
+		// 	if (preg_match($search, $video->title) === 1)
+		// 	{
+		// 		$this->logit("StarTagger", "Found ".$star->title." in the title of ".$video->title);
+
+		// 		try {
+		// 			$video->stars()->attach([$star->id]);
+		// 		}
+		// 		catch(\Exception $e) {
+		// 			continue;
+		// 		}
+		// 	}
+		// }
 	}
 
 
