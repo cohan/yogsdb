@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Game;
+use App\Video;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
@@ -12,7 +13,7 @@ class GameController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($game)
     {
         //
     }
@@ -44,9 +45,16 @@ class GameController extends Controller
      * @param  \App\Game  $game
      * @return \Illuminate\Http\Response
      */
-    public function show(Game $game)
+    public function show($game)
     {
         //
+        $game = Game::where(['slug' => $game])->first();
+
+        $videos = Video::where(['game_id' => $game->id])
+            ->orderBy("upload_date", "desc")
+            ->paginate(24);
+
+        return view('ydb.game')->with("videos", $videos)->with('game', $game);
     }
 
     /**

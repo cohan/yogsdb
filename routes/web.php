@@ -25,6 +25,8 @@ Route::get('/search', "SearchController@search");
 
 Route::resource('video', 'VideoController', [ 'only' => ['edit', 'update'] ]);
 
+Route::get('/game/{game}', "GameController@show");
+
 Route::get('/tag/{tag}', function() { return "tbc"; } );
 
 Route::get('/{channel}', "ChannelController@show");

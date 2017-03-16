@@ -9,6 +9,7 @@
         "alaouy/youtube": "dev-master",
         "andreasindal/laravel-markdown": "^1.1",
         "damiantw/laravel-scout-mysql-driver": "^1.0",
+        "dborsatto/php-giantbomb": "^1.0",
         "fabpot/goutte": "^3.2",
         "giantbomb/giantbomb-php-api": "dev-master",
         "laracasts/generators": "master@dev",

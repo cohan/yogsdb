@@ -19,6 +19,8 @@ class Kernel extends ConsoleKernel
 		Commands\RefreshYouTubeChannels::class,
 		Commands\RefreshVideoData::class,
 		Commands\RefreshFreshVideos::class,
+		Commands\FindGameOnGiantBomb::class,
+
 	];
 
 	/**

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a52ce9c8a4b5bfdf45c93a005fbfd321",
-    "content-hash": "270aa8bfbe27cf959ace30cae406f03f",
+    "hash": "fb75cf1dc22c329658c7a75a750aa5e2",
+    "content-hash": "fc7f8b4b2d4febdebea35ef9c4f38da0",
     "packages": [
         {
             "name": "alaouy/youtube",
@@ -213,6 +213,48 @@
             ],
             "description": "MySQL driver for Laravel Scout.",
             "time": "2017-03-07 17:54:30"
+        },
+        {
+            "name": "dborsatto/php-giantbomb",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dborsatto/php-giantbomb.git",
+                "reference": "05e5dbc31cdff29e4ee870f3f3eda73056e2a63a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dborsatto/php-giantbomb/zipball/05e5dbc31cdff29e4ee870f3f3eda73056e2a63a",
+                "reference": "05e5dbc31cdff29e4ee870f3f3eda73056e2a63a",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/cache": "^1.6",
+                "guzzlehttp/guzzle": "^6.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DBorsatto\\GiantBomb\\Test\\": "tests",
+                    "DBorsatto\\GiantBomb\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Davide Borsatto",
+                    "email": "davide.borsatto@gmail.com",
+                    "homepage": "https://github.com/dborsatto"
+                }
+            ],
+            "description": "A PHP library that acts as a wrapper for the GiantBomb API.",
+            "time": "2017-02-04 18:39:42"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
