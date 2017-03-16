@@ -71,6 +71,20 @@ class FetchYouTubeVideo extends Command
 
 		$youtubeVideo = YouTube::getVideoInfo($video_id, $parts);
 
+		if (empty($youtubeVideo)) {
+			if (!empty($video->title)) {
+				$this->logit($video_id, "Couldn't get anything for ".$video->title.". It was probably a stream announcement vid. Deleting.");
+
+				$video->delete();
+			}
+			else {
+				$this->logit($video_id, "Couldn't get anything for ".$video_id.". It was probably a stream announcement vid that just vanished.");	
+			}
+
+			exit;
+
+		}
+
 		$video->youtube_id = $youtubeVideo->id;
 		$video->title = $youtubeVideo->snippet->title;
 		$video->description = $youtubeVideo->snippet->description;
