@@ -8,6 +8,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 use App\Channel;
 use App\Video;
+use App\Game;
+
+use Goutte\Client;
 
 class AutoTag implements ShouldQueue
 {
@@ -41,7 +44,9 @@ class AutoTag implements ShouldQueue
 		$this->logit("AutoTag", $video->title." was updated");
 
 		$this->attachStars($video,$channel);
-		
+
+		$this->findGame($event->video);
+
 	}
 
 	public function attachStars($video,$channel) {
@@ -60,6 +65,54 @@ class AutoTag implements ShouldQueue
 			$this->logit('AutoTag', "Can't auto-attach stars from ".$channel->title." as there are ".$channel->stars_count." Stars with this channel as their primary channel");
 		}
 	}
+
+	public function findGame($video) {
+
+		$client = new Client();
+
+		$crawler = $client->request('GET', 'https://www.youtube.com/watch?v='.$video->youtube_id);
+
+		$videoMeta = $crawler->filter('ul[class="watch-extras-section"] > li > ul > li > a')->each(function ($node) { return $node->text()."\n"; });
+
+		$videoMeta[0] = trim($videoMeta[0]);
+
+		if (empty($videoMeta[0])) {
+			$this->logit("GameTagger", "Couldn't identify the Game in ".$video->title);
+
+			return;
+		}
+
+		if (!empty($video->game_id)) {
+			$this->logit("GameTagger", "Video already has a Game attached");
+
+			return;	
+		}
+
+		$this->logit("GameTagger", "Identified Game as ".$videoMeta[0]);
+
+		try {
+			$game = Game::where(['title' => $videoMeta[0]])->firstOrFail();
+		}
+		catch (\Exception $e) {
+			$game = new Game();
+
+			$game->title = $videoMeta[0];
+			$game->slug = str_slug($game->title);
+
+			$game->giantbomb_id = "NOGIANTBOMB-".uniqid();
+
+			$game->save();
+
+			$this->logit("GameTagger", "Created new Game ".$game->title);
+		}
+		$video->game_id = $game->id;
+
+		$video->save();
+
+		$this->logit("GameTagger", "Attached ".$game->title." to ".$video->title);
+
+	}
+
 
 	public function logit($id, $message = "") {
 		echo "[".$id."] ".$message."\n";
