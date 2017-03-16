@@ -68,6 +68,12 @@ class AutoTag implements ShouldQueue
 
 	public function findGame($video) {
 
+		if ($video->game_id != 1 && !empty($video->game_id)) {
+			$this->logit("GameTagger", "Video already has a Game attached");
+
+			return;	
+		}
+
 		$client = new Client();
 
 		$crawler = $client->request('GET', 'https://www.youtube.com/watch?v='.$video->youtube_id);
@@ -80,12 +86,6 @@ class AutoTag implements ShouldQueue
 			$this->logit("GameTagger", "Couldn't identify the Game in ".$video->title);
 
 			return;
-		}
-
-		if (!empty($video->game_id)) {
-			$this->logit("GameTagger", "Video already has a Game attached");
-
-			return;	
 		}
 
 		$this->logit("GameTagger", "Identified Game as ".$videoMeta[0]);
