@@ -76,7 +76,7 @@ class AutoTag implements ShouldQueue
 
 		$client = new Client();
 
-		$crawler = $client->request('GET', 'https://www.youtube.com/watch?v='.$video->youtube_id);
+		$crawler = $client->request('GET', 'https://www.youtube.com/watch?v='.$video->youtube_id."&hl=en");
 
 		$videoMeta = $crawler->filter('ul[class="watch-extras-section"] > li > ul > li > a')->each(function ($node) { return $node->text()."\n"; });
 
