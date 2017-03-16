@@ -35,7 +35,7 @@ class HomeController extends Controller
      */
     public function welcome()
     {
-        $videos = Video::orderBy("upload_date", "desc")->paginate(12);
+        $videos = Video::orderBy("upload_date", "desc")->paginate(24);
         return view('ydb.welcome')->with("videos", $videos);
     }    
 }

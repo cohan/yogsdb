@@ -55,7 +55,7 @@ class ChannelController extends Controller
 			return;
 		}
 
-		$videos = $channel->videos()->paginate(12);
+		$videos = $channel->videos()->paginate(24);
 
 		return view('ydb.channel')->with('channel', $channel)->with('videos', $videos);
 	}
