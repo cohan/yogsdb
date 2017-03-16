@@ -15,6 +15,10 @@ class Video extends Model
 
 	protected $fillable = ['youtube_id', 'channel_id'];
 
+	protected $casts = [
+		'tags' => 'array',
+	];
+
 	/**
 	 * Get the channel for the video.
 	 */

@@ -15,6 +15,8 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'App\Events\Video\VideoUpdated' => [
             'App\Listeners\Video\AutoTag',
+            // 'App\Listeners\Video\FetchSubtitles',
+
         ],
         'App\Events\Video\MetaDataUpdated' => [
             'App\Listeners\Video\NotifyCheck',
