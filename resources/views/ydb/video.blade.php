@@ -34,15 +34,22 @@
 								<div class='starring'>
 									@foreach($video->stars as $star)
 									<div class='star'>
+										@if (!empty($star->channel->slug))
 										<a href='/{{ $star->channel->slug }}'>
 											<img src='//cdn.yogsdb.com/channel/{{ $star->youtube_id }}.jpg' />
 											{{ $star->title }}
 										</a>
+										@else
+										<a href='#'>
+											<img src='/images/unknown.png' />
+											{{ $star->title }}
+										</a>
+										@endif
 									</div>
 									@endforeach
 								</div>
 							</dd>
-<!-- 
+<!--  
 							<dt>Series</dt>
 							<dd>
 								<div class='series'>
@@ -55,7 +62,19 @@
 									@endforeach
 								</div>
 							</dd>
+ -->
 
+							<dt>Game</dt>
+							<dd>
+								<div class='playing-game'>
+									<div class='playing-game-inner'>
+										<a href='/game/{{ $video->game->slug }}'>
+											{{ $video->game->title }}
+										</a>
+									</div>
+								</div>
+							</dd>
+<!-- 
 							<dt>Tagged</dt>
 							<dd>
 								<div class='tags'>
@@ -66,7 +85,7 @@
 									@endforeach
 								</div>
 							</dd>
--->
+ -->
 						</dl>
 						@hasanyrole(['admin', 'moderator'])
 						<a href='/video/{{ $video->id }}/edit' class='btn btn-primary'>

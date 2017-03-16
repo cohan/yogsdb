@@ -9,6 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Channel;
 use App\Video;
 use App\Game;
+use App\Star;
 
 use Goutte\Client;
 
@@ -43,13 +44,15 @@ class AutoTag implements ShouldQueue
 
 		$this->logit("AutoTag", $video->title." was updated");
 
-		$this->attachStars($video,$channel);
+		$this->attachChannelStars($video,$channel);
+
+		$this->findStars($video);
 
 		$this->findGame($event->video);
 
 	}
 
-	public function attachStars($video,$channel) {
+	public function attachChannelStars($video,$channel) {
 
 		if ($channel->stars_count == 1) {
 			$this->logit("AutoTag","Channel only has one Star attached as their primary channel. Attaching");
@@ -58,7 +61,7 @@ class AutoTag implements ShouldQueue
 				$video->stars()->attach($channel->stars->pluck('id')->toArray());
 			}
 			catch(\Exception $e) {
-				$this->logit('AutoLog', "That Star is already attached to this video. Good times.");
+				return;
 			}
 		}
 		else {
@@ -128,6 +131,36 @@ class AutoTag implements ShouldQueue
 		$this->logit("GameTagger", "Sleeping for $rand seconds");
 
 		sleep($rand);
+	}
+
+	public function findStars($video) {
+		$stars = Star::all();
+
+		$tooPopular = ["Simon"];
+
+		foreach ($stars as $star) {
+			if (in_array($star->title, $tooPopular)) {
+				continue;
+			}
+			if (strpos($video->description, $star->title) !== false) {
+			    $this->logit("StarTagger", "Found ".$star->title." in the description of ".$video->title);
+			    try {
+			    	$video->stars()->attach([$star->id]);
+			    }
+			    catch(\Exception $e) {
+			    	continue;
+			    }
+			}
+			if (strpos($video->title, $star->title) !== false) {
+			    $this->logit("StarTagger", "Found ".$star->title." in the title of ".$video->title);
+				try {
+			    	$video->stars()->attach([$star->id]);
+				}
+				catch(\Exception $e) {
+					continue;
+				}
+			}
+		}
 	}
 
 
