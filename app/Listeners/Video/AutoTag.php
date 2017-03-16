@@ -82,6 +82,10 @@ class AutoTag implements ShouldQueue
 
 		$videoMeta[0] = trim($videoMeta[0]);
 
+		if ($videoMeta[0] == "Gaming") {
+			$videoMeta[0] = "Unknown";
+		}
+
 		if (empty($videoMeta[0])) {
 			$this->logit("GameTagger", "Couldn't identify the Game in ".$video->title);
 
