@@ -142,11 +142,11 @@ class AutoTag implements ShouldQueue
 
 		foreach ($stars as $star) {
 			if (in_array($star->title, $tooPopular)) {
-				$this->logit("StarTagger", "Can't tag ".$star->title." on ".$video->channel->title." as they're mentioned frequently even when they're not in videos");
+				// $this->logit("StarTagger", "Can't tag ".$star->title." on ".$video->channel->title." as they're mentioned frequently even when they're not in videos");
 				continue;
 			}
 			if (in_array($video->channel->title, $tooNoisy)) {
-				$this->logit("StarTagger", "Can't tag ".$star->title." because ".$video->channel->title." lists people even not in videos");
+				// $this->logit("StarTagger", "Can't tag ".$star->title." because ".$video->channel->title." lists people even not in videos");
 				continue;
 			}
 			if (strpos($video->description, $star->title) !== false) {
