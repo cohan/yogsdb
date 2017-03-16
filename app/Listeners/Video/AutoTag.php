@@ -120,6 +120,14 @@ class AutoTag implements ShouldQueue
 
 		$this->logit("GameTagger", "Attached ".$game->title." to ".$video->title);
 
+		// We're being a little harsh on YouTube here as we're not using the API
+		// Lets give it a breather
+
+		$rand = rand(3,10);
+
+		$this->logit("GameTagger", "Sleeping for $rand seconds");
+
+		sleep($rand);
 	}
 
 
