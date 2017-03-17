@@ -43,3 +43,13 @@ dd {
 	width: 100%;
 	height: 400px;
 }
+
+.video_post .inner .screencast .video-edit {
+    position: absolute;
+    line-height: 20px;
+    font-size: 12px;
+    padding: 0 20px;
+    right: 0;
+    bottom: 0;
+    color: #fff;
+}

@@ -4,6 +4,9 @@
 					<div class="row screencast m0">
 						<img src="//cdn.yogsdb.com/{{ $video->youtube_id }}.jpg" alt="" class="cast img-responsive">
 						<div class="media-length">{{ preg_replace("/^00:/i", "", date("H:i:s", $video->duration)) }}</div>
+						@hasanyrole(['admin', 'moderator'])
+						<a href="/video/{{ $video->id }}/edit" class="video-edit btn btn-xs btn-primary">Edit</a>
+						@endrole
 					</div>
 				</a>
 				<div class="row m0 post_data">

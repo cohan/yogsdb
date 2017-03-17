@@ -20,6 +20,7 @@ class Kernel extends ConsoleKernel
 		Commands\RefreshVideoData::class,
 		Commands\RefreshFreshVideos::class,
 		Commands\FindGameOnGiantBomb::class,
+		Commands\Tag\Playlist::class,
 
 	];
 
