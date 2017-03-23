@@ -116,7 +116,7 @@ class FetchYouTubeVideo extends Command
 			$video->thumbnail = Storage::url($video->youtube_id.'.jpg');
 		}
 
-		$this->logit($video_id, "Thumbnail: ".$video->thumbnail);
+		$this->logit($video_id, "Thumbnail: https://cdn.yogsdb.com/".$video->youtube_id.".jpg");
 
 		if (!empty($youtubeVideo->snippet->channelId)) {
 			$channel = Channel::where('youtube_id', '=', $youtubeVideo->snippet->channelId)->first();
