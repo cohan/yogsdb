@@ -1,4 +1,5 @@
-RewriteCond %{HTTP_HOST} ! ^yogsdb.com [NC]
+RewriteEngine On
+RewriteCond %{HTTP_HOST} !^yogsdb\.com$ [NC]
 RewriteRule ^(.*)$ https://yogsdb.com/$1 [L,R=301]
 
 <IfModule mod_rewrite.c>
