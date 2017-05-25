@@ -1,0 +1,40 @@
+image: php:7.0
+
+stages:
+  - deploy
+
+deploy_production:
+  variables:
+    # Path the website is deployed to (Serverpilot only. Manually change here or as a secret var and remove)
+    SERVER_PATH: "/srv/users/$SERVER_USER/apps/$SERVER_USER/"
+  stage: deploy
+  script:
+    - echo "Deploy to server"
+    - ssh $SERVER_USER@$SERVER_HOST "cd $SERVER_PATH && php artisan down && git pull origin master --recurse-submodules && composer install && php artisan migrate --force && php artisan cache:clear && php artisan optimize && php artisan up"
+  environment:
+    name: production
+    url: https://$SERVER_USER.app.icnerd.net
+  only:
+   - master
+
+## LEAVE THIS INTACT - ALL SITES
+
+before_script:
+  # Install ssh-agent if not already installed, it is required by Docker.
+  # (change apt-get to yum if you use a CentOS-based image)
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+
+  # Run ssh-agent (inside the build environment)
+  - eval $(ssh-agent -s)
+
+  # Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
+  - ssh-add <(echo "$SSH_PRIVATE_KEY")
+
+  # For Docker builds disable host key checking. Be aware that by adding that
+  # you are suspectible to man-in-the-middle attacks.
+  # WARNING: Use this only with the Docker executor, if you use it with shell
+  # you will overwrite your user's SSH config.
+  - mkdir -p ~/.ssh
+  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+
+
