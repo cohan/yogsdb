@@ -45,7 +45,7 @@ class Kernel extends ConsoleKernel
 			->daily();
 
 		$schedule->command("video:refresh --count=100")
-			->hourlyAt(10);
+			->hourlyAt(40);
 	}
 
 	/**
