@@ -91,11 +91,11 @@ class FetchYouTubeVideo extends Command
 		$video->upload_date = date("Y-m-d H:i:s", strtotime($youtubeVideo->snippet->publishedAt));
 
 		// Stats
-		$video->duration = $this->getDurationSeconds($youtubeVideo->contentDetails->duration);
-		$video->view_count = $youtubeVideo->statistics->viewCount;
-		$video->like_count = $youtubeVideo->statistics->likeCount;
-		$video->dislike_count = $youtubeVideo->statistics->dislikeCount;
-		$video->comment_count = $youtubeVideo->statistics->commentCount;
+		$video->duration = $this->getDurationSeconds($youtubeVideo->contentDetails->duration) ?: 0;
+		$video->view_count = $youtubeVideo->statistics->viewCount ?: 0;
+		$video->like_count = $youtubeVideo->statistics->likeCount ?: 0;
+		$video->dislike_count = $youtubeVideo->statistics->dislikeCount ?: 0;
+		$video->comment_count = $youtubeVideo->statistics->commentCount ?: 0;
 
 		$this->logit($video_id, "Title: ".$video->title);
 		$this->logit($video_id, "Uploaded: ".$video->upload_date);
