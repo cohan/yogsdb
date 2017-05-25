@@ -44,8 +44,8 @@ class Kernel extends ConsoleKernel
 		$schedule->command("video:fresh --days=7")
 			->daily();
 
-		$schedule->command("php artisan video:refresh")
-			->twiceDaily(1, 13);
+		$schedule->command("php artisan video:refresh --count=100")
+			->hourlyAt(05);
 	}
 
 	/**

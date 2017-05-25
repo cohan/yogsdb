@@ -14,7 +14,7 @@ class RefreshVideoData extends Command
      *
      * @var string
      */
-    protected $signature = 'video:refresh {--all : Refresh every video (probs dont do this) }';
+    protected $signature = 'video:refresh {--all : Refresh every video (probs dont do this)} {{--count= : How many to refresh }}';
 
     /**
      * The console command description.
@@ -42,12 +42,13 @@ class RefreshVideoData extends Command
     {
         //
         $refreshAll = $this->option('all');
+        $count = $this->option('count') ?: 10;
 
         if ($refreshAll) {
             $videos = Video::orderBy("upload_date", "desc")->get();
         }
         else {
-            $videos = Video::where("updated_at", "<", date("Y-m-d H:i:s", strtotime("1 week ago")))->orderBy("updated_at", "asc")->limit(10)->get();            
+            $videos = Video::where("updated_at", "<", date("Y-m-d H:i:s", strtotime("1 week ago")))->orderBy("updated_at", "asc")->limit($count)->get();            
         }
 
         foreach ($videos as $video) {
