@@ -61,7 +61,9 @@ class VideoController extends Controller
 
 		if (empty($video)) { abort(404); }
 
-		return view('ydb.video')->with('video', $video)->with('pageType', 'video');
+		$title = $video->title." - ".$video->channel->title;
+
+		return view('ydb.video')->with('video', $video)->with('pageType', 'video')->with('title', $title);
 	}
 
 	/**
@@ -77,7 +79,9 @@ class VideoController extends Controller
 			return redirect()->guest('login');
 		}
 
-		return view('ydb.editvideo')->with('video', $video);
+		$title = "Editing ".$video->title." - ".$video->channel->title;
+
+		return view('ydb.editvideo')->with('video', $video)->with('title', $title);
 	}
 
 	/**
@@ -101,11 +105,15 @@ class VideoController extends Controller
 			die('wat');
 		}
 
-		$video->stars()->sync($request->get('starring'));
+		if (!empty($request->get('starring'))) {
+			$video->stars()->sync($request->get('starring'));
+		}
 
 		// $video->series()->sync($request->get('series'));
 
-		$video->game_id = $request->get('game');
+		if (!empty($request->get('game'))) {
+			$video->game_id = $request->get('game');
+		}
 
 		$video->save();
 

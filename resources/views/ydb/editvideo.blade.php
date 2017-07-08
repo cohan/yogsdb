@@ -18,7 +18,7 @@
 
 				<div class="row post_description_n_view">
 					<div class="col-sm-12 post_description" style='margin-bottom: 10px;'>
-						{{ $video->description }}
+						@markdown($video->description)
 					</div>
 				</div>
 
