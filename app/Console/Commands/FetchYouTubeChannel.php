@@ -15,7 +15,7 @@ class FetchYouTubeChannel extends Command
 	 *
 	 * @var string
 	 */
-	protected $signature = 'video:import:channel {channelid : YouTube channel ID} {--l|latest : Only fetch latest videos}';
+	protected $signature = 'video:import:channel {channelid : YouTube channel ID} {--l|latest : Only fetch latest videos} {--m|missed : Import with the latest flag but still fetch all videos }';
 
 	/**
 	 * The console command description.
@@ -42,6 +42,7 @@ class FetchYouTubeChannel extends Command
 	public function handle()
 	{
 		$latestOnly = $this->option('latest');
+		$missedToo = $this->option('missed');
 
 		$resultsPerPage = empty($latestOnly) ? $resultsPerPage = 50 : $resultsPerPage = 30;
 
@@ -92,7 +93,7 @@ class FetchYouTubeChannel extends Command
 			}
 			$pageTokens[] = $search['info']['nextPageToken'];
 
-			if ($latestOnly) { break; }
+			if ($latestOnly && !$missedToo) { break; }
 
 			$rand = rand(1,5);
 			$this->logit($channel_id, "Pausing a moment (${rand}s)");
