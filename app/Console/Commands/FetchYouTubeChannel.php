@@ -15,7 +15,7 @@ class FetchYouTubeChannel extends Command
 	 *
 	 * @var string
 	 */
-	protected $signature = 'video:import:channel {channelid : YouTube channel ID} {--l|latest : Only fetch latest videos} {--m|missed : Import with the latest flag but still fetch all videos }';
+	protected $signature = 'video:import:channel {channelid : YouTube channel ID} {--l|latest : Only fetch latest videos} {--m|missed : Import with the latest flag but still fetch all videos } {--before= : Limit to videos before date (1970-01-01T00:00:00Z) } {--after= : Limit to videos posted after date (1970-01-01T00:00:00Z) }';
 
 	/**
 	 * The console command description.
@@ -43,6 +43,9 @@ class FetchYouTubeChannel extends Command
 	{
 		$latestOnly = $this->option('latest');
 		$missedToo = $this->option('missed');
+		$beforeDate = $this->option('before');
+		$afterDate = $this->option('after');
+
 
 		$resultsPerPage = empty($latestOnly) ? $resultsPerPage = 50 : $resultsPerPage = 30;
 
@@ -60,6 +63,13 @@ class FetchYouTubeChannel extends Command
 			'maxResults'    => $resultsPerPage,
 			'order'			=> 'date'
 			);
+
+		if ($beforeDate) {
+			$params['publishedBefore'] = date("c", strtotime($beforeDate));
+		}
+		if ($afterDate) {
+			$params['publishedAfter'] = date("c", strtotime($afterDate));
+		}
 
 		$pageTokens = array();
 		$i = 0;
