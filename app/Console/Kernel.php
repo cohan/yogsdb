@@ -46,6 +46,9 @@ class Kernel extends ConsoleKernel
 
 		$schedule->command("video:refresh --count=100")
 			->hourlyAt(40);
+
+		$schedule->command('backup:clean')->daily()->at('01:00');
+		$schedule->command('backup:run')->daily()->at('02:00');
 	}
 
 	/**

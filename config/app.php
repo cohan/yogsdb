@@ -190,6 +190,7 @@ return [
 
         Indal\Markdown\MarkdownServiceProvider::class,
 
+        Spatie\Backup\BackupServiceProvider::class,
 
     ],
 

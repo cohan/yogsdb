@@ -15,15 +15,33 @@
 				<div class="row post_title_n_view">
 					<h2 class="col-sm-12 post_title">{{ $video->title }}</h2>
 				</div>
-				<div class="media bio_section" style="height:250px">
+
+				<div class="row post_description_n_view">
+					<div class="col-sm-12 post_description" style='margin-bottom: 10px;'>
+						{{ $video->description }}
+					</div>
+				</div>
+
+				<div class="media bio_section" style="min-height:420px;">
 					<div class="edit-metadata media-right col-sm-12">
 						<h5>Starring</h5>
-						<select id='starpicker' class="show-menu-arrow show-tick" title="Choose one of the following..." name='starring[]' multiple="multiple" >
+						<select id='starpicker' class="show-menu-arrow show-tick" title="Choose from the following..." name='starring[]' multiple="multiple" >
 							@foreach (App\Star::orderBy('title', 'asc')->get() as $star)
 							@if (in_array($star->id, $video->stars->pluck('id')->toArray()))
 							<option selected value="{{ $star->id }}">{{ $star->title }}</option>	
 							@else
 							<option value="{{ $star->id }}">{{ $star->title }}</option>	
+							@endif
+							@endforeach
+						</select>
+
+						<h5>Game</h5>
+						<select id='gamepicker' class="show-menu-arrow show-tick" title="Choose one of the following..." name='game'>
+							@foreach (App\Game::orderBy('title', 'asc')->get() as $game)
+							@if ($game->id == $video->game_id)
+							<option selected value="{{ $game->id }}">{{ $game->title }}</option>	
+							@else
+							<option value="{{ $game->id }}">{{ $game->title }}</option>	
 							@endif
 							@endforeach
 						</select>
@@ -39,12 +57,15 @@
 					</div>
 
 				</div>
+
 			</div>
+
 		</div>
 	</div>
 </form>
 
 <script type="text/javascript">
 	$("#starpicker").chosen();
+	$("#gamepicker").chosen();
 </script>
 @endsection

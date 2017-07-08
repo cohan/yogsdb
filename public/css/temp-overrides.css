@@ -53,3 +53,7 @@ dd {
     bottom: 0;
     color: #fff;
 }
+
+img.cast {
+	max-height: 160px;
+}

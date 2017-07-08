@@ -50,7 +50,7 @@
 								</div>
 							</dd>
  
-							<dt>Series</dt>
+<!-- 							<dt>Series</dt>
 							<dd>
 								<div class='series'>
 									@foreach($video->series as $series)
@@ -62,7 +62,7 @@
 									@endforeach
 								</div>
 							</dd>
-
+ -->
 
 							<dt>Game</dt>
 							<dd>

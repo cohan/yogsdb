@@ -52,12 +52,12 @@ class VideoController extends Controller
 	{
 		//
 		$video = Video::where(['slug' => $video])
-			->with('stars')
-			->withCount('stars')
-			->with('series')
-			->with('game')
-			->with('channel')
-			->first();
+		->with('stars')
+		->withCount('stars')
+		->with('series')
+		->with('game')
+		->with('channel')
+		->first();
 
 		if (empty($video)) { abort(404); }
 
@@ -73,6 +73,10 @@ class VideoController extends Controller
 	public function edit(Video $video)
 	{
 		//
+		if (!Auth::check() || !Auth::user()->hasAnyRole('admin', 'moderator')) {
+			return redirect()->guest('login');
+		}
+
 		return view('ydb.editvideo')->with('video', $video);
 	}
 
@@ -86,13 +90,24 @@ class VideoController extends Controller
 	public function update(Request $request, Video $video)
 	{
 		//
-		$user = Auth::user();
+		if (Auth::check()) {
+			$user = Auth::user();
+		}
+		else {
+			die('wat');
+		}
 
 		if (!$user->hasAnyRole(['admin', 'moderator'])) {
 			die('wat');
 		}
 
 		$video->stars()->sync($request->get('starring'));
+
+		// $video->series()->sync($request->get('series'));
+
+		$video->game_id = $request->get('game');
+
+		$video->save();
 
 		return redirect("/".$video->channel->slug."/".$video->slug);
 	}
