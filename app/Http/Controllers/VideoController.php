@@ -130,4 +130,25 @@ class VideoController extends Controller
 	{
 		//
 	}
+
+	public function onThisDay() {
+		$endYear = 2005;
+
+		$year = date('Y');
+		$years = [];
+
+		while ($year > $endYear) {
+			$years[] = $year;
+			$videos[$year] = Video::onThisDay($year);
+
+			$year--;
+		}
+
+		$title = "Videos uploaded on this day";
+
+		return view('ydb.onthisday')
+			->with('title', $title)
+			->with('years', $years)
+			->with('videos', $videos);
+	}
 }

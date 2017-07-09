@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Scout\Searchable;
 
+use Cache;
+
 class Video extends Model
 {
 	//
@@ -15,7 +17,7 @@ class Video extends Model
 	protected $fillable = ['youtube_id', 'channel_id'];
 
 	protected $casts = [
-		'tags' => 'array',
+	'tags' => 'array',
 	];
 
 	/**
@@ -66,6 +68,19 @@ class Video extends Model
 		// Customize array...
 
 		return $array;
+	}
+
+	public static function onThisDay($year) {
+		$thisday = date('-m-d');
+
+		$videos = Cache::remember('onthisday-'.$year.$thisday, 60, function () use ($year,$thisday) {
+			return Video::where('upload_date', '>=', $year.$thisday." 00:00:00")
+				->where('upload_date', '<=', $year.$thisday." 23:59:59")
+				->orderBy('upload_date', 'desc')
+				->get();
+		});
+
+		return $videos;
 	}
 
 }

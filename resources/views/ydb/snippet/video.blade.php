@@ -14,7 +14,9 @@
 					<div class="row m0" style='bottom:0px;position:relative;'>
 						<div class="fleft author"><a href="/{{ $video->channel->slug }}">{{ str_limit(str_ireplace("yogscast ", "", $video->channel->title), 18) }}</a></div>
 						<div class="fright date">
-							{{ \Carbon\Carbon::createFromTimeStamp(strtotime($video->upload_date))->diffForHumans() }}
+							<span title='{{ $video->upload_date }}'>
+							~{{ \Carbon\Carbon::createFromTimeStamp(strtotime($video->upload_date))->diffForHumans() }}
+							</span>
 						</div>
 					</div>
 				</div>

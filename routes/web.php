@@ -21,6 +21,8 @@ Route::get('/', "HomeController@welcome");
 
 Route::get('/search', "SearchController@search");
 
+Route::get('/onthisday', "VideoController@onThisDay");
+
 //Route::resource('series', 'SeriesController');
 
 Route::resource('video', 'VideoController', [ 'only' => ['edit', 'update'] ]);
