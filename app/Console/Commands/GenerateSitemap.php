@@ -44,7 +44,7 @@ class GenerateSitemap extends Command
             ->add(Url::create('/onthisday'));
 
         $channels->each(function (Channel $channel) use ($sitemap) {
-            $sitemap->add(Url::create("/{$channel->slug}")
+            $sitemap->add(Url::create(config('app.url')."/{$channel->slug}")
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
                     ->setPriority(1));
 
@@ -54,7 +54,7 @@ class GenerateSitemap extends Command
 
         $sitemapIndex = SitemapIndex::create();
 
-        $sitemapIndex->add('/sitemap-channels.xml');
+        $sitemapIndex->add(config('app.url').'/sitemap-channels.xml');
 
         if (!file_exists(public_path('sitemaps/'))) {
             mkdir(public_path('sitemaps/'), 0755, true);
@@ -66,18 +66,18 @@ class GenerateSitemap extends Command
             $i = 1;
             $sitecount = 1;
 
-            $sitemapIndex->add('/sitemaps/channel-'.$channel->slug.'-'.$sitecount.'.xml');
+            $sitemapIndex->add(config('app.url').'/sitemaps/channel-'.$channel->slug.'-'.$sitecount.'.xml');
 
             foreach ($channel->videos as $video) {
 
-                $sitemap->add(Url::create("/{$video->channel->slug}/{$video->slug}")
+                $sitemap->add(Url::create(config('app.url')."/{$video->channel->slug}/{$video->slug}")
                     ->setLastModificationDate(Carbon::parse($video->upload_date))
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
                     ->setPriority(0.8));
 
                 if ($i >= 5000) {
                     $sitemap->writeToFile(public_path('sitemaps/channel-'.$channel->slug.'-'.$sitecount.'.xml'));
-                    $sitemapIndex->add('/sitemaps/channel-'.$channel->slug.'-'.$sitecount.'.xml');
+                    $sitemapIndex->add(config('app.url').'/sitemaps/channel-'.$channel->slug.'-'.$sitecount.'.xml');
 
 
                     $sitecount++;
