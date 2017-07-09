@@ -16,7 +16,7 @@ use Goutte\Client;
 class AutoTag implements ShouldQueue
 {
 
-	public $queue = 'low';
+	public $queue = 'idle';
 
 	/**
 	 * Create the event listener.
