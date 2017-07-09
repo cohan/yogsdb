@@ -13,11 +13,8 @@ use App\Star;
 
 use Goutte\Client;
 
-class AutoTag implements ShouldQueue
+class AutoTag
 {
-
-	public $queue = 'low';
-
 	/**
 	 * Create the event listener.
 	 *
