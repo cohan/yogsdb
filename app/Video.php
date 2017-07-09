@@ -16,6 +16,13 @@ class Video extends Model
 	
 	protected $fillable = ['youtube_id', 'channel_id'];
 
+	protected $appends = array('image');
+
+	protected $hidden = [
+		'thumbnail',
+		'deleted_at',
+	];
+
 	protected $casts = [
 	'tags' => 'array',
 	];
@@ -81,6 +88,11 @@ class Video extends Model
 		});
 
 		return $videos;
+	}
+
+	public function getImageAttribute()
+	{
+	    return "https://cdn.yogsdb.com/".$this->youtube_id.".jpg";
 	}
 
 }

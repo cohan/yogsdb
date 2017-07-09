@@ -12,6 +12,13 @@ class Channel extends Model
 
     protected $fillable = ['youtube_id'];
 
+    protected $appends = array('image');
+
+    protected $hidden = [
+        'thumbnail',
+        'deleted_at',
+    ];
+
     /**
      * Get the videos for the channel.
      */
@@ -26,5 +33,10 @@ class Channel extends Model
     public function stars()
     {
         return $this->hasMany('App\Star', 'youtube_id', 'youtube_id');
+    }
+
+    public function getImageAttribute()
+    {
+        return "https://cdn.yogsdb.com/channel/".$this->youtube_id.".jpg";
     }
 }

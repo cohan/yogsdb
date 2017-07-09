@@ -134,7 +134,7 @@ class VideoController extends Controller
 	public function onThisDay() {
 		$endYear = 2005;
 
-		$year = date('Y');
+		$year = (date('Y') - 1);
 		$years = [];
 
 		while ($year > $endYear) {

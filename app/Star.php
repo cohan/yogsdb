@@ -10,6 +10,8 @@ class Star extends Model
 	//
 	use SoftDeletes;
 
+	protected $hidden = ['deleted_at'];
+
 	/**
 	 * Get the primary channel for the star.
 	 */
