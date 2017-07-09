@@ -5,13 +5,26 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{{ $title or "Yogscast Database" }}</title>
+	<?php
+
+	/*
 
 	@if (!empty($pageType) && $pageType == "video")
+	<!--
+		Hey view-source-r! If you're wondering what this canonical link is about
+		it links back to the YouTube video on this page.
+
+		That way this site doesn't steal any SEO juice from the original video
+		and as a bonus passes along any extra this page earns. Woohoo!
+	-->
 	<link rel="canonical" href="https://www.youtube.com/watch?v={{ $video->youtube_id }}">
 	@else
 	<link rel="canonical" href="{{ Request::url() }}">		
 	@endif
-	
+
+	*/
+
+	?>	
 	<!--Favicons-->
 	<link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
