@@ -57,7 +57,7 @@ class ChannelController extends Controller
 
 		$videos = $channel->videos()->paginate(24);
 
-		$title = $channel->title;
+		$title = $channel->title." - ".config('app.name');
 
 		return view('ydb.channel')->with('channel', $channel)->with('videos', $videos)->with('title', $title);
 	}
