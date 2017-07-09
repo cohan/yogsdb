@@ -24,7 +24,7 @@ class Video extends Model
 	{
 	    parent::boot();
 
-	    static::saving(function($video) {
+	    static::updating(function($video) {
 	    	event(new VideoUpdated($video));
 	    	event(new MetaDataUpdated($video));
 	    });
