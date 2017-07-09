@@ -40,8 +40,8 @@ class GenerateSitemap extends Command
         $channels = Channel::all();
 
         $sitemap = Sitemap::create()
-            ->add(Url::create('/'))
-            ->add(Url::create('/onthisday'));
+            ->add(Url::create(config('app.url').'/'))
+            ->add(Url::create(config('app.url').'/onthisday'));
 
         $channels->each(function (Channel $channel) use ($sitemap) {
             $sitemap->add(Url::create(config('app.url')."/{$channel->slug}")
