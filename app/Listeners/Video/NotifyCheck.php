@@ -30,6 +30,6 @@ class NotifyCheck implements ShouldQueue
     public function handle(MetaDataUpdated $event)
     {
         //
-        echo "[This is where we'd check if we need to send any notifications]\n";
+        echo "[NotifyHandler] This is where we'd check if we need to send any notifications\n";
     }
 }
