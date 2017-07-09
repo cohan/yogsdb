@@ -177,11 +177,16 @@
 				<div class="col-sm-3 widget widget2 w_in_footer widget_about">
 					<h5 class="widget_title">Developers</h5>
 					<div class="row m0 inner">
-						<p>We're also looking at allowing access to the series, stars, tags, etc metadata we create via an API. <a href="mailto:hello@yogsdb.com">Get in touch</a> if you're interested!</p>
+						<p>We're also looking at allowing access to the series, stars, tags, etc metadata we create via an API. Get in touch if you're interested!</p>
 					</div>
 				</div>
-				<div class="col-sm-3 widget widget2 w_in_footer widget_subscribe">
-
+				<div class="col-sm-3 widget widget2 w_in_footer widget_about">
+					<h5 class="widget_title">Contact</h5>
+					<div class='row m0 inner'>
+						<p>
+							Fancy a natter? <a href="https://cohanrobinson.com/contact/" target="_blank">get in touch!</a>
+						</p>
+					</div>
 				</div>
 				<div class="col-sm-3 widget widget3 w_in_footer widget_about">
 					<h5 class="widget_title">Disclaimer</h5>
