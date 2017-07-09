@@ -100,7 +100,7 @@
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/"><img style='width:100%' src="https://i.imgsir.com/G54X.png" alt=""></a>
+				<a class="navbar-brand" href="https://yogsdb.com/"><img style='width:100%' src="https://i.imgsir.com/G54X.png" alt=""></a>
 			</div>        
 			<ul class="nav navbar-nav navbar-right login_drop">
 				<li class=''>
