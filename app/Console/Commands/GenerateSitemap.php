@@ -44,7 +44,10 @@ class GenerateSitemap extends Command
             ->add(Url::create('/onthisday'));
 
         $channels->each(function (Channel $channel) use ($sitemap) {
-            $sitemap->add(Url::create("/{$channel->slug}"));
+            $sitemap->add(Url::create("/{$channel->slug}")
+                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
+                    ->setPriority(1));
+
         });
 
         $sitemap->writeToFile(public_path('sitemap-channels.xml'));
@@ -70,7 +73,7 @@ class GenerateSitemap extends Command
                 $sitemap->add(Url::create("/{$video->channel->slug}/{$video->slug}")
                     ->setLastModificationDate(Carbon::parse($video->upload_date))
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
-                    ->setPriority(0.1));
+                    ->setPriority(0.8));
 
                 if ($i >= 5000) {
                     $sitemap->writeToFile(public_path('sitemaps/channel-'.$channel->slug.'-'.$sitecount.'.xml'));
