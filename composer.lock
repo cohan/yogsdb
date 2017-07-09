@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "71395e769478d6b17c16914047817a01",
-    "content-hash": "c0ef108327bcc4c977cec940de1a213b",
+    "hash": "ab23668a5d0a87ebe563bb02bc76b465",
+    "content-hash": "846ac2deccc376f73fc5cb40478a14e4",
     "packages": [
         {
             "name": "alaouy/youtube",
@@ -175,47 +175,6 @@
                 "sdk"
             ],
             "time": "2017-07-06 21:11:49"
-        },
-        {
-            "name": "damiantw/laravel-scout-mysql-driver",
-            "version": "v1.0.13",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/damiantw/laravel-scout-mysql-driver.git",
-                "reference": "86115b9035fed2a31fee52f21e52fed056a13f16"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/damiantw/laravel-scout-mysql-driver/zipball/86115b9035fed2a31fee52f21e52fed056a13f16",
-                "reference": "86115b9035fed2a31fee52f21e52fed056a13f16",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "5.3.*|5.4.*",
-                "laravel/scout": "^2.0|^3.0",
-                "php": ">=5.6.4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "DamianTW\\MySQLScout\\": "src/"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Damian Crisafulli",
-                    "email": "damian.crisafulli@troyweb.com"
-                }
-            ],
-            "description": "MySQL driver for Laravel Scout.",
-            "time": "2017-07-07 16:18:42"
         },
         {
             "name": "dborsatto/php-giantbomb",
@@ -4612,23 +4571,27 @@
         },
         {
             "name": "teamtnt/laravel-scout-tntsearch-driver",
-            "version": "v2.0.5",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/teamtnt/laravel-scout-tntsearch-driver.git",
-                "reference": "c3ce55bd3170ff14c8e116de3ea418237ec18d14"
+                "reference": "a0fb306ff8391008381f6730f883ff8428defa20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teamtnt/laravel-scout-tntsearch-driver/zipball/c3ce55bd3170ff14c8e116de3ea418237ec18d14",
-                "reference": "c3ce55bd3170ff14c8e116de3ea418237ec18d14",
+                "url": "https://api.github.com/repos/teamtnt/laravel-scout-tntsearch-driver/zipball/a0fb306ff8391008381f6730f883ff8428defa20",
+                "reference": "a0fb306ff8391008381f6730f883ff8428defa20",
                 "shasum": ""
             },
             "require": {
-                "illuminate/contracts": "~5.3",
-                "illuminate/database": "~5.3",
-                "illuminate/support": "~5.3",
+                "illuminate/bus": "~5.4",
+                "illuminate/contracts": "~5.4",
+                "illuminate/database": "~5.4",
+                "illuminate/pagination": "~5.4",
+                "illuminate/queue": "~5.4",
+                "illuminate/support": "~5.4",
                 "laravel/scout": "*",
+                "php": ">=5.6.4",
                 "teamtnt/tntsearch": "1.0.*"
             },
             "require-dev": {
@@ -4666,7 +4629,7 @@
                 "search",
                 "tntsearch"
             ],
-            "time": "2017-04-20 11:06:00"
+            "time": "2017-04-26 13:16:28"
         },
         {
             "name": "teamtnt/tntsearch",

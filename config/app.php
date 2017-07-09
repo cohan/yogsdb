@@ -180,7 +180,10 @@ return [
         Alaouy\Youtube\YoutubeServiceProvider::class,
 
         Laravel\Scout\ScoutServiceProvider::class,
-        DamianTW\MySQLScout\Providers\MySQLScoutServiceProvider::class,
+        //DamianTW\MySQLScout\Providers\MySQLScoutServiceProvider::class,
+        //        "damiantw/laravel-scout-mysql-driver": "^1.0",
+        TeamTNT\Scout\TNTSearchScoutServiceProvider::class,
+
 
         Spatie\Permission\PermissionServiceProvider::class,
 
