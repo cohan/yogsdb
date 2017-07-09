@@ -90,6 +90,9 @@
 				<a class="navbar-brand" href="/"><img style='width:100%' src="https://i.imgsir.com/G54X.png" alt=""></a>
 			</div>        
 			<ul class="nav navbar-nav navbar-right login_drop">
+				<li class=''>
+					<a href='/onthisday'><i class='fa fa-clock-o'></i> On This Day</a>
+				</li>	
 				@if (Auth::check())
 				<li class=''>
 					<a href='/alerts'><i class='fa fa-bell'></i> Alerts</a>
