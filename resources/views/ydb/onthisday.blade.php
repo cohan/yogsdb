@@ -10,7 +10,7 @@
 
 	<div class='row'>
 
-		<h2>On this day in {{ $year }}</h2>
+		<h2 style='font-weight:bold;'>On this day in {{ $year }}</h2>
 
 		<div class="row">
 			@foreach($videos[$year] as $video)
