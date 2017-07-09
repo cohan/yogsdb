@@ -155,7 +155,7 @@ class FetchYouTubeVideo extends Command
 
 		echo "\n";
 
-		event(new VideoUpdated($video));
+		// event(new VideoUpdated($video));
 
 		$rand = rand(1,3);
 		$this->logit($video_id, "Pausing a moment (${rand}s)");

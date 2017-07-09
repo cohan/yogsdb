@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Scout\Searchable;
+use App\Events\Video\VideoUpdated;
+use App\Events\Video\MetaDataUpdated;
 
 class Video extends Model
 {
@@ -17,6 +19,16 @@ class Video extends Model
 	protected $casts = [
 		'tags' => 'array',
 	];
+
+	protected static function boot()
+	{
+	    parent::boot();
+
+	    static::saving(function($video) {
+	    	event(new VideoUpdated($video));
+	    	event(new MetaDataUpdated($video));
+	    });
+	} 
 
 	/**
 	 * Get the channel for the video.

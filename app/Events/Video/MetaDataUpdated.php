@@ -14,14 +14,17 @@ class MetaDataUpdated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $video;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($video)
     {
         //
+        $this->video = $video;
     }
 
     /**

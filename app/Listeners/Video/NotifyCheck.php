@@ -6,8 +6,11 @@ use App\Events\Video\MetaDataUpdated;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class NotifyCheck
+class NotifyCheck implements ShouldQueue
 {
+
+    public $queue = 'high';
+
     /**
      * Create the event listener.
      *
@@ -27,5 +30,6 @@ class NotifyCheck
     public function handle(MetaDataUpdated $event)
     {
         //
+        echo "[This is where we'd check if we need to send any notifications]\n";
     }
 }
