@@ -106,6 +106,9 @@
 				<li class=''>
 					<a href='/onthisday'><i class='fa fa-clock-o'></i> On This Day</a>
 				</li>	
+
+				<?php
+				/*
 				@if (Auth::check())
 				<li class=''>
 					<a href='/alerts'><i class='fa fa-bell'></i> Alerts</a>
@@ -115,6 +118,8 @@
 					<a href='/login'><i class='fa fa-bell'></i> Alerts</a>
 				</li>
 				@endif
+				*/
+				?>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 						<span class="login_icon"></span> My Account
