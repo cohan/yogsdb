@@ -11,27 +11,37 @@
 |
 */
 
-Auth::routes();
+if (config('app.env') == 'production') {
+	$domain = "yogsdb.com";
+}
+else {
+	$domain = "yogsdb.dev";
+}
 
-Route::get('/home', function() {
-	return view('home');
+Route::domain($domain)->group(function () {
+
+	Auth::routes();
+
+	Route::get('/home', function() {
+		return view('home');
+	});
+
+	Route::get('/', "HomeController@welcome");
+
+	Route::get('/search', "SearchController@search");
+
+	Route::get('/onthisday', "VideoController@onThisDay");
+
+	//Route::resource('series', 'SeriesController');
+
+	Route::resource('video', 'VideoController', [ 'only' => ['edit', 'update'] ]);
+
+	Route::get('/game/{game}', "GameController@show");
+
+	Route::get('/tag/{tag}', function() { return "tbc"; } );
+
+	Route::get('/{channel}', "ChannelController@show");
+
+	Route::get('/{channel}/{video}', "VideoController@show");
+
 });
-
-Route::get('/', "HomeController@welcome");
-
-Route::get('/search', "SearchController@search");
-
-Route::get('/onthisday', "VideoController@onThisDay");
-
-//Route::resource('series', 'SeriesController');
-
-Route::resource('video', 'VideoController', [ 'only' => ['edit', 'update'] ]);
-
-Route::get('/game/{game}', "GameController@show");
-
-Route::get('/tag/{tag}', function() { return "tbc"; } );
-
-Route::get('/{channel}', "ChannelController@show");
-
-Route::get('/{channel}/{video}', "VideoController@show");
-

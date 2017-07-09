@@ -14,10 +14,22 @@ use App\Star;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+if (config('app.env') == 'production') {
+	$domain = "api.yogsdb.com";
+}
+else {
+	$domain = "api.yogsdb.dev";
+}
 
-Route::get('stars', function() {
-	return Star::all();
+
+Route::domain($domain)->group(function () {
+
+	Route::middleware('auth:api')->get('/user', function (Request $request) {
+		return $request->user();
+	});
+
+	Route::get('stars', function() {
+		return Star::all();
+	});
+
 });
