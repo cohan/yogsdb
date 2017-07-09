@@ -22,14 +22,12 @@ else {
 }
 
 
-Route::domain($domain)->group(function () {
-
-	Route::middleware('auth:api')->get('/user', function (Request $request) {
-		return $request->user();
+Route::domain($domain)->middleware(['middleware' => 'cors'])->group(function () {
+	Route::get('/', function() {
+		return redirect("https://docs.yogsdb.com/api");
 	});
 
 	Route::get('stars', function() {
-		return Star::all();
+		return Star::paginate();
 	});
-
 });

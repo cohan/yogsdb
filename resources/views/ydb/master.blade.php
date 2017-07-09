@@ -183,6 +183,8 @@
 					<h5 class="widget_title">Developers</h5>
 					<div class="row m0 inner">
 						<p>We're also looking at allowing access to the series, stars, tags, etc metadata we create via an API. Get in touch if you're interested!</p>
+
+						<p>Check out <a href='https://docs.yogsdb.com/api'>the API docs</a> for more info</p>
 					</div>
 				</div>
 				<div class="col-sm-3 widget widget2 w_in_footer widget_about">
