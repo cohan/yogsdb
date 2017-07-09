@@ -2,6 +2,7 @@
 /public/storage
 /public/hot
 /public/theme-demo
+/public/sitemaps
 /storage/*.key
 /vendor
 /.idea

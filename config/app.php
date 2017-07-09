@@ -192,6 +192,9 @@ return [
 
         Spatie\Backup\BackupServiceProvider::class,
 
+        Spatie\Sitemap\SitemapServiceProvider::class,
+
+
     ],
 
     /*

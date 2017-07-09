@@ -22,6 +22,8 @@ class Kernel extends ConsoleKernel
 		Commands\FindGameOnGiantBomb::class,
 		Commands\Tag\Playlist::class,
 
+		Commands\GenerateSitemap::class,
+
 	];
 
 	/**
