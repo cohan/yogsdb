@@ -186,6 +186,9 @@
 						<p>
 							Fancy a natter? <a href="https://cohanrobinson.com/contact/" target="_blank">get in touch!</a>
 						</p>
+						<p>
+							Side note you might know me as corobo on the reddits and/or coorbo in the Twitch stream chat
+						</p>
 					</div>
 				</div>
 				<div class="col-sm-3 widget widget3 w_in_footer widget_about">
