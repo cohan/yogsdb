@@ -63,24 +63,10 @@ class Video extends Model
 		return $this->belongsTo('App\Game');
 	}
 
-	/**
-	 * Get the indexable data array for the model.
-	 *
-	 * @return array
-	 */
-	public function toSearchableArray()
-	{
-		$array = $this->toArray();
-
-		// Customize array...
-
-		return $array;
-	}
-
 	public static function onThisDay($year) {
 		$thisday = date('-m-d');
 
-		$videos = Cache::remember('onthisday-'.$year.$thisday, 60, function () use ($year,$thisday) {
+		$videos = Cache::remember('onthisday-'.$year.$thisday, 5, function () use ($year,$thisday) {
 			return Video::where('upload_date', '>=', $year.$thisday." 00:00:00")
 				->where('upload_date', '<=', $year.$thisday." 23:59:59")
 				->orderBy('upload_date', 'desc')
@@ -93,6 +79,21 @@ class Video extends Model
 	public function getImageAttribute()
 	{
 	    return "https://cdn.yogsdb.com/".$this->youtube_id.".jpg";
+	}
+
+	/**
+	 * Get the indexable data array for the model.
+	 *
+	 * @return array
+	 */
+	public function toSearchableArray()
+	{
+		//dd($this);
+		$array = $this->toArray();
+
+		// Customize array...
+
+		return $array;
 	}
 
 }
