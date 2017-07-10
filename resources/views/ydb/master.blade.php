@@ -196,6 +196,9 @@
 						<p>
 							Side note you might know me as corobo on the reddits and/or coorbo in the Twitch stream chat
 						</p>
+						<p>
+							Feel free to stop by <a href='https://www.reddit.com/r/yogsdb/'>/r/yogsdb</a> if you've got any questions or suggestions or anything else for the site!
+						</p>
 					</div>
 				</div>
 				<div class="col-sm-3 widget widget3 w_in_footer widget_about">

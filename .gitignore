@@ -3,6 +3,8 @@
 /public/hot
 /public/theme-demo
 /public/sitemaps
+/public/sitemap-channels.xml
+/public/sitemap.xml
 /storage/*.key
 /vendor
 /.idea
