@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ab23668a5d0a87ebe563bb02bc76b465",
-    "content-hash": "846ac2deccc376f73fc5cb40478a14e4",
+    "hash": "6456ac1571aba71bbb0d876e73bd0b85",
+    "content-hash": "d7bd0e4cfdd554b2fc862bb866d837ce",
     "packages": [
         {
             "name": "alaouy/youtube",
@@ -98,16 +98,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.31.2",
+            "version": "3.30.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "582e7764e0fa389c3248450cd6db2564dd656d99"
+                "reference": "69696dd3ec8c92170a4e7083ced867d01b8b3f55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/582e7764e0fa389c3248450cd6db2564dd656d99",
-                "reference": "582e7764e0fa389c3248450cd6db2564dd656d99",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/69696dd3ec8c92170a4e7083ced867d01b8b3f55",
+                "reference": "69696dd3ec8c92170a4e7083ced867d01b8b3f55",
                 "shasum": ""
             },
             "require": {
@@ -174,7 +174,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2017-07-06 21:11:49"
+            "time": "2017-06-29 18:44:14"
         },
         {
             "name": "dborsatto/php-giantbomb",
