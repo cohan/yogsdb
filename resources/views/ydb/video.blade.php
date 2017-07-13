@@ -7,6 +7,22 @@
 			<div class="embed-responsive embed-responsive-16by9">
 				<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ $video->youtube_id }}"></iframe>
 			</div>
+			<div class='linkout-youtubevideo alert alert-danger'>
+				<a href='https://youtu.be/{{ $video->youtube_id }}' target='_blank'>Open in YouTube</a>
+			</div>
+
+			<style type="text/css">
+				.linkout-youtubevideo {
+					text-align: center;
+				}
+				.linkout-youtubevideo a,
+				.linkout-youtubevideo a:visited,
+				.linkout-youtubevideo a:hover,
+				.linkout-youtubevideo a:active {
+					color: #111;
+				}
+			</style>
+
 			<div class="row post_title_n_view">
 				<h2 class="col-sm-12 post_title">{{ $video->title }}</h2>
 			</div>
