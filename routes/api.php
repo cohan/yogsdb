@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Filters\VideoFilters;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,12 +36,14 @@ Route::domain($domain)->middleware(['middleware' => 'cors'])->group(function () 
 	});
 
 
-	Route::get('videos', function() {
-		return App\Video::orderBy('upload_date', 'desc')
-			->with('channel')
-			->with('game')
-			->with('stars')
-			->paginate(25);
+	Route::get('videos', function(VideoFilters $filters) {
+
+		return App\Video::filter($filters)->paginate(25);
+
+		// return App\Video::orderBy('upload_date', 'desc')
+		// 	->with('channel')
+		// 	->with('game')
+		// 	->with('stars')->paginate(25);
 	});
 	Route::get('videos/{id}', function($id) {
 		return App\Video::with('channel')

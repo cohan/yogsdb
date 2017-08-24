@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Scout\Searchable;
 
+use App\Filters\VideoFilters;
+
 use Cache;
 
 class Video extends Model
@@ -26,6 +28,10 @@ class Video extends Model
 	protected $casts = [
 	'tags' => 'array',
 	];
+
+	public function scopeFilter($query, VideoFilters $filters) {
+		return $filters->apply($query);
+	}
 
 	/**
 	 * Get the channel for the video.
