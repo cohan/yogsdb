@@ -36,9 +36,16 @@ Route::domain($domain)->middleware(['middleware' => 'cors'])->group(function () 
 	});
 
 
-	Route::get('videos', function(VideoFilters $filters) {
+	Route::get('videos', function(VideoFilters $filters, Request $request) {
 
-		return App\Video::filter($filters)->paginate(25);
+		if ($request->has('limit') && $request->input <= 1000) {
+			$limit = $request->input('limit');
+		}
+		else {
+			$limit = 25;
+		}
+
+		return App\Video::filter($filters)->paginate($limit);
 
 		// return App\Video::orderBy('upload_date', 'desc')
 		// 	->with('channel')
