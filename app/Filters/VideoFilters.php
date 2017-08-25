@@ -77,8 +77,8 @@ class VideoFilters extends QueryFilters {
 
 	public function orderBy($orderBy) {
 		$orderQuery = explode("|", $orderBy);
-		$order = $orderQuery[1];
-		$orderBy = $orderQuery[0];
+		$order = empty($orderQuery[1]) ? "desc" : $orderQuery[1];
+		$orderBy = empty($orderQuery[0]) ? "upload_date" : $orderQuery[0];
 
 		return $this->builder->orderBy($orderBy, $order);
 	}
