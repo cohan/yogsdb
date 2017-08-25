@@ -49,7 +49,8 @@ Route::domain($domain)->middleware(['middleware' => 'cors'])->group(function () 
 			->with('channel')
 			->with('game')
 			->with('stars')
-			->paginate($limit);
+			->paginate($limit)
+			->appends($request->except(['page']));
 
 		// return App\Video::orderBy('upload_date', 'desc')
 		// 	->with('channel')
