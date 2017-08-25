@@ -28,11 +28,11 @@ class VideoFilters extends QueryFilters {
 
 	public function channel($slug) {
 		return $this->builder->join('channels', 'channel_id', '=', 'channels.id')
-			->where('channels.slug', 'LIKE', "%".$slug."%");
+			->where('channels.slug', '=', $slug);
 	}
 
 	public function slug($slug) {
-		return $this->builder->where('slug', 'LIKE', "%".$slug."%");
+		return $this->builder->where('slug', '=', $slug);
 	}
 	
 	public function longerThan($duration) {
