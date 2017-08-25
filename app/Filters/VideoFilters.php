@@ -75,4 +75,11 @@ class VideoFilters extends QueryFilters {
 		return $this->builder->where('comment_count', '<', $comments);
 	}
 
+	public function orderBy($orderBy) {
+		$orderQuery = explode("|", $orderBy);
+		$order = $orderQuery[1];
+		$orderBy = $orderQuery[0];
+
+		return $this->builder->orderBy($orderBy, $order);
+	}
 }
