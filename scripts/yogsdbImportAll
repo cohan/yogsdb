@@ -1,0 +1,20 @@
+#!/bin/bash
+
+cd ../yogsdb
+
+if [[ -z $1 ]];
+then
+        echo "You didn't provide a channel ID you dork"
+        exit
+fi
+
+ytID=$1
+
+for i in {2005..2018}
+do
+        prevYear=$(echo "${i}-1" | bc)
+        $(which php) artisan video:import:channel ${ytID} --latest --missed --before="${i}-01-01" --after="${prevYear}-01-01"
+done
+
+cd -
+

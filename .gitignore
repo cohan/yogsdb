@@ -14,3 +14,4 @@ Homestead.yaml
 .env.*
 
 /storage/videos.index
+/storage/videos.index-journal
