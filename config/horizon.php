@@ -56,21 +56,35 @@ return [
 
 	'environments'  => [
 		'production'   => [
+			'default'     => [
+				'connection' => 'redis',
+				'queue'      => ['default'],
+				'balance'    => 'false',
+				'processes'  => 1,
+				'tries'      => 10,
+			],
 			'queues'      => [
 				'connection' => 'redis',
-				'queue'      => ['default', 'urgent', 'high', 'medium', 'low', 'idle'],
+				'queue'      => ['urgent', 'high', 'medium', 'low', 'idle'],
 				'balance'    => 'auto',
-				'processes'  => 1,
+				'processes'  => 4,
 				'tries'      => 10,
 			],
 		],
 
 		'local'        => [
+			'default'     => [
+				'connection' => 'redis',
+				'queue'      => ['default'],
+				'balance'    => 'false',
+				'processes'  => 1,
+				'tries'      => 10,
+			],
 			'queues'      => [
 				'connection' => 'redis',
-				'queue'      => ['default', 'urgent', 'high', 'medium', 'low', 'idle'],
+				'queue'      => ['urgent', 'high', 'medium', 'low', 'idle'],
 				'balance'    => 'auto',
-				'processes'  => 16,
+				'processes'  => 4,
 				'tries'      => 10,
 			],
 		],
