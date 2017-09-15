@@ -19,7 +19,7 @@
 
 	@else
 
-	<link rel="canonical" href="{{ Request::url() }}">		
+	<link rel="canonical" href="{{ Request::url() }}">
 
 	@endif
 
@@ -41,20 +41,20 @@
 	<meta name="msapplication-TileColor" content="#e74c3c">
 	<meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
 	<meta name="theme-color" content="#e74c3c">
-	
+
 	<!--Bootstrap and Other Vendors-->
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="/css/magnific-popup.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	
+
 	<!--Fonts-->
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-	
+
 	<!--Theme Styles-->
 	<link rel="stylesheet" href="/css/default/style.css">
 	<link rel="stylesheet" href="/css/responsive/responsive.css">
-	
+
 	<!--[if lt IE 9]>
 	  <script src="/js/html5shiv.min.js"></script>
 	  <script src="/js/respond.min.js"></script>
@@ -85,7 +85,10 @@
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			m=s.getElementsByTagName(o)[0];
+a.async=1;
+a.src=g;
+m.parentNode.insertBefore(a,m)
 		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 		ga('create', 'UA-80857446-2', 'auto');
@@ -98,26 +101,26 @@
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
-				<a class="navbar-brand" href="https://yogsdb.com/"><img style='width:100%' src="https://i.imgsir.com/G54X.png" alt=""></a>
-			</div>        
+				<a class="navbar-brand" href="/"><img style='width:100%' src="https://i.imgsir.com/G54X.png" alt=""></a>
+			</div>
 			<ul class="nav navbar-nav navbar-right login_drop">
 				<li class=''>
 					<a href='/onthisday'><i class='fa fa-clock-o'></i> On This Day</a>
-				</li>	
+				</li>
 
-				<?php
-				/*
-				@if (Auth::check())
-				<li class=''>
-					<a href='/alerts'><i class='fa fa-bell'></i> Alerts</a>
-				</li>
-				@else
-				<li class=''>
-					<a href='/login'><i class='fa fa-bell'></i> Alerts</a>
-				</li>
-				@endif
-				*/
-				?>
+<?php
+/*
+@if (Auth::check())
+<li class=''>
+<a href='/alerts'><i class='fa fa-bell'></i> Alerts</a>
+</li>
+@else
+<li class=''>
+<a href='/login'><i class='fa fa-bell'></i> Alerts</a>
+</li>
+@endif
+ */
+?>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 						<span class="login_icon"></span> My Account
@@ -142,7 +145,7 @@
 				<div class="btn-group col-md-8 col-md-offset-2">
 					<form action="/search" role="search" class="search_form widget widget_search">
 						<div class="input-group">
-							<input id='header-search' type="text" name='q' class="form-control" placeholder="Search for stuff" 
+							<input id='header-search' type="text" name='q' class="form-control" placeholder="Search for stuff"
 							@if (Request::get('q'))
 							value="{{ Request::get('q') }}"
 							@endif
