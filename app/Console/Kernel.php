@@ -5,8 +5,7 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
-class Kernel extends ConsoleKernel
-{
+class Kernel extends ConsoleKernel {
 	/**
 	 * The Artisan commands provided by your application.
 	 *
@@ -14,15 +13,15 @@ class Kernel extends ConsoleKernel
 	 */
 	protected $commands = [
 		//
-		Commands\FetchYouTubeVideo::class,
-		Commands\FetchYouTubeChannel::class,
-		Commands\RefreshYouTubeChannels::class,
-		Commands\RefreshVideoData::class,
-		Commands\RefreshFreshVideos::class,
-		Commands\FindGameOnGiantBomb::class,
-		Commands\Tag\Playlist::class,
+		Commands\FetchYouTubeVideo::class ,
+		Commands\FetchYouTubeChannel::class ,
+		Commands\RefreshYouTubeChannels::class ,
+		Commands\RefreshVideoData::class ,
+		Commands\RefreshFreshVideos::class ,
+		Commands\FindGameOnGiantBomb::class ,
+		Commands\Tag\Playlist::class ,
 
-		Commands\GenerateSitemap::class,
+		Commands\GenerateSitemap::class ,
 
 	];
 
@@ -32,29 +31,30 @@ class Kernel extends ConsoleKernel
 	 * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
 	 * @return void
 	 */
-	protected function schedule(Schedule $schedule)
-	{
+	protected function schedule(Schedule $schedule) {
 		// $schedule->command('inspire')
 		//          ->hourly();
 
 		$schedule->command("channel:refresh")
-			->cron("5,35 * * * * *")
-			->withoutOverlapping();
+		         ->cron("5,35 * * * * *")
+		         ->withoutOverlapping();
 
 		$schedule->command("video:fresh")
-			->hourlyAt(30);
+		         ->hourlyAt(30);
 
 		$schedule->command("video:fresh --days=7")
-			->daily();
+		         ->daily();
 
 		$schedule->command("video:refresh --count=100")
-			->hourlyAt(40);
+		         ->hourlyAt(40);
 
 		$schedule->command('backup:clean')->daily()->at('01:00');
 		$schedule->command('backup:run')->daily()->at('02:00');
 		$schedule->command('backup:monitor')->daily()->at('10:00');
 
 		$schedule->command('sitemap:generate')->daily()->at('06:00');
+
+		$schedule->command('horizon:snapshot')->everyFiveMinutes();
 	}
 
 	/**
@@ -62,8 +62,7 @@ class Kernel extends ConsoleKernel
 	 *
 	 * @return void
 	 */
-	protected function commands()
-	{
+	protected function commands() {
 		require base_path('routes/console.php');
 	}
 }
