@@ -18,4 +18,13 @@ class Series extends Model
     {
     	return $this->belongsToMany('App\Video')->orderBy("upload_date", "desc");
     }
+
+    /**
+     * Get the patterns to match the series
+     */
+    public function patterns()
+    {
+    	return $this->hasMany('App\AutoSeries');
+    }
+
 }
