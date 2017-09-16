@@ -21,11 +21,17 @@ class YT {
 			'status',
 		];
 
-		$video = Youtube::getVideoInfo($id, $parts) ?: false;
+		$youtubeVideo = Youtube::getVideoInfo($id, $parts) ?: false;
 
 		// TODO: Make this a better exception
-		if (!$video) { throw new \Exception("YouTube says that video doesn't exist"); }
-		else { return $video; }
+		if (!$youtubeVideo) {
+			if (Video::where(['youtube_id' => $id])->exists()) {
+				Video::where(['youtube_id' => $id])->delete();
+			}
+
+			throw new \Exception("YouTube says that video doesn't exist. Removed from our DB.");
+		}
+		else { return $youtubeVideo; }
 	}
 
 	public static function addOrUpdateVideo($id, $latestOnly = null) {

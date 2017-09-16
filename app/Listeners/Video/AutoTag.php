@@ -13,6 +13,8 @@ use App\Star;
 
 use Goutte\Client;
 
+use App\Jobs\PatternTagStars;
+
 class AutoTag implements ShouldQueue
 {
 
@@ -67,6 +69,12 @@ class AutoTag implements ShouldQueue
 		else {
 			$this->logit('AutoTag', "Can't auto-attach stars from ".$channel->title." as there are ".$channel->stars_count." Stars with this channel as their primary channel");
 		}
+
+		$this->logit('AutoTag', 'Queueing Pattern Tagger');
+
+		dispatch((new PatternTagStars($video))->onQueue('medium'));
+
+
 	}
 
 	public function findGame($video) {
