@@ -80,24 +80,26 @@ class StarController extends Controller
     public function update(Request $request, Star $star)
     {
         //
-        foreach ($request->input('pattern') as $id => $patternUpdate) {
-            $pattern = AutoStars::find($id);
+        if ($request->has('pattern')) {
+            foreach ($request->input('pattern') as $id => $patternUpdate) {
+                $pattern = AutoStars::find($id);
 
             // Make sure we're editing the current star..
-            if ($pattern->star_id != $star->id) { continue; }
+                if ($pattern->star_id != $star->id) { continue; }
 
-            if (!empty($patternUpdate['delete'])) {
-                $pattern->delete();
-                continue;
+                if (!empty($patternUpdate['delete'])) {
+                    $pattern->delete();
+                    continue;
+                }
+
+                $pattern->pattern = $patternUpdate['pattern'];
+                $pattern->weight = $patternUpdate['weight'];
+                $pattern->title_modifier = $patternUpdate['title_modifier'];
+
+                $pattern->save();
             }
-
-            $pattern->pattern = $patternUpdate['pattern'];
-            $pattern->weight = $patternUpdate['weight'];
-            $pattern->title_modifier = $patternUpdate['title_modifier'];
-
-            $pattern->save();
         }
-
+        
         if ($request->has('newpattern')) {
             foreach ($request->input('newpattern') as $newPattern) {
                 if (empty($newPattern['pattern'])) { continue; }
