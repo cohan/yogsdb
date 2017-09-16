@@ -21,6 +21,15 @@ class Star extends Model
 	}
 
 	/**
+	 * Get the patterns to match the star.
+	 */
+	public function patterns()
+	{
+		return $this->hasMany('App\AutoStars');
+	}
+
+
+	/**
 	 * Get the videos the star is in.
 	 */
 	public function videos()

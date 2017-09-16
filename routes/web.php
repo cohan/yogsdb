@@ -36,6 +36,8 @@ Route::domain($domain)->group(function () {
 
 	Route::resource('video', 'VideoController', [ 'only' => ['edit', 'update'] ]);
 
+	Route::resource('star', 'StarController', [ 'only' => ['edit', 'update'] ]);
+
 	Route::get('/game/{game}', "GameController@show");
 
 	Route::get('/tag/{tag}', function() { return "tbc"; } );
