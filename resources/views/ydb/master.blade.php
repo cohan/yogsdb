@@ -145,9 +145,9 @@ m.parentNode.insertBefore(a,m)
 				<div class="btn-group col-md-8 col-md-offset-2">
 					<form action="/search" role="search" class="search_form widget widget_search">
 						<div class="input-group">
-							<input id='header-search' type="text" name='q' class="form-control" placeholder="Search for stuff"
-							@if (Request::get('q'))
-							value="{{ Request::get('q') }}"
+							<input id='header-search' type="text" name='query' class="form-control" placeholder="Search for stuff"
+							@if (Request::get('query'))
+							value="{{ Request::get('query') }}"
 							@endif
 							>
 							<span class="input-group-addon"><button type="submit"><img src="/images/icons/search.png" alt=""></button></span>
