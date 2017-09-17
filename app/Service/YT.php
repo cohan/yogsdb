@@ -39,9 +39,6 @@ class YT {
 
 		if ($latestOnly === true &&	Video::where(['youtube_id' => $id])->withTrashed()->exists()) {
 			logger()->info("Update with latest flag for ".$id." but we already have it. Doing nothing.");
-			if ($video->trashed()) {
-				$video->restore();
-			}
 			return;
 		}
 
