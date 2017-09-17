@@ -86,9 +86,11 @@ class StarController extends Controller
      * @param  \App\Star  $star
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Star $star)
+    public function update(Request $request, $star)
     {
         //
+        $star = Star::where(['slug' => $star])->first();
+
         if ($request->has('pattern')) {
             foreach ($request->input('pattern') as $id => $patternUpdate) {
                 $pattern = AutoStars::find($id);
@@ -102,8 +104,8 @@ class StarController extends Controller
                 }
 
                 $pattern->pattern = $patternUpdate['pattern'];
-                $pattern->weight = $patternUpdate['weight'];
-                $pattern->title_modifier = $patternUpdate['title_modifier'];
+                $pattern->weight = $patternUpdate['weight'] ?: 5;
+                $pattern->title_modifier = $patternUpdate['title_modifier'] ?: 1;
 
                 $pattern->save();
             }
@@ -117,14 +119,14 @@ class StarController extends Controller
 
                 $pattern->star_id = $star->id;
                 $pattern->pattern = $newPattern['pattern'];
-                $pattern->weight = $newPattern['weight'];
-                $pattern->title_modifier = $newPattern['title_modifier'];
+                $pattern->weight = $newPattern['weight'] ?: 10;
+                $pattern->title_modifier = $newPattern['title_modifier'] ?: 2;
 
                 $pattern->save();
             }
         }
 
-        return redirect('/star/'.$star->id.'/edit');
+        return redirect('/star/'.$star->slug.'/edit');
     }
 
     /**
