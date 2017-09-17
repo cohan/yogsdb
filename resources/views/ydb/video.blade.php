@@ -51,7 +51,7 @@
 									@foreach($video->stars as $star)
 									<div class='star'>
 										@if (!empty($star->channel->slug))
-										<a href='/{{ $star->channel->slug }}'>
+										<a href='/star/{{ $star->channel->slug }}'>
 											<img src='//cdn.yogsdb.com/channel/{{ $star->youtube_id }}.jpg' />
 											{{ $star->title }}
 										</a>

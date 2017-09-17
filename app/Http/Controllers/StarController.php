@@ -47,9 +47,16 @@ class StarController extends Controller
      * @param  \App\Star  $star
      * @return \Illuminate\Http\Response
      */
-    public function show(Star $star)
+    public function show($star)
     {
         //
+        $star = Star::where(['slug' => $star])->first();
+
+        $videos = $star->videos()
+            ->orderBy("upload_date", "desc")
+            ->paginate(24);
+
+        return view('ydb.star')->with("videos", $videos)->with('star', $star);
     }
 
     /**
