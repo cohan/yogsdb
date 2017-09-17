@@ -8,6 +8,8 @@ use App\Series;
 use App\AutoSeries;
 use App\AutoStars;
 
+use App\Events\Star\StarsUpdated;
+
 class AutoTagger {
 	
 	public static function tagStars($video) {
@@ -34,6 +36,8 @@ class AutoTagger {
 				$video->stars()->syncWithoutDetaching($star);
 			}
 		}
+
+		event(new StarsUpdated($video));
 	}
 
 	public static function tagSeries($video) {
