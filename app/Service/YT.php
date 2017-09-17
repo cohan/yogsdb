@@ -44,7 +44,12 @@ class YT {
 
 		logger()->info("Updating or adding ".$id);
 
-		$video = Video::firstOrNew(['youtube_id' => $id]);
+		if (Video::where(['youtube_id' => $id])->exists()) {
+			$video = Video::where(['youtube_id' => $id])->first();
+		}
+		else {
+			$video = new Video();
+		}
 
 		$video->youtube_id = $youtubeVideo->id;
 		$video->title = $youtubeVideo->snippet->title;
