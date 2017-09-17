@@ -57,8 +57,6 @@ class YT {
 			$video = new Video();
 		}
 
-		dd($video);
-
 		$video->youtube_id = $youtubeVideo->id;
 		$video->title = $youtubeVideo->snippet->title;
 		$video->description = $youtubeVideo->snippet->description;
