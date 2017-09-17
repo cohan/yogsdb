@@ -25,7 +25,7 @@ class YT {
 
 		// TODO: Make this a better exception
 		if (!$youtubeVideo) {
-			if (Video::where(['youtube_id' => $id])->exists()) {
+			if (Video::where(['youtube_id' => $id])->withTrashed()->exists()) {
 				Video::where(['youtube_id' => $id])->delete();
 			}
 
@@ -37,19 +37,27 @@ class YT {
 	public static function addOrUpdateVideo($id, $latestOnly = null) {
 		$youtubeVideo = self::getVideo($id);
 
-		if ($latestOnly === true &&	Video::where(['youtube_id' => $id])->exists()) {
-				logger()->info("Update with latest flag for ".$id." but we already have it. Doing nothing.");
-				return;
+		if ($latestOnly === true &&	Video::where(['youtube_id' => $id])->withTrashed()->exists()) {
+			logger()->info("Update with latest flag for ".$id." but we already have it. Doing nothing.");
+			if ($video->trashed()) {
+				$video->restore();
+			}
+			return;
 		}
 
 		logger()->info("Updating or adding ".$id);
 
-		if (Video::where(['youtube_id' => $id])->exists()) {
-			$video = Video::where(['youtube_id' => $id])->first();
+		if (Video::where(['youtube_id' => $id])->withTrashed()->exists()) {
+			$video = Video::where(['youtube_id' => $id])->withTrashed()->first();
+			if ($video->trashed()) {
+				$video->restore();
+			}
 		}
 		else {
 			$video = new Video();
 		}
+
+		dd($video);
 
 		$video->youtube_id = $youtubeVideo->id;
 		$video->title = $youtubeVideo->snippet->title;
