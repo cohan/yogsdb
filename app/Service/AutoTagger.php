@@ -29,7 +29,7 @@ class AutoTagger {
 				echo $star->title." (".$star->id.") is definitely in this video [".$video->youtube_id."] (Score: ".$score.")\n";
 				$video->stars()->syncWithoutDetaching($star);
 			}
-			elseif ($score >= 70) {
+			elseif ($score >= 50) {
 				echo $star->title." (".$star->id.") is in this video [".$video->youtube_id."] (Score: ".$score.")\n";
 				$video->stars()->syncWithoutDetaching($star);
 			}
