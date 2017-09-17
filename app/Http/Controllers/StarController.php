@@ -65,9 +65,11 @@ class StarController extends Controller
      * @param  \App\Star  $star
      * @return \Illuminate\Http\Response
      */
-    public function edit(Star $star)
+    public function edit($star)
     {
-        //
+        
+        $star = Star::where(['slug' => $star])->first();
+
         if (!Auth::check() || !Auth::user()->hasAnyRole('admin', 'moderator')) {
             return redirect()->guest('login');
         }
