@@ -21,7 +21,7 @@ class AutoTagger {
 			$score = 0;
 
 			foreach ($patterns as $pattern) {
-				$titleMatchScore = self::check($pattern, $video->title, $pattern->title_modifier > 0 ?: 1);
+				$titleMatchScore = self::check($pattern, $video->title, $pattern->title_modifier > 0 ? $pattern->title_modifier : 1);
 				$descriptionMatchScore = self::check($pattern, $video->description);
 
 				$score += ( $titleMatchScore + $descriptionMatchScore );
