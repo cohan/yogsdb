@@ -37,7 +37,7 @@ class YT {
 	public static function addOrUpdateVideo($id, $latestOnly = null) {
 		$youtubeVideo = self::getVideo($id);
 
-		if ($latestOnly === true &&	Video::where(['youtube_id' => $id])->withTrashed()->exists()) {
+		if ($latestOnly === true && Video::where(['youtube_id' => $id])->withTrashed()->exists()) {
 			logger()->info("Update with latest flag for ".$id." but we already have it. Doing nothing.");
 			return;
 		}
