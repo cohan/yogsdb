@@ -50,13 +50,18 @@
 								<div class='starring'>
 									@foreach($video->stars as $star)
 									<div class='star'>
-										@if (!empty($star->slug))
+										@if (!empty($star->youtube_id))
 										<a href='/star/{{ $star->slug }}'>
 											<img src='//cdn.yogsdb.com/channel/{{ $star->youtube_id }}.jpg' />
 											{{ $star->title }}
 										</a>
+										@elseif (!empty($star->image))
+										<a href='/star/{{ $star->slug }}'>
+											<img src='{{ $star->image }}' />
+											{{ $star->title }}
+										</a>
 										@else
-										<a href='#'>
+										<a href='/star/{{ $star->slug }}'>
 											<img src='/images/unknown.png' />
 											{{ $star->title }}
 										</a>
