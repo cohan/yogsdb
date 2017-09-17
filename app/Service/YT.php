@@ -10,6 +10,9 @@ use App\Channel;
 
 use App\Events\Video\VideoUpdated;
 
+use App\Jobs\PatternTagStars;
+
+
 class YT {
 
 	public static function getVideo($id) {
@@ -38,7 +41,16 @@ class YT {
 		$youtubeVideo = self::getVideo($id);
 
 		if ($latestOnly === true && Video::where(['youtube_id' => $id])->withTrashed()->exists()) {
-			logger()->info("Update with latest flag for ".$id." but we already have it. Doing nothing.");
+			logger()->info("Update with latest flag for ".$id." but we already have it. Only updating tags.");
+
+			$video = Video::where(['youtube_id' => $id])->withTrashed()->first();
+
+			if ($video->trashed()) {
+				$video->restore();
+			}
+
+			dispatch((new PatternTagStars($video))->onQueue('low'));
+
 			return;
 		}
 
