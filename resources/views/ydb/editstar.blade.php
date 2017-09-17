@@ -1,7 +1,7 @@
 @extends('ydb.master')
 
 @section('content')
-<form class="form-horizontal" role="form" method="POST" action="/star/{{ $star->id }}">
+<form class="form-horizontal" role="form" method="POST" action="/star/{{ $star->slug }}">
 
 	{{ csrf_field() }}
 
