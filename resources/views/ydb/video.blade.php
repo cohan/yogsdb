@@ -45,6 +45,7 @@
 							<dt>Publish Date:</dt>
 							<dd>{{ date("Y-m-d", strtotime($video->upload_date)) }}</dd>
 
+							@if ($video->stars->count() > 0)
 							<dt>Starring</dt>
 							<dd>
 								<div class='starring'>
@@ -70,8 +71,10 @@
 									@endforeach
 								</div>
 							</dd>
+							@endif
  
-<!-- 							<dt>Series</dt>
+ 							@if ($video->series->count() > 0)
+							<dt>Series</dt>
 							<dd>
 								<div class='series'>
 									@foreach($video->series as $series)
@@ -83,8 +86,9 @@
 									@endforeach
 								</div>
 							</dd>
- -->
+							@endif
 
+							@if ($video->game->slug != "unknown")
 							<dt>Game</dt>
 							<dd>
 								<div class='playing-game'>
@@ -95,6 +99,7 @@
 									</div>
 								</div>
 							</dd>
+							@endif
 <!-- 
 							<dt>Tagged</dt>
 							<dd>
