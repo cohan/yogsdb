@@ -9,6 +9,9 @@ use Auth;
 
 use Illuminate\Http\Request;
 
+use App\Events\Star\StarsUpdated;
+
+
 class VideoController extends Controller
 {
 	/**
@@ -107,6 +110,7 @@ class VideoController extends Controller
 
 		if (!empty($request->get('starring'))) {
 			$video->stars()->sync($request->get('starring'));
+			event(new StarsUpdated($video));
 		}
 
 		// $video->series()->sync($request->get('series'));

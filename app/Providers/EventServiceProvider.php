@@ -18,6 +18,9 @@ class EventServiceProvider extends ServiceProvider
             // 'App\Listeners\Video\FetchSubtitles',
 
         ],
+        'App\Events\Star\StarsUpdated' => [
+            'App\Listeners\Star\SendNotifications',
+        ],
         'App\Events\Video\MetaDataUpdated' => [
             'App\Listeners\Video\NotifyCheck',
         ]
