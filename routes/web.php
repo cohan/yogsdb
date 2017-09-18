@@ -15,7 +15,7 @@ if (config('app.env') == 'production') {
 	$domain = "yogsdb.com";
 }
 else {
-	$domain = "yogsdb.dev";
+	$domain = "yogsdb.test";
 }
 
 Route::domain($domain)->group(function () {
