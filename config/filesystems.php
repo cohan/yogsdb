@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => 's3',
+    'default' => 'do-nyc3',
 
     /*
     |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'cloud' => 's3',
+    'cloud' => 'do-nyc3',
 
     /*
     |--------------------------------------------------------------------------
@@ -61,6 +61,15 @@ return [
             'secret' => env('AWS_SECRET'),
             'region' => env('AWS_REGION'),
             'bucket' => env('AWS_BUCKET'),
+        ],
+
+        'do-nyc3' => [
+          'driver' => 's3',
+          'key' => env('DO_KEY'),
+          'secret' => env('DO_SECRET'),
+          'region' => env('DO_REGION'),
+          'bucket' => env('DO_BUCKET'), 
+          'endpoint'  => env('DO_ENDPOINT'),
         ],
 
         's3-backups' => [

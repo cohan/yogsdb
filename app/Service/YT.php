@@ -98,6 +98,7 @@ class YT {
 			$youtubeThumbnail = file_get_contents($thumbnailUrl);
 			Storage::put($video->youtube_id.'.jpg', $youtubeThumbnail);
 			$video->thumbnail = Storage::url($video->youtube_id.'.jpg');
+			Storage::setVisibility($video->youtube_id.'.jpg', 'public');
 		}
 		if (!empty($youtubeVideo->snippet->channelId)) {
 			$channel = Channel::where('youtube_id', '=', $youtubeVideo->snippet->channelId)->first();

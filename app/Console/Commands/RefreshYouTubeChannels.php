@@ -63,6 +63,7 @@ class RefreshYouTubeChannels extends Command
                 $youtubeThumbnail = file_get_contents($thumbnailUrl);
                 Storage::put("channel/".$channel->youtube_id.'.jpg', $youtubeThumbnail);
                 $channel->thumbnail = Storage::url("channel/".$channel->youtube_id.'.jpg');
+                Storage::setVisibility("channel/".$channel->youtube_id.'.jpg', 'public');
             }
 
             $channel->description = $channelMeta->snippet->description;
