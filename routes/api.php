@@ -18,7 +18,7 @@ if (config('app.env') == 'production') {
 	$domain = "api.yogsdb.com";
 }
 else {
-	$domain = "api.yogsdb.dev";
+	$domain = "api.yogsdb.test";
 }
 
 
