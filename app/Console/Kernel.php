@@ -36,7 +36,7 @@ class Kernel extends ConsoleKernel {
 		//          ->hourly();
 
 		$schedule->command("channel:refresh")
-		         ->cron("5,35 * * * * *")
+		         ->cron("0,15,30,45 * * * * *")
 		         ->withoutOverlapping();
 
 		$schedule->command("video:fresh")
