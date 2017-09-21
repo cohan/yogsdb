@@ -18,6 +18,14 @@ else {
 	$domain = "yogsdb.test";
 }
 
+if (config('app.env') == 'production') {
+	$apiDomain = "api.yogsdb.com";
+}
+else {
+	$apiDomain = "api.yogsdb.test";
+}
+
+
 Route::domain($domain)->group(function () {
 
 	Auth::routes();
@@ -48,4 +56,10 @@ Route::domain($domain)->group(function () {
 
 	Route::get('/{channel}/{video}', "VideoController@show");
 
+});
+
+Route::domain($apiDomain)->group(function () {
+	Route::get('/', function() {
+		return redirect("https://docs.yogsdb.com/api");
+	});	
 });
