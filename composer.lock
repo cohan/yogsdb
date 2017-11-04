@@ -2807,16 +2807,16 @@
         },
         {
             "name": "spatie/laravel-backup",
-            "version": "5.0.0",
+            "version": "5.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-backup.git",
-                "reference": "8b1fdf898e8be7f5d3ba6738e5a60ad95c490f0c"
+                "reference": "b22f4bd526b2a99896479068c6930b784305f058"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/8b1fdf898e8be7f5d3ba6738e5a60ad95c490f0c",
-                "reference": "8b1fdf898e8be7f5d3ba6738e5a60ad95c490f0c",
+                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/b22f4bd526b2a99896479068c6930b784305f058",
+                "reference": "b22f4bd526b2a99896479068c6930b784305f058",
                 "shasum": ""
             },
             "require": {
@@ -2876,7 +2876,7 @@
                 "laravel-backup",
                 "spatie"
             ],
-            "time": "2017-08-30T12:17:01+00:00"
+            "time": "2017-11-03T15:16:15+00:00"
         },
         {
             "name": "spatie/laravel-permission",
