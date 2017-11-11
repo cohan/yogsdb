@@ -83,4 +83,13 @@ class VideoFilters extends QueryFilters {
 
 		return $this->builder->orderBy($orderBy, $order);
 	}
+
+	public function inRandomOrder($inRandomOrder) {
+		if (!empty($inRandomOrder)) {
+			return $this->builder->inRandomOrder();
+		}
+		else {
+			return $this->builder;
+		}
+	}
 }
