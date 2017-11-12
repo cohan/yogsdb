@@ -188,7 +188,7 @@ class YT {
 			}
 		}
 
-		return implode("\n",$captions);
+		return implode(" ",$captions);
 	}
 
 }
