@@ -74,8 +74,8 @@ return [
 					'idle'
 				],
 				'balance'    => 'auto',
-				'processes'  => 14,
-				'tries'      => 3,
+				'processes'  => 3,
+				'tries'      => 1,
 				'timeout'    => 600,
 			],
 		],
@@ -99,8 +99,8 @@ return [
 					'idle'
 				],
 				'balance'    => 'auto',
-				'processes'  => 4,
-				'tries'      => 3,
+				'processes'  => 3,
+				'tries'      => 1,
 				'timeout'    => 600,
 			],
 		],
