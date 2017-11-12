@@ -10,7 +10,7 @@ deploy_production:
   stage: deploy
   script:
     - echo "Deploy to server"
-    - ssh $SERVER_USER@$SERVER_HOST "cd $SERVER_PATH && php artisan down && git pull origin master --recurse-submodules && composer install && php artisan migrate --force && php artisan cache:clear && php artisan config:cache && php artisan horizon:terminate && php artisan horizon:purge && php artisan up"
+    - ssh $SERVER_USER@$SERVER_HOST "cd $SERVER_PATH && php artisan down && git pull origin master --recurse-submodules && composer install && php artisan migrate --force && php artisan cache:clear && php artisan config:clear && php artisan horizon:terminate && php artisan horizon:purge && php artisan up"
   environment:
     name: production
     url: https://$SERVER_USER.app.icnerd.net
