@@ -9,9 +9,8 @@ use App\Video;
 use App\Channel;
 
 use App\Events\Video\VideoUpdated;
-
 use App\Jobs\PatternTagStars;
-
+use \Done\Subtitles\Subtitles;
 
 class YT {
 
@@ -154,6 +153,42 @@ class YT {
 		}
 		return $duration;
 
+	}
+
+	public static function getVideoTranscript($id) {
+		$youtube_dl = env('YOUTUBE_DL');
+
+		$command = $youtube_dl.
+			" ".$id.
+			" --write-sub".
+			" --write-auto-sub".
+			" --skip-download".
+			" -o '".storage_path()."/captions/%(id)s'".
+			" | grep 'Writing video subtitles to:'";
+
+		exec($command, $output, $status);
+
+		if ($status !== 0) {
+			return false;
+		}
+
+		$subtitles = explode(":", $output[0]);
+		$subtitlesPath = trim($subtitles[1]);
+
+		$subtitles = Subtitles::load($subtitlesPath);
+
+		// Keep things tidy
+		Storage::disk('local')->delete($subtitlesPath);
+
+		$subtitles = $subtitles->getInternalFormat();
+
+		foreach ($subtitles as $line) {
+			foreach ($line['lines'] as $caption) {
+				$captions[] = strip_tags($caption);
+			}
+		}
+
+		return implode("\n",$captions);
 	}
 
 }

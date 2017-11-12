@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ddd68d70a3896a3598c520c6102fee9e",
+    "content-hash": "26785b19021c6ad7401b0fcf8637a979",
     "packages": [
         {
             "name": "alaouy/youtube",
@@ -1906,16 +1906,16 @@
         },
         {
             "name": "mantas-done/subtitles",
-            "version": "0.3.2",
+            "version": "0.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mantas-done/subtitles.git",
-                "reference": "aa6cc42e8a6e339664ebeb0b8f7165899a96a93b"
+                "reference": "13519b1a0c429c8cc12f57b38eec7af32e1c4979"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mantas-done/subtitles/zipball/aa6cc42e8a6e339664ebeb0b8f7165899a96a93b",
-                "reference": "aa6cc42e8a6e339664ebeb0b8f7165899a96a93b",
+                "url": "https://api.github.com/repos/mantas-done/subtitles/zipball/13519b1a0c429c8cc12f57b38eec7af32e1c4979",
+                "reference": "13519b1a0c429c8cc12f57b38eec7af32e1c4979",
                 "shasum": ""
             },
             "require-dev": {
@@ -1929,7 +1929,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Subtitle converter and generator for PHP",
-            "time": "2017-06-22T03:59:27+00:00"
+            "time": "2017-10-21T07:10:50+00:00"
         },
         {
             "name": "monolog/monolog",
