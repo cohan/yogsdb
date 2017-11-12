@@ -23,10 +23,11 @@ class Video extends Model
 	protected $hidden = [
 		'thumbnail',
 		'deleted_at',
+		'captions',
 	];
 
 	protected $casts = [
-	'tags' => 'array',
+		'tags' => 'array',
 	];
 
 	public function scopeFilter($query, VideoFilters $filters) {
