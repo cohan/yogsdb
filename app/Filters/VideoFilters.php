@@ -6,7 +6,7 @@ use App\Filters\QueryFilters;
 
 class VideoFilters extends QueryFilters {
 
-	public function youtube_id($title) {
+	public function youtube_id($youtube_id) {
 		return $this->builder->where("videos.youtube_id", "=", $youtube_id);
 	}
 
