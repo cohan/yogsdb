@@ -26,6 +26,8 @@ class FetchSubtitles
      */
     public function handle(VideoUpdated $event)
     {
+        return;
+
         //
         $video = $event->video;
 
