@@ -100,7 +100,7 @@ class Video extends Model
 
 		// Customize array...
 
-		$array['captions'] = $this->captions;
+		// $array['captions'] = $this->captions;
 
 		return $array;
 	}
