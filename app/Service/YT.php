@@ -121,8 +121,8 @@ class YT {
 		$video->updated_at = \Carbon\Carbon::now();
 
 		if (is_null($video->captions)) {
-			$video->captions = self::getVideoTranscript($video->youtube_id);
-			sleep(rand(1,5));
+			//$video->captions = self::getVideoTranscript($video->youtube_id);
+			//sleep(rand(1,5));
 		}
 
 		$video->save();
