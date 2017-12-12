@@ -115,7 +115,7 @@ return [
             'name' => env('APP_URL'),
             'disks' => ['s3-backups'],
             'newestBackupsShouldNotBeOlderThanDays' => 1,
-            'storageUsedMayNotBeHigherThanMegabytes' => 5000,
+            'storageUsedMayNotBeHigherThanMegabytes' => 1000000,
         ],
 
         /*
@@ -171,7 +171,7 @@ return [
              * After cleaning up the backups remove the oldest backup until
              * this amount of megabytes has been reached.
              */
-            'deleteOldestBackupsWhenUsingMoreMegabytesThan' => 5000,
+            'deleteOldestBackupsWhenUsingMoreMegabytesThan' => 1000000,
         ],
     ],
 ];
