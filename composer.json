@@ -12,6 +12,7 @@
         "dborsatto/php-giantbomb": "^1.0",
         "doctrine/dbal": "^2.6",
         "fabpot/goutte": "^3.2",
+        "fideloper/proxy": "^3.3",
         "giantbomb/giantbomb-php-api": "dev-master",
         "laracasts/generators": "master@dev",
         "laravel/framework": "5.5.*",
