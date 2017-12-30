@@ -95,6 +95,8 @@ class Playlist extends Command
 
 					Artisan::call('video:import', $artisanParams);
 
+					continue;
+
 					$video = Video::where(['youtube_id' => $video_id])->first();
 
 				}
