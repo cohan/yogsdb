@@ -23,7 +23,7 @@ class YT {
 			'status',
 		];
 
-		$youtubeVideo = Youtube::getVideoInfo($id, $parts) ?: false;
+		$youtubeVideo = Youtube::getVideoInfo($id, $parts) ?? false;
 
 		// TODO: Make this a better exception
 		if (!$youtubeVideo) {
@@ -71,16 +71,34 @@ class YT {
 		$video->upload_date = date("Y-m-d H:i:s", strtotime($youtubeVideo->snippet->publishedAt));
 
 		// Stats
-		$video->duration = self::getDurationSeconds($youtubeVideo->contentDetails->duration) ?: 0;
-		$video->view_count = $youtubeVideo->statistics->viewCount ?: 0;
-		$video->like_count = $youtubeVideo->statistics->likeCount ?: 0;
-		$video->dislike_count = $youtubeVideo->statistics->dislikeCount ?: 0;
+		$video->duration = self::getDurationSeconds($youtubeVideo->contentDetails->duration) ?? 0;
 
 		if (empty($youtubeVideo->statistics->commentCount)) {
 			$video->comment_count = 0;
 		}
 		else {
-			$video->comment_count = $youtubeVideo->statistics->commentCount ?: 0;
+			$video->comment_count = $youtubeVideo->statistics->commentCount ?? 0;
+		}
+
+		if (empty($youtubeVideo->statistics->viewCount)) {
+			$video->view_count = 0;
+		}
+		else {
+			$video->view_count = $youtubeVideo->statistics->viewCount ?? 0;
+		}
+
+		if (empty($youtubeVideo->statistics->likeCount)) {
+			$video->like_count = 0;
+		}
+		else {
+			$video->like_count = $youtubeVideo->statistics->likeCount ?? 0;
+		}
+
+		if (empty($youtubeVideo->statistics->likeCount)) {
+			$video->dislike_count = 0;
+		}
+		else {
+			$video->dislike_count = $youtubeVideo->statistics->dislikeCount ?? 0;
 		}
 
 		if (empty($youtubeVideo->snippet->thumbnails->maxres->url)) {
