@@ -45,6 +45,14 @@ class VideoSearchRule extends SearchRule
                                 'boost' => 0
                             ]
                         ]
+                    ],
+                    [
+                        'match' => [
+                            'channel_name' => [
+                                'query' => $query,
+                                'boost' => 2
+                            ]
+                        ]
                     ]
                 ]
             ];

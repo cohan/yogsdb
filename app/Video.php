@@ -124,6 +124,8 @@ class Video extends Model
 		$searchableArray['description'] = $this->description;
 		$searchableArray['captions'] = $this->captions;
 
+		$searchableArray['channel_name'] = $this->channel->title;
+
 		return $searchableArray;
 	}
 
