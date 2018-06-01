@@ -46,7 +46,7 @@
 							@endforeach
 						</select>
 
-						@hasanyrole(['admin', 'moderator'])
+						@hasanyrole('admin|moderator')
 						<div class="btn-group pull-right" role="group" aria-label="...">
 							<br />
 							<input type='submit' type="button" class="btn btn-primary" value='Save' />

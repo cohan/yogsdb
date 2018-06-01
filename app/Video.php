@@ -2,19 +2,39 @@
 
 namespace App;
 
+use App\Filters\VideoFilters;
+use App\VideoIndexConfigurator;
+use App\VideoSearchRule;
+use Cache;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Laravel\Scout\Searchable;
-
-use App\Filters\VideoFilters;
-
-use Cache;
+use ScoutElastic\Searchable;
 
 class Video extends Model
 {
 	//
 	use SoftDeletes;
 	use Searchable;
+
+	protected $indexConfigurator = VideoIndexConfigurator::class;
+
+	protected $searchRules = [
+	    VideoSearchRule::class,
+	];
+
+	// Here you can specify a mapping for a model fields.
+	protected $mapping = [
+		'properties' => [
+			'title' => [
+				'type' => 'text',
+				'analyzer' => 'english'
+			],
+			'description' => [
+				'type' => 'text',
+				'analyzer' => 'english'
+			]
+		]
+	];
 	
 	protected $fillable = ['youtube_id', 'channel_id'];
 
@@ -99,10 +119,13 @@ class Video extends Model
 		$array = $this->toArray();
 
 		// Customize array...
+		
+		$searchableArray['title'] = $this->title;
+		$searchableArray['description'] = $this->description;
+		$searchableArray['captions'] = $this->captions;
 
-		// $array['captions'] = $this->captions;
-
-		return $array;
+		return $searchableArray;
 	}
+
 
 }

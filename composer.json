@@ -9,25 +9,25 @@
         "alaouy/youtube": "1.*",
         "andreasindal/laravel-markdown": "^1.1",
         "aws/aws-sdk-php": "3.30.4",
+        "babenkoivan/scout-elasticsearch-driver": "^3.8",
         "dborsatto/php-giantbomb": "^1.0",
         "doctrine/dbal": "^2.6",
         "fabpot/goutte": "^3.2",
-        "fideloper/proxy": "^3.3",
+        "fideloper/proxy": "^4.0",
         "giantbomb/giantbomb-php-api": "dev-master",
         "laracasts/generators": "master@dev",
-        "laravel/framework": "5.5.*",
+        "laravel/framework": "5.6.*",
         "laravel/horizon": "^1.0",
-        "laravel/scout": "^3.0",
+        "laravel/scout": "^4.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.3.0",
         "league/flysystem-aws-s3-v3": "~1.0",
         "mantas-done/subtitles": "^0.3.3",
         "predis/predis": "^1.1",
         "simplesoftwareio/simple-cache": "^1.0",
-        "spatie/laravel-backup": "^5.0",
-        "spatie/laravel-permission": "^1.11",
-        "spatie/laravel-sitemap": "^3.0",
-        "teamtnt/laravel-scout-tntsearch-driver": "^3.0"
+        "spatie/laravel-backup": "^5.7",
+        "spatie/laravel-permission": "^2.12",
+        "spatie/laravel-sitemap": "^4.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -55,12 +55,10 @@
             "php artisan key:generate"
         ],
         "post-install-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "php artisan optimize"
+            "Illuminate\\Foundation\\ComposerScripts::postInstall"
         ],
         "post-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan optimize"
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate"
         ]
     },
     "config": {

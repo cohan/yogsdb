@@ -100,20 +100,9 @@
 								</div>
 							</dd>
 							@endif
-<!-- 
-							<dt>Tagged</dt>
-							<dd>
-								<div class='tags'>
-									@foreach(["test", "yogscast"] as $label)
-									<a class='label label-success label-as-badge' href='/tag/{{ str_slug($label) }}'>
-										{{ $label }}
-									</a>
-									@endforeach
-								</div>
-							</dd>
- -->
+
 						</dl>
-						@hasanyrole(['admin', 'moderator'])
+						@hasanyrole('admin|moderator')
 						<a href='/video/{{ $video->id }}/edit' class='btn btn-primary'>
 							Edit
 						</a>

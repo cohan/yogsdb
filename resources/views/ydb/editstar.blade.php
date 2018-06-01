@@ -44,7 +44,7 @@
 							<button class='btn btn-success' onclick='addRow();return false;'>Add</button>
 						</div>
 
-						@hasanyrole(['admin', 'moderator'])
+						@hasanyrole('admin|moderator')
 						<div class="btn-group pull-right" role="group" aria-label="...">
 							<br />
 							<input type='submit' type="button" class="btn btn-primary" value='Save' />
