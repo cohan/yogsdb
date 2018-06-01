@@ -57,3 +57,5 @@ dd {
 img.cast {
 	max-height: 160px;
 }
+
+.video_post .inner a .screencast img { height: 160px; width: 284px; object-fit: cover; }
