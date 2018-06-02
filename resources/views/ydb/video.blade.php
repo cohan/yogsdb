@@ -102,11 +102,7 @@
 							@endif
 
 						</dl>
-						@hasanyrole('admin|moderator')
-						<a href='/video/{{ $video->id }}/edit' class='btn btn-primary'>
-							Edit
-						</a>
-						@endrole
+
 					</div>
 				</div>
 				<div class="media-body author_desc_by_author">
