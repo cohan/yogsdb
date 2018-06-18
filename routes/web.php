@@ -28,6 +28,10 @@ else {
 
 Route::domain($domain)->group(function () {
 
+    Route::get('/schedule', function() {
+        return view('schedule.show');
+    });
+
 	Auth::routes();
 
 	Route::get('/home', function() {
