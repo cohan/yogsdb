@@ -16,3 +16,7 @@ Homestead.yaml
 /storage/videos.index
 /storage/videos.index-journal
 /storage/captions/
+
+docker-compose.yml
+docker/
+vessel
