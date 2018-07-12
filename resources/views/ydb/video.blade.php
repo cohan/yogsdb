@@ -7,7 +7,7 @@
 			<div class="embed-responsive embed-responsive-16by9">
 				<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ $video->youtube_id }}"></iframe>
 			</div>
-			<div class='linkout-youtubevideo alert alert-danger'>
+			<div class='linkout-youtubevideo alert alert-success'>
 				<a href='https://youtu.be/{{ $video->youtube_id }}' target='_blank'>Open in YouTube</a>
 			</div>
 
