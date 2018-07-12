@@ -3,7 +3,7 @@
 return [
     'client' => [
         'hosts' => [
-            env('SCOUT_ELASTIC_HOST', 'localhost:9200')
+            env('SCOUT_ELASTIC_HOST', '127.0.0.1').':'.env('SCOUT_ELASTIC_PORT', '9200')
         ]
     ],
     'update_mapping' => env('SCOUT_ELASTIC_UPDATE_MAPPING', true),
