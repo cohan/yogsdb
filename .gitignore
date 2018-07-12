@@ -20,3 +20,5 @@ Homestead.yaml
 docker-compose.yml
 docker/
 vessel
+
+storage/debugbar/
