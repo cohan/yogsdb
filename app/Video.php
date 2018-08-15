@@ -93,7 +93,7 @@ class Video extends Model
 	public static function onThisDay($year) {
 		$thisday = date('-m-d');
 
-		$videos = Cache::remember('onthisday-'.$year.$thisday, 5, function () use ($year,$thisday) {
+		$videos = Cache::remember('onthisday-'.$year.$thisday, 60, function () use ($year,$thisday) {
 			return Video::where('upload_date', '>=', $year.$thisday." 00:00:00")
 				->where('upload_date', '<=', $year.$thisday." 23:59:59")
 				->orderBy('upload_date', 'desc')
