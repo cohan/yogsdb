@@ -9,6 +9,8 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ExampleTest extends TestCase
 {
+    use DatabaseMigrations;
+
     /**
      * A basic test example.
      *
@@ -16,7 +18,11 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $response = $this->get('/');
+
+        $headers = [
+            'host' => 'yogsdb.test'
+        ];
+        $response = $this->get('/', $headers);
 
         $response->assertStatus(200);
     }

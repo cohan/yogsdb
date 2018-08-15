@@ -13,23 +13,10 @@ class AddColumnsToGames extends Migration
     public function up()
     {
         Schema::table('games', function (Blueprint $table) {
-            $table->string('title');
-            $table->text('description');
-            $table->string('thumbnail');
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+            $table->string('thumbnail')->nullable();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::table('games', function (Blueprint $table) {
-            $table->dropColumn('title');
-            $table->dropColumn('description');
-            $table->dropColumn('thumbnail');
-        });
-    }
 }

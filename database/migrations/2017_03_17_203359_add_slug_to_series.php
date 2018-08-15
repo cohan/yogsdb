@@ -17,15 +17,4 @@ class AddSlugToSeries extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::table('series', function (Blueprint $table) {
-            $table->dropColumn('slug');
-        });
-    }
 }

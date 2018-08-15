@@ -17,21 +17,12 @@ class CreateAutoStarsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->softDeletes();
-            $table->integer('star_id');
-            $table->string('pattern');
+            $table->integer('star_id')->nullable();
+            $table->string('pattern')->nullable();
             $table->integer('weight')->default(10);
             $table->integer('title_modifier')->default(0);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('auto_stars');
-    }
 }
 

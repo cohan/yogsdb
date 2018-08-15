@@ -21,19 +21,4 @@ class AddColumnsToVideos extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::table('videos', function (Blueprint $table) {
-            $table->dropColumn('duration');
-            $table->dropColumn('view_count');
-            $table->dropColumn('like_count');
-            $table->dropColumn('dislike_count');
-            $table->dropColumn('comment_count');
-        });
-    }
 }

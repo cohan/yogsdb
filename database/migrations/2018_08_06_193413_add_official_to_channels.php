@@ -21,15 +21,4 @@ class AddOfficialToChannels extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::table('channels', function (Blueprint $table) {
-            $table->dropColumn('official');
-        });
-    }
 }

@@ -13,19 +13,8 @@ class AddSlugToGames extends Migration
     public function up()
     {
         Schema::table('games', function (Blueprint $table) {
-            $table->string('slug');
+            $table->string('slug')->nullable();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::table('games', function (Blueprint $table) {
-            $table->dropColumn('slug');
-        });
-    }
 }

@@ -12,10 +12,10 @@
 */
 
 if (config('app.env') == 'production') {
-	$domain = "yogsdb.com";
+    $domain = "yogsdb.com";
 }
 else {
-	$domain = "yogsdb.test";
+    $domain = "";
 }
 
 if (config('app.env') == 'production') {
@@ -24,7 +24,6 @@ if (config('app.env') == 'production') {
 else {
 	$apiDomain = "api.yogsdb.test";
 }
-
 
 Route::domain($domain)->group(function () {
 

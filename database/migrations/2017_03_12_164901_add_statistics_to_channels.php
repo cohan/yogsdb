@@ -20,18 +20,4 @@ class AddStatisticsToChannels extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::table('channels', function (Blueprint $table) {
-            $table->dropColumn('view_count');
-            $table->dropColumn('comment_count');
-            $table->dropColumn('subscriber_count');
-            $table->dropColumn('video_count');
-        });
-    }
 }

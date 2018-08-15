@@ -15,7 +15,7 @@ class AddSlugToStars extends Migration
     {
         Schema::table('stars', function (Blueprint $table) {
             //
-            $table->string('slug');
+            $table->string('slug')->nullable();
         });
     }
 

@@ -17,15 +17,4 @@ class AddGameIdToVideos extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::table('videos', function (Blueprint $table) {
-            $table->dropColumn('game_id');
-        });
-    }
 }

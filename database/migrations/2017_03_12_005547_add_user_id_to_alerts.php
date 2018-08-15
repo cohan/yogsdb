@@ -13,19 +13,8 @@ class AddUserIdToAlerts extends Migration
     public function up()
     {
         Schema::table('alerts', function (Blueprint $table) {
-            $table->integer('user_id');
+            $table->integer('user_id')->nullable();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::table('alerts', function (Blueprint $table) {
-            $table->dropColumn('user_id');
-        });
-    }
 }
