@@ -11,8 +11,8 @@ class SearchController extends Controller
     //
 
 	public function search (Request $request) {
-		if (!$request->has('query')) {
-			return redirect('/');
+		if (!$request->has('query') || $request->input('query') == '') {
+			return redirect('/search?query=pooping+butt');
 		}
 
 		$videos = Video::search($request->input('query'))->paginate(24);
