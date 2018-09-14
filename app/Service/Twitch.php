@@ -34,7 +34,7 @@ Class Twitch {
     }
 
     public static function fetchFromTwitch($url, $params = []) {
-        $client_id = '5r27dcxq2307qtunzmsimydoxbmdzu';
+        $client_id = config('twitch.client_id');
 
         $client = new Client();
 
