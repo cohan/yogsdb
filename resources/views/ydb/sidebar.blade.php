@@ -11,7 +11,7 @@
                                 <div class='sidebar-channel col-sm-12 stream'>
                                     <a href='{{ $stream->channel->url }}' target="_blank">
                                         <img class='img-responsive' src="{{ $stream->preview->medium }}" />
-                                        {{ $stream->channel->display_name }} playing {{ $stream->game }}
+                                        {{ $stream->channel->display_name }} streaming {{ $stream->game }}
                                     </a>
                                     <div class='stream-meta'>
                                         {{ $stream->viewers }} viewers

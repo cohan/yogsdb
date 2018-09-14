@@ -105,8 +105,8 @@ m.parentNode.insertBefore(a,m)
 			</div>
 			<ul class="nav navbar-nav navbar-right login_drop">
                 @if (\App\Service\Twitch::isCinemaOn())
-                    <li class=''>
-                        <a href='https://ic4.io/yogstv' target="_blank" rel="noopener"><i class='fa fa-film'></i> Yogs Cinema</a>
+                    <li>
+                        <a style='color: #fd0000;font-weight:800;' href='https://ic4.io/yogstv' target="_blank" rel="noopener"><i class='fa fa-film'></i> Yogs Cinema <i class='fa fa-film'></i></a>
                     </li>
                 @endif
 
