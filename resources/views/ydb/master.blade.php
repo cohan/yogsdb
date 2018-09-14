@@ -104,6 +104,12 @@ m.parentNode.insertBefore(a,m)
 				<a class="navbar-brand" href="/"><img style='width:100%' src="https://i.imgsir.com/G54X.png" alt=""></a>
 			</div>
 			<ul class="nav navbar-nav navbar-right login_drop">
+                @if (\App\Service\Twitch::isCinemaOn())
+                    <li class=''>
+                        <a href='https://ic4.io/yogstv' target="_blank" rel="noopener"><i class='fa fa-film'></i> Yogs Cinema</a>
+                    </li>
+                @endif
+
 				<li class=''>
 					<a href='/onthisday'><i class='fa fa-clock-o'></i> On This Day</a>
 				</li>
@@ -119,21 +125,21 @@ m.parentNode.insertBefore(a,m)
 <a href='/login'><i class='fa fa-bell'></i> Alerts</a>
 </li>
 @endif
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="login_icon"></span> My Account
+                    </a>
+                    <ul class="dropdown-menu">
+                        @if (Auth::check())
+                        <li><a href="/home">Dashboard</a></li>
+                        @else
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Sign Up</a></li>
+                        @endif
+                    </ul>
+                </li>
  */
 ?>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-						<span class="login_icon"></span> My Account
-					</a>
-					<ul class="dropdown-menu">
-						@if (Auth::check())
-						<li><a href="/home">Dashboard</a></li>
-						@else
-						<li><a href="/login">Login</a></li>
-						<li><a href="/register">Sign Up</a></li>
-						@endif
-					</ul>
-				</li>
 			</ul>
 		</div><!-- /.container-fluid -->
 	</nav> <!--Navigation-->

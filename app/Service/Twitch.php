@@ -7,6 +7,16 @@ use Illuminate\Support\Facades\Cache;
 
 Class Twitch {
 
+    public static function isCinemaOn() {
+        foreach (self::getLiveStreams() as $stream) {
+            if (stripos($stream->channel->status, "YogsCinema") !== false) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 
     public static function getLiveStreams() {
         $channels = self::getStreamChannels();
