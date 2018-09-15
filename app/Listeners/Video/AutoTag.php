@@ -2,18 +2,16 @@
 
 namespace App\Listeners\Video;
 
-use App\Events\Video\VideoUpdated;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
-
 use App\Channel;
-use App\Video;
+use App\Events\Video\VideoUpdated;
 use App\Game;
-use App\Star;
-
-use Goutte\Client;
-
 use App\Jobs\PatternTagStars;
+use App\Service\YT;
+use App\Star;
+use App\Video;
+use Goutte\Client;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
 
 class AutoTag implements ShouldQueue
 {
@@ -85,38 +83,17 @@ class AutoTag implements ShouldQueue
 			return;	
 		}
 
-		$client = new Client();
+        $foundGame = YT::getVideoGame($video->youtube_id);
 
-		$crawler = $client->request('GET', 'https://www.youtube.com/watch?v='.$video->youtube_id."&hl=en");
-
-		$videoMeta = $crawler->filter('ul[class="watch-extras-section"] > li > ul > li > a')->each(function ($node) { return $node->text()."\n"; });
-
-		$videoMeta[0] = trim($videoMeta[0]);
-
-		$unknownCats = [
-		'Gaming',
-		'YouTube Gaming',
-		];
-
-		if (in_array($videoMeta[0], $unknownCats)) {
-			$videoMeta[0] = "Unknown";
-		}
-
-		if (empty($videoMeta[0])) {
-			$this->logit("GameTagger", "Couldn't identify the Game in ".$video->title);
-
-			return;
-		}
-
-		$this->logit("GameTagger", "Identified Game as ".$videoMeta[0]);
+		$this->logit("GameTagger", "Identified Game as ".$foundGame);
 
 		try {
-			$game = Game::where(['title' => $videoMeta[0]])->firstOrFail();
+			$game = Game::where(['title' => $foundGame])->firstOrFail();
 		}
 		catch (\Exception $e) {
 			$game = new Game();
 
-			$game->title = $videoMeta[0];
+			$game->title = $foundGame;
 			$game->slug = str_slug($game->title);
 
 			$game->giantbomb_id = "NOGIANTBOMB-".uniqid();

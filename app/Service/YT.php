@@ -12,6 +12,8 @@ use App\Events\Video\VideoUpdated;
 use App\Jobs\PatternTagStars;
 use \Done\Subtitles\Subtitles;
 
+use GuzzleHttp\Client;
+
 class YT {
 
 	public static function getVideo($id) {
@@ -177,6 +179,26 @@ class YT {
 		return $duration;
 
 	}
+
+    public static function getVideoGame($youtube_id) {
+        $url = "https://gaming.youtube.com/watch?v=".$youtube_id;
+
+        try {
+            $embed = (new Client)->get('https://gaming.youtube.com/watch?v=' . $youtube_id, ['headers' => ['User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36']])->getBody()->getContents();
+            if (preg_match('/{"contents":\[{"compactGameRenderer":((.+?)}\]},(.+?)}\]})/', $embed, $gameMatches)) {
+                $gameData = json_decode($gameMatches[1] . '}');
+                return $gameData->title->runs[0]->text;
+            }
+            else {
+                return 'Unknown';
+            }
+        }
+        catch (\Exception $e) {
+            return 'Unknown';
+        }
+        
+        return 'Unknown';
+    }
 
 	public static function getVideoTranscript($id) {
 		$youtube_dl = env('YOUTUBE_DL');
