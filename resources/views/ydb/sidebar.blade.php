@@ -14,7 +14,7 @@
                                         {{ $stream->channel->display_name }} streaming {{ $stream->game }}
                                     </a>
                                     <div class='stream-meta'>
-                                        {{ $stream->viewers }} viewers
+                                        {{ comp_numb($stream->viewers) }} viewers
                                     </div>
                                 </div>
                                 @endforeach
