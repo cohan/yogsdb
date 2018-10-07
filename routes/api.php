@@ -46,6 +46,10 @@ Route::domain($domain)->middleware(['middleware' => 'cors'])->group(function () 
 		}
 
         if ($request->has('title')) {
+            if (!$request->has('limit')) { 
+                $limit = 1;
+            }
+
             return App\Video::search($request->input('title'))
                 ->with('channel')
                 ->with('game')
