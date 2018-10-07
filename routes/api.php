@@ -38,25 +38,12 @@ Route::domain($domain)->middleware(['middleware' => 'cors'])->group(function () 
 
 	Route::get('videos', function(VideoFilters $filters, Request $request) {
 
-		if ($request->has('limit') && $request->input('limit') <= 1000) {
+		if ($request->has('limit') && $request->input <= 1000) {
 			$limit = $request->input('limit');
 		}
 		else {
 			$limit = 25;
 		}
-
-        if ($request->has('title')) {
-            if (!$request->has('limit')) { 
-                $limit = 1;
-            }
-
-            return App\Video::search($request->input('title'))
-                ->with('channel')
-                ->with('game')
-                ->with('stars')
-                ->paginate($limit)
-                ->appends($request->except(['page']));
-        }
 
 		return App\Video::filter($filters)
 			->with('channel')
