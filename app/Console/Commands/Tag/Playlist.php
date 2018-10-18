@@ -21,7 +21,8 @@ class Playlist extends Command
 	protected $signature = '
 	tag:playlist
 	{playlist : YouTube playlist ID (not url) }
-	{--star=* : Tag the star slug in this playlist }
+    {--star=* : Tag the star slug in this playlist }
+    {--unstar=* : Untag the star slug in this playlist }
 	{--series= : Tag the series slug to be applied to this playlist }
 	{--game= : Tag the game slug played in this playlist }
 
@@ -54,7 +55,8 @@ class Playlist extends Command
 		//
 		$playlist_id = $this->argument('playlist');
 
-		$stars = $this->option('star') ?: null;
+        $stars = $this->option('star') ?: null;
+        $unstars = $this->option('unstar') ?: null;
 		$series = $this->option('series') ?: null;
 		$game = $this->option('game') ?: null;
 
@@ -104,20 +106,35 @@ class Playlist extends Command
 
 				echo "Operating on ".$video->title."\n";
 
-				if (!empty($stars)) {
-					foreach ($stars as $star) {
-						$star = Star::where('title', 'like', $star)->first();
+                if (!empty($stars)) {
+                    foreach ($stars as $star) {
+                        $star = Star::where('title', 'like', $star)->first();
 
-						echo "Attaching ".$star->title." to ".$video->title."\n";
+                        echo "Attaching ".$star->title." to ".$video->title."\n";
 
-						try {
-							$video->stars()->attach([$star->id]);
-						}
-						catch (\Exception $e) {
-							echo "Already attached\n";
-						}
-					}
-				}
+                        try {
+                            $video->stars()->attach([$star->id]);
+                        }
+                        catch (\Exception $e) {
+                            echo "Already attached\n";
+                        }
+                    }
+                }
+
+                if (!empty($unstars)) {
+                    foreach ($unstars as $unstar) {
+                        $unstar = Star::where('title', 'like', $unstar)->first();
+
+                        echo "Detaching ".$unstar->title." from ".$video->title."\n";
+
+                        try {
+                            $video->stars()->detach([$unstar->id]);
+                        }
+                        catch (\Exception $e) {
+                            echo "Already detached\n";
+                        }
+                    }
+                }
 
 				if (!empty($series)) {
 					echo "Attach series ".$series->title." to ".$video->title."\n";
