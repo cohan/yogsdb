@@ -220,9 +220,6 @@ m.parentNode.insertBefore(a,m)
 		</div>
 	</footer>
 
-<script async src="https://cdn.simpleanalytics.io/hello.js"></script> 
-<noscript><img src="https://api.simpleanalytics.io/hello.gif" alt=""></noscript>
-
 <!-- Fathom - simple website analytics - https://github.com/usefathom/fathom -->
 <script>
 (function(f, a, t, h, o, m){
