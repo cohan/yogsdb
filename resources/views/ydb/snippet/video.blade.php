@@ -22,7 +22,12 @@
 							</span>
 							@endif
 						</div>
-					</div>
+                        @if (\App\Service\Twitch::isCinemaOn())
+                            <span class='col-sm-12 cinema' style='text-align:center;margin:0;padding:5px;width:100%;margin-top:10px;background-color:#eee;color:#111'>
+                                !voteadd {{ $video->youtube_id }}
+                            </span>
+                        @endif
+                    </div>
 				</div>
 				<div class="row m0 taxonomy">
 					<div class="fleft category"><a href="/game/{{ $video->game->slug }}"><i class='fa fa-gamepad'></i> {{ str_limit($video->game->title,15) }}</a></div>

@@ -12,6 +12,11 @@
                     Open in YouTube
                 </div>
             </a>
+            @if (\App\Service\Twitch::isCinemaOn())
+                <span class='col-sm-12 cinema' style='text-align:center;margin:0;padding:5px;width:100%;background-color:#eee;color:#111'>
+                    !voteadd {{ $video->youtube_id }}
+                </span>
+            @endif
 
 			<style type="text/css">
 				.linkout-youtubevideo {

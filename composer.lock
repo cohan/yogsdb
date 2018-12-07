@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3026f185ad47ada88f983a4ec3489dcb",
+    "content-hash": "4f91752365845fb44d76698ce0391e0d",
     "packages": [
         {
             "name": "alaouy/youtube",
@@ -3050,16 +3050,16 @@
         },
         {
             "name": "shipping-docker/vessel",
-            "version": "3.0.1",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shipping-docker/vessel.git",
-                "reference": "d8e041ce1b14797c927668bcc83ae94cf85f3c7e"
+                "reference": "04b93f89d2351bfa7201cd2c822c25515dccbe46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shipping-docker/vessel/zipball/d8e041ce1b14797c927668bcc83ae94cf85f3c7e",
-                "reference": "d8e041ce1b14797c927668bcc83ae94cf85f3c7e",
+                "url": "https://api.github.com/repos/shipping-docker/vessel/zipball/04b93f89d2351bfa7201cd2c822c25515dccbe46",
+                "reference": "04b93f89d2351bfa7201cd2c822c25515dccbe46",
                 "shasum": ""
             },
             "type": "library",
@@ -3086,7 +3086,7 @@
                 }
             ],
             "description": "Simple Docker dev environments",
-            "time": "2018-02-19T13:30:16+00:00"
+            "time": "2018-10-16T16:39:15+00:00"
         },
         {
             "name": "simplesoftwareio/simple-cache",
