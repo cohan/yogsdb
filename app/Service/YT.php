@@ -110,15 +110,17 @@ class YT {
 			$thumbnailUrl = $youtubeVideo->snippet->thumbnails->maxres->url;
 		}
 
-		if (empty($thumbnailUrl)) {
-			$video->thumbnail = null;
-		}
-		else {
-			$youtubeThumbnail = file_get_contents($thumbnailUrl);
-			Storage::put($video->youtube_id.'.jpg', $youtubeThumbnail);
-			$video->thumbnail = Storage::url($video->youtube_id.'.jpg');
-			Storage::setVisibility($video->youtube_id.'.jpg', 'public');
-		}
+        try {
+            $youtubeThumbnail = file_get_contents($thumbnailUrl);
+        }
+        catch (\Exception $e) {
+            $youtubeThumbnail = file_get_contents("https://i.imgsir.com/gXXO.png");
+        }
+
+        Storage::put($video->youtube_id.'.jpg', $youtubeThumbnail);
+        $video->thumbnail = Storage::url($video->youtube_id.'.jpg');
+        Storage::setVisibility($video->youtube_id.'.jpg', 'public');
+
 		if (!empty($youtubeVideo->snippet->channelId)) {
 			$channel = Channel::where('youtube_id', '=', $youtubeVideo->snippet->channelId)->first();
 
