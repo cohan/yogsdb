@@ -220,7 +220,7 @@ m.parentNode.insertBefore(a,m)
 		</div>
 	</footer>
 
-	<script async defer src="https://stats.yogsdb.com/app.js"></script> 
-	<noscript><img src="https://stats.yogsdb.com/image.gif" alt=""></noscript>
+	<script async defer src="https://stats.yogsdb.com/t.js"></script> 
+	<noscript><img src="https://stats.yogsdb.com/t.gif" alt=""></noscript>
 </body>
 </html>
