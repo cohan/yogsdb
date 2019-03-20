@@ -71,7 +71,7 @@ return [
 					'default'
 				],
 				'balance'    => 'auto',
-				'processes'  => 1,
+				'processes'  => 4,
 				'tries'      => 3,
 				'timeout'    => 3600,
 			],
