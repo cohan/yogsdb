@@ -11,9 +11,6 @@ use App\Video;
 
 class SendNotifications implements ShouldQueue
 {
-
-    public $queue = 'idle';
-
     /**
      * Create the event listener.
      *

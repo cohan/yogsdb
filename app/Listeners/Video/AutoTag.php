@@ -16,8 +16,6 @@ use Illuminate\Queue\InteractsWithQueue;
 class AutoTag implements ShouldQueue
 {
 
-	public $queue = 'idle';
-
 	/**
 	 * Create the event listener.
 	 *
@@ -70,7 +68,7 @@ class AutoTag implements ShouldQueue
 
 		$this->logit('AutoTag', 'Queueing Pattern Tagger');
 
-		dispatch((new PatternTagStars($video))->onQueue('medium'));
+		dispatch((new PatternTagStars($video)));
 
 
 	}

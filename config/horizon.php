@@ -62,21 +62,18 @@ return [
 				'balance'    => 'false',
 				'processes'  => 1,
 				'tries'      => 10,
-				'timeout'    => 600,
+				'timeout'    => 3600,
 			],
 			'queues'      => [
 				'connection' => 'redis',
 				'queue'      => [
 					'high',
-					'medium',
-					'low',
-					'default',
-					'idle'
+					'default'
 				],
 				'balance'    => 'auto',
-				'processes'  => 4,
-				'tries'      => 1,
-				'timeout'    => 600,
+				'processes'  => 1,
+				'tries'      => 3,
+				'timeout'    => 3600,
 			],
 		],
 
@@ -93,10 +90,7 @@ return [
 				'connection' => 'redis',
 				'queue'      => [
 					'high',
-					'medium',
-					'low',
-					'default',
-					'idle'
+					'default'
 				],
 				'balance'    => 'auto',
 				'processes'  => 3,

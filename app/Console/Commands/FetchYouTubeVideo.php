@@ -51,6 +51,6 @@ class FetchYouTubeVideo extends Command
 		$latestOnly = $this->option('latest');
 		$video_id = $this->argument('videoid');
 
-		dispatch((new AddOrUpdateVideo($video_id, $latestOnly))->onQueue('idle'));
+		dispatch((new AddOrUpdateVideo($video_id, $latestOnly)));
 	}
 }

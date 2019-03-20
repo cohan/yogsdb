@@ -50,7 +50,7 @@ class YT {
                 $video->restore();
             }
 
-            dispatch((new PatternTagStars($video))->onQueue('low'));
+            dispatch((new PatternTagStars($video)));
 
             return;
         }
