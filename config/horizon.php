@@ -74,7 +74,7 @@ return [
 					'idle'
 				],
 				'balance'    => 'auto',
-				'processes'  => 3,
+				'processes'  => 4,
 				'tries'      => 1,
 				'timeout'    => 600,
 			],
