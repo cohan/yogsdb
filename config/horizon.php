@@ -71,25 +71,18 @@ return [
 		],
 
 		'local'        => [
-			'searchIndex' => [
-				'connection' => 'redis',
-				'queue'      => ['searchIndex'],
-				'balance'    => 'false',
-				'processes'  => 1,
-				'tries'      => 10,
-				'timeout'    => 600,
-			],
-			'queues'      => [
-				'connection' => 'redis',
-				'queue'      => [
-					'high',
-					'default'
-				],
-				'balance'    => 'auto',
-				'processes'  => 3,
-				'tries'      => 1,
-				'timeout'    => 600,
-			],
+            'queues'      => [
+                'connection' => 'redis',
+                'queue'      => [
+                    'high',
+                    'default',
+                    'searchIndex'
+                ],
+                'balance'    => 'auto',
+                'processes'  => 4,
+                'tries'      => 3,
+                'timeout'    => 3600,
+            ],
 		],
 	],
 
