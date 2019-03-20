@@ -56,19 +56,12 @@ return [
 
 	'environments'  => [
 		'production'   => [
-			'searchIndex' => [
-				'connection' => 'redis',
-				'queue'      => ['searchIndex'],
-				'balance'    => 'false',
-				'processes'  => 1,
-				'tries'      => 10,
-				'timeout'    => 3600,
-			],
 			'queues'      => [
 				'connection' => 'redis',
 				'queue'      => [
 					'high',
-					'default'
+					'default',
+                    'searchIndex'
 				],
 				'balance'    => 'auto',
 				'processes'  => 4,
