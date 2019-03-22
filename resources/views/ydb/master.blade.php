@@ -148,6 +148,13 @@
 		</div><!-- /.container-fluid -->
 	</nav> <!--Navigation-->
 
+    <section class='alert text-center'>
+        <p>
+            Hey, why are the latest videos not updating?
+            <a target="_blank" href='https://cohan.io/youtubes-api-busted/'>YouTube's busted</a> :(
+        </p>
+    </section>
+
 	<section class="row search_filter search_filter_type2">
 		<div class="container">
 			<div class="row m0">
