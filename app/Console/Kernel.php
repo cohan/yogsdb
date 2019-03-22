@@ -43,11 +43,7 @@ class Kernel extends ConsoleKernel {
 		         ->hourlyAt(30)
 		         ->withoutOverlapping();
 
-		$schedule->command("video:fresh --days=14")
-		         ->weekly()
-		         ->withoutOverlapping();
-
-		$schedule->command("video:refresh --count=20")
+		$schedule->command("video:refresh --count=5")
 		         ->hourly()
 		         ->withoutOverlapping();
 
