@@ -10,7 +10,7 @@
 
                                 <div class='sidebar-channel col-sm-12 stream'>
                                     <a href='{{ $stream->channel->url }}' target="_blank">
-                                        <img class='img-responsive' src="https://images.icnerd.com/unsafe/256x144/smart/{{ $stream->preview->medium }}" />
+                                        <img class='img-responsive' src="https://images.icnerd.com/unsafe/256x144/{{ $stream->preview->medium }}" />
                                         {{ $stream->channel->display_name }} streaming {{ $stream->game }}
                                     </a>
                                     <div class='stream-meta'>
