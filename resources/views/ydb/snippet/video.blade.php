@@ -2,7 +2,7 @@
 			<div class="inner row m0">
 				<a href="/{{ $video->channel->slug }}/{{ $video->slug }}">
 					<div class="row screencast m0">
-						<img src="https://images.icnerd.com/unsafe/283x160/https://cdn.yogsdb.com/{{ $video->youtube_id }}.jpg" alt="" class="cast img-responsive">
+						<img src="https://images.icnerd.com/unsafe/283x160/smart/https://cdn.yogsdb.com/{{ $video->youtube_id }}.jpg" alt="" class="cast img-responsive">
 						<div class="media-length">{{ preg_replace("/^00:/i", "", date("H:i:s", $video->duration)) }}</div>
 
 					</div>
