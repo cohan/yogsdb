@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4f91752365845fb44d76698ce0391e0d",
+    "content-hash": "0fe42eb3259a559a2c87b83662eb8bee",
     "packages": [
         {
             "name": "alaouy/youtube",
@@ -1459,6 +1459,129 @@
                 "stream"
             ],
             "time": "2014-10-12T19:18:40+00:00"
+        },
+        {
+            "name": "honeybadger-io/honeybadger-laravel",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/honeybadger-io/honeybadger-laravel.git",
+                "reference": "40140b63f4df85a61a52034d921eb0d221332973"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/honeybadger-io/honeybadger-laravel/zipball/40140b63f4df85a61a52034d921eb0d221332973",
+                "reference": "40140b63f4df85a61a52034d921eb0d221332973",
+                "shasum": ""
+            },
+            "require": {
+                "honeybadger-io/honeybadger-php": "^1.2",
+                "illuminate/console": "^5.5",
+                "illuminate/support": "^5.5",
+                "php": "^7.1",
+                "sixlive/dotenv-editor": "^1.1"
+            },
+            "require-dev": {
+                "larapack/dd": "^1.0",
+                "mockery/mockery": "^1.1",
+                "orchestra/testbench": "^3.5",
+                "phpunit/phpunit": "^6.0|^7.0",
+                "sempro/phpunit-pretty-print": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Honeybadger\\HoneybadgerLaravel\\HoneybadgerServiceProvider"
+                    ],
+                    "aliases": {
+                        "Honeybadger": "Honeybadger\\HoneybadgerLaravel\\Facades\\Honeybadger"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Honeybadger\\HoneybadgerLaravel\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "TJ Miller",
+                    "email": "oss@tjmiller.co",
+                    "homepage": "https://tjmiller.co",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Honeybadger Laravel integration",
+            "homepage": "https://github.com/honeybadger-io/honeybadger-laravel",
+            "keywords": [
+                "debugging",
+                "errors",
+                "exceptions",
+                "honeybadger-io",
+                "honeybadger-php",
+                "logging",
+                "monitoring"
+            ],
+            "time": "2018-12-17T11:15:03+00:00"
+        },
+        {
+            "name": "honeybadger-io/honeybadger-php",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/honeybadger-io/honeybadger-php.git",
+                "reference": "7cb54d64eb82ce84d4ec664818e2832769086caf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/honeybadger-io/honeybadger-php/zipball/7cb54d64eb82ce84d4ec664818e2832769086caf",
+                "reference": "7cb54d64eb82ce84d4ec664818e2832769086caf",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.3",
+                "php": "^7.1",
+                "symfony/http-foundation": ">=3.3 || ^4.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.1",
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Honeybadger\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "TJ Miller",
+                    "email": "oss@tjmiller.co",
+                    "homepage": "https://tjmiller.co",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Honeybadger PHP library",
+            "homepage": "https://github.com/honeybadger-io/honeybadger-php",
+            "keywords": [
+                "debugging",
+                "errors",
+                "exceptions",
+                "honeybadger-io",
+                "honeybadger-php",
+                "logging",
+                "monitoring"
+            ],
+            "time": "2018-12-17T11:11:31+00:00"
         },
         {
             "name": "intervention/image",
@@ -3176,6 +3299,56 @@
             ],
             "description": "An easy to use caching trait for Laravel's Eloquent Models.",
             "time": "2016-12-21T00:54:20+00:00"
+        },
+        {
+            "name": "sixlive/dotenv-editor",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sixlive/dotenv-editor.git",
+                "reference": "258e4fea7068c84402211a900659cda2c631bc00"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sixlive/dotenv-editor/zipball/258e4fea7068c84402211a900659cda2c631bc00",
+                "reference": "258e4fea7068c84402211a900659cda2c631bc00",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1|^7.2"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.12",
+                "larapack/dd": "^1.0",
+                "phpunit/phpunit": "^7.0",
+                "sempro/phpunit-pretty-print": "^1.0.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "sixlive\\DotenvEditor\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "TJ Miller",
+                    "email": "oss@tjmiller.co",
+                    "homepage": "https://tjmiller.me",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A tool to edit phpdotenv files",
+            "homepage": "https://github.com/sixlive/dotenv-editor",
+            "keywords": [
+                "dotenv",
+                "dotenv-editor",
+                "phpdotenv"
+            ],
+            "time": "2019-01-31T13:02:04+00:00"
         },
         {
             "name": "spatie/browsershot",
@@ -6185,6 +6358,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2018-08-09T05:50:03+00:00"
         },
         {
