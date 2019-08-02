@@ -146,7 +146,25 @@
 ?>
 			</ul>
 		</div><!-- /.container-fluid -->
+        <div class='row'>
+            <div class='text-center site-notice'>
+                <a class='btn' target="_blank" href='https://yogs.app/#/yogcon'>YogCon time!<br />There's a nice side-by-side schedule if you click on this text here</a>
+            </div>
+        </div>
 	</nav> <!--Navigation-->
+
+    <style type="text/css">
+        .site-notice {
+            padding: 25px;
+            background-color: #123456;
+            width: 100%;
+            color: white;
+        }
+        .site-notice a, .site-notice a:visited, .site-notice a:hover, .site-notice a:active {
+            color: white;
+            font-size: 1.6em;
+        }
+    </style>
 
 	<section class="row search_filter search_filter_type2">
 		<div class="container">
