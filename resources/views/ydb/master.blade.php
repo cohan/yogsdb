@@ -146,11 +146,7 @@
 ?>
 			</ul>
 		</div><!-- /.container-fluid -->
-        <div class='row'>
-            <div class='text-center site-notice'>
-                <a class='btn' target="_blank" href='https://yogs.app/#/yogcon'>YogCon time!<br />There's a nice side-by-side schedule if you click on this text here</a>
-            </div>
-        </div>
+
 	</nav> <!--Navigation-->
 
     <style type="text/css">
