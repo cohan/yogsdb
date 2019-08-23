@@ -62,7 +62,7 @@ class VideoController extends Controller
 		->with('channel')
 		->first();
 
-		if (empty($video)) { abort(404); }
+		if (empty($video) || !is_object($video) || !is_object($video->channel)) { abort(404); }
 
 		$title = $video->title." - ".$video->channel->title;
 
