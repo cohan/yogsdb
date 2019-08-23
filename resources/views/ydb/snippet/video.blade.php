@@ -1,3 +1,4 @@
+@if (is_object($video) && is_object($video->channel))
 		<article class="col-sm-4 video_post postType2">
 			<div class="inner row m0">
 				<a href="/{{ $video->channel->slug }}/{{ $video->slug }}">
@@ -35,3 +36,4 @@
 				</div>
 			</div>
 		</article>
+@endif
