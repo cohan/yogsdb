@@ -55,7 +55,7 @@ Route::domain($domain)->middleware(['middleware' => 'cors'])->group(function () 
                 ->paginate($limit)
                 ->appends($request->except(['page']));
         }
-        return Cache::remember('video-'.md5(json_encode($request->all()).$limit), 15, function () use ($filters, $limit, $request) {
+        return Cache::remember('video-'.md5(json_encode($request->all()).$limit), 5, function () use ($filters, $limit, $request) {
             return App\Video::filter($filters)
                 ->with('channel')
                 ->with('game')
