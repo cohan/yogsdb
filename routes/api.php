@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
 use App\Filters\VideoFilters;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,13 +55,14 @@ Route::domain($domain)->middleware(['middleware' => 'cors'])->group(function () 
                 ->paginate($limit)
                 ->appends($request->except(['page']));
         }
-
-		return App\Video::filter($filters)
-			->with('channel')
-			->with('game')
-			->with('stars')
-			->paginate($limit)
-			->appends($request->except(['page']));
+        return Cache::remember('video-'.md5(json_encode($request->all()).$limit), 15, function () use ($filters, $limit, $request) {
+            return App\Video::filter($filters)
+                ->with('channel')
+                ->with('game')
+                ->with('stars')
+                ->paginate($limit)
+                ->appends($request->except(['page']));
+        });
 
 		// return App\Video::orderBy('upload_date', 'desc')
 		// 	->with('channel')
