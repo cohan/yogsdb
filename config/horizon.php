@@ -64,7 +64,7 @@ return [
                     'searchIndex'
 				],
 				'balance'    => 'auto',
-				'processes'  => 10,
+				'processes'  => 4,
 				'tries'      => 3,
 				'timeout'    => 3600,
 			],
