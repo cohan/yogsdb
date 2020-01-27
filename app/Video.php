@@ -8,7 +8,7 @@ use App\VideoSearchRule;
 use Cache;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use ScoutElastic\Searchable;
+use Laravel\Scout\Searchable;
 
 class Video extends Model
 {
@@ -26,9 +26,11 @@ class Video extends Model
 	protected $mapping = [
 		'properties' => [
 			'title' => [
+				'type' => 'text',
 				'analyzer' => 'english'
 			],
 			'description' => [
+				'type' => 'text',
 				'analyzer' => 'english'
 			]
 		]
@@ -118,11 +120,11 @@ class Video extends Model
 
 		// Customize array...
 		
-		$searchableArray['title'] = $this->title;
-		$searchableArray['description'] = $this->description;
-		$searchableArray['captions'] = $this->captions;
+		$searchableArray['title'] = $this->title ?? '';
+		$searchableArray['description'] = $this->description ?? '';
+		$searchableArray['captions'] = $this->captions ?? '';
 
-		$searchableArray['channel_name'] = $this->channel->title;
+		$searchableArray['channel_name'] = $this->channel->title ?? '';
 
 		return $searchableArray;
 	}
