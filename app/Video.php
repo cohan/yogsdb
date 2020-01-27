@@ -26,11 +26,9 @@ class Video extends Model
 	protected $mapping = [
 		'properties' => [
 			'title' => [
-				'type' => 'text',
 				'analyzer' => 'english'
 			],
 			'description' => [
-				'type' => 'text',
 				'analyzer' => 'english'
 			]
 		]
