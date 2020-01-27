@@ -8,7 +8,7 @@ use App\VideoSearchRule;
 use Cache;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Laravel\Scout\Searchable;
+use ScoutElastic\Searchable;
 
 class Video extends Model
 {
