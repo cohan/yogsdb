@@ -11,7 +11,7 @@ class VideoFilters extends QueryFilters {
 	}
 
 	public function title($title) {
-        if ($title == "ttt") {
+        if (strtolower($title) == "ttt") {
             return $this->builder->where("videos.title", "LIKE", "%GMOD TTT%")->inRandomOrder();
         }
 
