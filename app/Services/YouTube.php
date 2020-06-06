@@ -35,7 +35,9 @@ class YouTubeChannel
         $intChannel = Channel::where('source', 'youtube')->where('source_id', $channel->id)->first();
 
         if (empty($intChannel->id)) {
-            $intChannel = Channel::create(['source_id' => $channel->id]);
+            $intChannel = Channel::create([
+                'source_id' => $channel->id
+            ]);
             $intChannel->fresh();
         }
 
@@ -72,6 +74,17 @@ class YouTubeVideo
     public function __construct($video)
     {
         $intVideo = Video::where('source', 'youtube')->where('source_id', $video->id)->first();
+
+        if (empty($intVideo->id)) {
+            $intVideo = Video::create([
+                'source' => 'youtube',
+                'source_id' => $video->id,
+                'channel_id' => YouTube::getChannel($video->snippet->channelId)->id
+            ]);
+
+            dd($intVideo);
+            $intVideo->fresh();
+        }
 
         $this->id = $intVideo->id ?? null;
 
