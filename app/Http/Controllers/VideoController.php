@@ -14,7 +14,7 @@ class VideoController extends Controller
      */
     public function index()
     {
-        $videos = Video::paginate(24);
+        $videos = Video::youtube()->orderBy('created_at', 'DESC')->paginate(config('app.pagination'));
 
         return view('videos.index')->with(compact('videos'));
     }
