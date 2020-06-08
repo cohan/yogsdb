@@ -3,7 +3,7 @@
 @section('content')
 <div class="col-sm-9">
     <div class="row">
-        <p>Aup. I know the videos aren't updating at the moment. YouTube want me to fill out a million forms and jump through a few thousand hoops to get the API access back. I intend on getting round to it, but my free time is a little stretched as it is right now</p>
+        <p>I've got the details on what's needed YouTube-wise, but I've decided it's about time to rewrite this beast OSS. Join in if you fancy: <a href='https://github.com/cohan/yogsdb' target="_blank" rel='noopener'>https://github.com/cohan/yogsdb</a></p>
     </div>
 </div>
 
