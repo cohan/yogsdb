@@ -24,7 +24,7 @@ I'll move my backlog over once the new site's ready if the issues still apply.
 
 Regarding the API access YouTube have actually been pretty reasonable. There's only a couple of things they want changing.
 
-1) Please reference YouTube TOS/Privacy docs ([#6](https://github.com/cohan/yogsdb/issues/6))
-2) Refresh or delete content before 30 days ([#7](https://github.com/cohan/yogsdb/issues/7))
+1. Please reference YouTube TOS/Privacy docs ([#6](https://github.com/cohan/yogsdb/issues/6))
+2. Refresh or delete content before 30 days ([#7](https://github.com/cohan/yogsdb/issues/7))
 
 The latter will be the biggest pain in the rear because I've decided it's time to blow out the crappy code cobwebs and re-do the project over.

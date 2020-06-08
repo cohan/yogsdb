@@ -2,41 +2,54 @@
 
 namespace App;
 
+use App\Member;
+use App\Services\YouTube;
+use App\Video;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Channel extends Model
 {
-    //
-    use SoftDeletes;
+    protected $guarded = [];
 
-    protected $fillable = ['youtube_id'];
-
-    protected $appends = array('image');
-
-    protected $hidden = [
-        'thumbnail',
-        'deleted_at',
-    ];
-
-    /**
-     * Get the videos for the channel.
-     */
     public function videos()
     {
-        return $this->hasMany('App\Video')->orderBy("upload_date", "desc");
+        return $this->hasMany(Video::class);
     }
 
-    /**
-     * Get the assumed stars for the channel
-     */
-    public function stars()
+    public function members()
     {
-        return $this->hasMany('App\Star', 'youtube_id', 'youtube_id');
+        return $this->belongsToMany(Member::class);
     }
 
-    public function getImageAttribute()
+    public function scopeOfficial()
     {
-        return "https://cdn.yogsdb.com/channel/".$this->youtube_id.".jpg";
+        return $this->where('official', true);
     }
+
+    public static function thatNeedUpdating()
+    {
+        return Channel::where('title', '')
+            ->orWhere('updated_at', '<=', now()->subDays(20))
+            ->get();
+    }
+
+    public function updateFromSource()
+    {
+        $this->update((array) $this->fromSource());
+
+        return $this;
+    }
+
+    public function fromSource()
+    {
+        switch($this->source) {
+            case "youtube":
+            default:
+                return YouTube::getChannel($this->source_id);
+        }
+
+        return null;
+    }
+
+
 }

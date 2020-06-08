@@ -3,39 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Video;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+
+    public function tos()
     {
+        return view('tos');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function privacy()
     {
-        $this->middleware('auth');
-
-        return view('home');
+        return view('privacy');
     }
 
-    /**
-     * Show the homepage.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function welcome()
+    public function about()
     {
-        $videos = Video::orderBy("upload_date", "desc")->paginate(24);
-        return view('ydb.welcome')->with("videos", $videos);
-    }    
+        return view('about');
+    }
+
 }
