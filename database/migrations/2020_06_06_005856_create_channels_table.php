@@ -20,6 +20,11 @@ class CreateChannelsTable extends Migration
             $table->string('source')->default('youtube');
             $table->string('source_id')->nullable();
 
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+
+            $table->string('image')->nullable();
+
             $table->boolean('official')->default(false);
 
         });

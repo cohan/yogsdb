@@ -21,19 +21,23 @@ class Video extends Model
         return $this->belongsTo(Channel::class);
     }
 
-    public function toArray()
+    public static function thatNeedsUpdating()
     {
-        return (array) $this->fromSource();
+        return Video::where('title', '')
+            ->orWhere('updated_at', '<=', now()->subDays(20))
+            ->get();
     }
 
-    public function reSource()
+    public function updateFromSource()
     {
-        $video = $this->fromSource();
+        // Shouldn't be called too often, as it only updates the one vid.
+        // We should batch into 50s.
+        $this->update((array) $this->fromSource());
 
-        return Video::createOrUpdate($video);
+        return $this;
     }
 
-    public function fromSource()
+    protected function fromSource()
     {
         switch($this->source) {
             case "youtube":
@@ -42,4 +46,5 @@ class Video extends Model
 
         return null;
     }
+
 }

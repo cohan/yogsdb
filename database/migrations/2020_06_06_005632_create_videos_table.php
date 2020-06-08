@@ -21,11 +21,26 @@ class CreateVideosTable extends Migration
             $table->string('source_id');
             $table->unique('source', 'source_id');
 
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+
+            $table->unsignedInteger('duration')->default(0);
+
+            $table->unsignedBigInteger('view_count')->default(0);
+            $table->unsignedBigInteger('like_count')->default(0);
+            $table->unsignedBigInteger('dislike_count')->default(0);
+            $table->unsignedBigInteger('comment_count')->default(0);
+
+            $table->string('game')->default('Unknown');
+            $table->json('tags')->nullable();
+            $table->string('image')->nullable();
+
 
             $table->unsignedBigInteger('channel_id')
                 ->references('id')
                 ->on('channels')
-                ->onDelete('cascade');
+                ->onDelete('cascade')
+                ->nullable();
 
 
         });

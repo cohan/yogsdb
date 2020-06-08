@@ -21,18 +21,30 @@ class Channel extends Model
         return $this->belongsToMany(Member::class);
     }
 
-    public function toArray()
+    public static function thatNeedsUpdating()
     {
-        return (array) $this->fromSource();
+        return Channel::where('title', '')
+            ->orWhere('updated_at', '<=', now()->subDays(20))
+            ->get();
+    }
+
+    public function updateFromSource()
+    {
+        $this->update((array) $this->fromSource());
+
+        return $this;
     }
 
     public function fromSource()
     {
         switch($this->source) {
             case "youtube":
+            default:
                 return YouTube::getChannel($this->source_id);
         }
 
         return null;
     }
+
+
 }

@@ -46,12 +46,10 @@ class YouTubeChannel
 
         $this->source = 'youtube';
         $this->source_id = $channel->id;
-        $this->youtube_id = $channel->id;
 
         $this->official = $intChannel->official ?? false;
 
         $this->title = $channel->snippet->title;
-        $this->slug = Str::slug($this->title);
         $this->description = $channel->snippet->description;
         $this->created_at = Carbon::parse($channel->snippet->publishedAt);
         $this->updated_at = $intChannel->updated_at ?? now();
@@ -91,13 +89,10 @@ class YouTubeVideo
         $this->source = 'youtube';
         $this->source_id = $video->id;
 
-        $this->youtube_id = $video->id; // backwards compatibility
         $this->title = $video->snippet->title;
-        $this->slug = Str::slug($this->title);
         $this->description = $video->snippet->description;
         $this->channel_id = $intVideo->channel_id ?? 0;
         $this->created_at = Carbon::parse($video->snippet->publishedAt);
-        $this->upload_date = $this->created_at; // backwards compatibility
         $this->updated_at = $intVideo->updated_at ?? now();
 
         $this->duration = (int) $this->getDurationSeconds($video->contentDetails->duration);
@@ -105,7 +100,6 @@ class YouTubeVideo
         $this->view_count = (int) $video->statistics->viewCount ?? 0;
         $this->like_count = (int) $video->statistics->likeCount ?? 0;
         $this->dislike_count = (int) $video->statistics->dislikeCount ?? 0;
-        $this->favorite_count = (int) $video->statistics->favoriteCount ?? 0;
         $this->comment_count = (int) $video->statistics->commentCount ?? 0;
 
         $this->game = (string) $this->getVideoGame();
