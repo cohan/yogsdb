@@ -21,7 +21,12 @@ class Channel extends Model
         return $this->belongsToMany(Member::class);
     }
 
-    public static function thatNeedsUpdating()
+    public function scopeOfficial()
+    {
+        return $this->where('official', true);
+    }
+
+    public static function thatNeedUpdating()
     {
         return Channel::where('title', '')
             ->orWhere('updated_at', '<=', now()->subDays(20))

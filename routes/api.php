@@ -13,3 +13,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::resource('members', 'MemberController')->only(['index', 'show']);
+Route::resource('channels', 'ChannelController')->only(['index', 'show']);
+Route::resource('videos', 'VideoController')->only(['index', 'show']);

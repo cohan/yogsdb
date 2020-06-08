@@ -8,20 +8,19 @@ use App\Video;
 use Cache;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
-use Str;
 
 class YouTube
 {
     public static function getChannel($id)
     {
-        return new YouTubeChannel(Cache::remember('channel-youtube-'.md5(json_encode($id)), now()->addDays(28), function () use ($id) {
+        return new YouTubeChannel(Cache::remember('channel-youtube-'.md5(json_encode($id)), now()->addHours(6), function () use ($id) {
             return YT::getChannelById($id);
         }));
     }
 
     public static function getVideo($id)
     {
-        return new YouTubeVideo(Cache::remember('video-youtube-'.md5(json_encode($id)), now()->addDays(28), function () use ($id) {
+        return new YouTubeVideo(Cache::remember('video-youtube-'.md5(json_encode($id)), now()->addHours(6), function () use ($id) {
             return YT::getVideoInfo($id);
         }));
     }

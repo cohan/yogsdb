@@ -10,18 +10,23 @@ class Video extends Model
 {
     protected $guarded = [];
 
-    public static function getVideo($source_id, $source = 'youtube') {
-        $video = Video::where('source', '=', $source)->where('source_id', '=', $source_id)->first();
-
-        return $video;
-    }
-
     public function channel()
     {
         return $this->belongsTo(Channel::class);
     }
 
-    public static function thatNeedsUpdating()
+    public function scopeYoutube()
+    {
+        return $this->where('source', 'youtube');
+    }
+    public function scopeTwitch()
+    {
+        return $this->where('source', 'twitch');
+    }
+
+
+
+    public static function thatNeedUpdating()
     {
         return Video::where('title', '')
             ->orWhere('updated_at', '<=', now()->subDays(20))

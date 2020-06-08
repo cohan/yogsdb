@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'VideoController@index');
+
+Route::get('tos', 'HomeController@tos');
+Route::get('privacy', 'HomeController@privacy');
+Route::get('about', 'HomeController@about');
+
+Auth::routes(['verify' => true]);
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('members', 'MemberController')->only(['index', 'show']);
+Route::resource('channels', 'ChannelController')->only(['index', 'show']);
+Route::resource('videos', 'VideoController')->only(['index', 'show']);
