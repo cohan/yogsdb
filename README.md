@@ -8,11 +8,17 @@ There is no support for hosting it yourself at this time. I actually wouldn't ad
 
 The master (at time of writing) is the current production code. It's horrible. This was the first project I started when I started using Laravel.
 
-Don't use it for anythig, don't issue PRs to it. Security fixes only.
+Don't use it for anything, don't issue PRs to it. Security fixes only.
 
 The new version is in the [deploy](cohan/yogsdb/tree/feature/minimal) branch. Deploy will auto-deploy to a staging site and eventually will be merged into master once it's working.
 
 All work on the current site is on hold.
+
+## Yo there's no issues
+
+Aye I was using GitLab to host this when it was private but I've moved it to GitHub to ~~boost my contribution stats~~ because everyone's probably used to GitHub for open source projects.
+
+I'll move my backlog over once the new site's ready if the issues still apply.
 
 ## YouTube's request
 
