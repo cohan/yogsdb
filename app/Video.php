@@ -28,7 +28,7 @@ class Video extends Model
 
     public static function thatNeedUpdating()
     {
-        return Video::where('title', '')
+        return Video::whereNull('title')
             ->orWhere('updated_at', '<=', now()->subDays(20))
             ->get();
     }
@@ -36,7 +36,8 @@ class Video extends Model
     public function updateFromSource()
     {
         // Shouldn't be called too often, as it only updates the one vid.
-        // We should batch into 50s.
+        // We should batch into 50s for regular usage.
+
         $this->update((array) $this->fromSource());
 
         return $this;
