@@ -19,7 +19,7 @@ class CreateVideosTable extends Migration
 
             $table->string('source')->default('youtube');
             $table->string('source_id');
-            $table->unique('source', 'source_id');
+            $table->unique(['source', 'source_id'], 'source_video');
 
             $table->string('title')->nullable();
             $table->text('description')->nullable();
