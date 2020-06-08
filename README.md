@@ -10,7 +10,7 @@ The master (at time of writing) is the current production code. It's horrible. T
 
 Don't use it for anything, don't issue PRs to it. Security fixes only.
 
-The new version is in the [deploy](cohan/yogsdb/tree/feature/minimal) branch. Deploy will auto-deploy to a staging site and eventually will be merged into master once it's working.
+The new version is in the [deploy](cohan/yogsdb/tree/develop) branch. Deploy will auto-deploy to a staging site and eventually will be merged into master once it's working.
 
 All work on the current site is on hold.
 
