@@ -184,7 +184,7 @@
 					<div class="row m0 inner">
 						<p>Yogscast Database is a <strong>fan project</strong> to tag, organize and eventually allow you to alert on Yogscast videos. Ever wanted an alert when a video starring Simon and Sips appears across the network? That's the plan!</p>
 
-						<p>Check out the progress <a target="_blank" href='https://ic4.io/yogsdb-trello'>on Trello</a></p>
+						<p>Check out the progress <a target="_blank" href='https://github.com/cohan/yogsdb/projects/1'>on GitHub</a></p>
 					</div>
 				</div>
 				<div class="col-sm-3 widget widget2 w_in_footer widget_about">
