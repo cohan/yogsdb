@@ -182,7 +182,8 @@
 				<div class="col-sm-3 widget widget1 w_in_footer widget_about">
 					<h5 class="widget_title">Site Policies</h5>
 					<div class="row m0 inner">
-                        <p>For site policies please read <a href='/terms'>Terms of Service</a> and <a href='/privacy'>Privacy policy</a>
+                        <a href='/terms'>Terms of Service</a><br />
+                        <a href='/privacy'>Privacy policy</a>
 					</div>
 				</div>
 				<div class="col-sm-3 widget widget2 w_in_footer widget_about">
