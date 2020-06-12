@@ -39,7 +39,14 @@ Route::domain($domain)->group(function () {
 
 	Route::get('/', "HomeController@welcome");
 
-	Route::get('/search', "SearchController@search");
+    Route::get('/search', "SearchController@search");
+
+    Route::get('/terms', function () {
+        return view('policy.terms');
+    });
+    Route::get('/privacy', function () {
+        return view('policy.privacy');
+    });
 
 	Route::get('/onthisday', "VideoController@onThisDay");
 
