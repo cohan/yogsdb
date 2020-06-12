@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Filters\VideoFilters;
+use App\Scopes\UpdatedScope;
 use App\VideoIndexConfigurator;
 use App\VideoSearchRule;
 use Cache;
@@ -49,6 +50,14 @@ class Video extends Model
 	protected $casts = [
 		'tags' => 'array',
 	];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new UpdatedScope);
+    } 
+
 
 	public function scopeFilter($query, VideoFilters $filters) {
 		return $filters->apply($query);
