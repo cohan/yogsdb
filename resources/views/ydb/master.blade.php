@@ -180,11 +180,9 @@
 		<div class="container">
 			<div class="row sidebar sidebar_footer">
 				<div class="col-sm-3 widget widget1 w_in_footer widget_about">
-					<h5 class="widget_title">About Yogs DB</h5>
+					<h5 class="widget_title">Site Policies</h5>
 					<div class="row m0 inner">
-						<p>Yogscast Database is a <strong>fan project</strong> to tag, organize and eventually allow you to alert on Yogscast videos. Ever wanted an alert when a video starring Simon and Sips appears across the network? That's the plan!</p>
-
-						<p>Check out the progress <a target="_blank" href='https://github.com/cohan/yogsdb/projects/1'>on GitHub</a></p>
+                        <p>For site policies please read <a href='/terms'>Terms of Service</a> and <a href='/privacy'>Privacy policy</a>
 					</div>
 				</div>
 				<div class="col-sm-3 widget widget2 w_in_footer widget_about">
