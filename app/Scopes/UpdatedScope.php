@@ -17,6 +17,6 @@ class UpdatedScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $builder->where('updated_at', '<', now()->subDays(28));
+        $builder->where('updated_at', '>=', now()->subDays(28));
     }
 }
