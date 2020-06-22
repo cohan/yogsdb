@@ -3,7 +3,10 @@
 @section('content')
 <div class="col-sm-9">
     <div class="row">
-        <p>I've got the details on what's needed YouTube-wise, but I've decided it's about time to rewrite this beast OSS. Join in if you fancy: <a href='https://github.com/cohan/yogsdb' target="_blank" rel='noopener'>https://github.com/cohan/yogsdb</a></p>
+        <p>
+            Looks a bit bare here aye? I've had to delete all the data that hasn't been updated less than 28 days ago so that YouTube will re-enable the API key. Bare with!<br /><br />
+            As soon as it's back up I'll get everything updating in line with YT policies.
+        </p>
     </div>
 </div>
 
