@@ -17,6 +17,15 @@ class RedactRedacted implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
+        $builder->where('title', 'NOT LIKE', '%sjin%')
+            ->where('title', 'NOT LIKE', '%caff%')
+            ->where('title', 'NOT LIKE', '%turps%');
+
+        $builder->where('description', 'NOT LIKE', '%sjin%')
+            ->where('description', 'NOT LIKE', '%caff%')
+            ->where('description', 'NOT LIKE', '%turps%');
+
+
         $builder->addSelect("videos.*")
             ->join('stars', 'star_id', '=', 'stars.id')
             ->where('stars.slug', '=', $model->slug);
