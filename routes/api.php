@@ -48,7 +48,7 @@ Route::domain($domain)->middleware(['middleware' => 'cors'])->group(function () 
         if ($request->has('search') ?? $request->has('title')) {
             if (!$request->has('limit')) { $limit = 1; }
 
-            return App\Video::search($request->input('search') ?? $request->input('title')." -sjin -caff -caffcast -asmrcast -turps")
+            return App\Video::search($request->input('search') ?? $request->input('title'))
                 ->with('channel')
                 ->with('game')
                 ->with('stars')
