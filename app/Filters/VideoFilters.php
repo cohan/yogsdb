@@ -10,6 +10,14 @@ class VideoFilters extends QueryFilters {
 		return $this->builder->where("videos.youtube_id", "=", $youtube_id);
 	}
 
+	public function title($title) {
+        if (strtolower($title) == "ttt") {
+            return $this->builder->withoutGlobalScopes()->where("videos.title", "LIKE", "%GMOD TTT%")->inRandomOrder();
+        }
+
+		return $this->builder->withoutGlobalScopes()->where("videos.title", "LIKE", "%".$title."%");
+	}
+
 	public function description($description) {
 		return $this->builder->where("videos.description", "LIKE", "%".$description."%");
 	}
