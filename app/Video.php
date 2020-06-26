@@ -52,12 +52,12 @@ class Video extends Model
 		'tags' => 'array',
 	];
 
-    protected static function boot()
+    protected static function booted()
     {
-        parent::boot();
+        parent::booted();
 
         static::addGlobalScope(new UpdatedScope);
-        static::addGlobalScope(new RedactRedacted);
+        static::addScope(new RedactRedacted);
     } 
 
 

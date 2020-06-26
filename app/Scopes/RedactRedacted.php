@@ -17,28 +17,22 @@ class RedactRedacted implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $builder->where('title', 'NOT LIKE', '%sjin%')
-            ->where('title', 'NOT LIKE', '%caff %')
-            ->where('title', 'NOT LIKE', '%caffcast%')
-            ->where('title', 'NOT LIKE', '%asmrcast%')
-            ->where('title', 'NOT LIKE', '%turps%')
-            ->where('title', 'NOT LIKE', '%Sjin%')
-            ->where('title', 'NOT LIKE', '%Caff %')
-            ->where('title', 'NOT LIKE', '%CaffCast%')
-            ->where('title', 'NOT LIKE', '%ASMRCast%')
-            ->where('title', 'NOT LIKE', '%Turps%');
 
-        $builder->where('description', 'NOT LIKE', '%sjin%')
-            ->where('description', 'NOT LIKE', '%caff %')
-            ->where('description', 'NOT LIKE', '%caffcast%')
-            ->where('description', 'NOT LIKE', '%asmrcast%')
-            ->where('description', 'NOT LIKE', '%turps%')
-            ->where('description', 'NOT LIKE', '%Sjin%')
-            ->where('description', 'NOT LIKE', '%Caff %')
-            ->where('description', 'NOT LIKE', '%CaffCast%')
-            ->where('description', 'NOT LIKE', '%ASMRCast%')
-            ->where('description', 'NOT LIKE', '%Turps%');
+        $redacteds = [
+            'Sjin',
+            'Caff',
+            'CaffCast',
+            'ASMRCast',
+            'Turps'
+        ];
 
+        foreach ($redacteds as $redacted) {
+            $builder->where('title', 'NOT LIKE', '%'.$redacted.'%')
+                ->where('title', 'NOT LIKE', '%'.strtolower($redacted).'%');
+
+            $builder->where('description', 'NOT LIKE', '%'.$redacted.'%')
+                ->where('description', 'NOT LIKE', '%'.strtolower($redacted).'%');
+        }
 
         $builder->addSelect("videos.*")
             ->join('stars', 'star_id', '=', 'stars.id')
