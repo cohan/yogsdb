@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Filters\VideoFilters;
+use App\Scopes\RedactRedacted;
 use App\Scopes\UpdatedScope;
 use App\VideoIndexConfigurator;
 use App\VideoSearchRule;
@@ -56,6 +57,7 @@ class Video extends Model
         parent::boot();
 
         static::addGlobalScope(new UpdatedScope);
+        static::addGlobalScope(new RedactRedacted);
     } 
 
 
