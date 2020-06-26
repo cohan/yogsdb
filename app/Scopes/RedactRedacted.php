@@ -34,11 +34,8 @@ class RedactRedacted implements Scope
                 ->where('description', 'NOT LIKE', '%'.strtolower($redacted).'%');
         }
 
-        $builder->addSelect("videos.*")
-            ->join('stars', 'star_id', '=', 'stars.id')
-            ->where('stars.slug', '=', $model->slug);
+        return $builder;
 
-        $builder->where('stars.slug', 'NOT IN', "('sjin', 'caff', 'turps')");
     }
 
 }
