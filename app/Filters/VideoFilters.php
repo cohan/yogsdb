@@ -12,10 +12,17 @@ class VideoFilters extends QueryFilters {
 
 	public function title($title) {
         if (strtolower($title) == "ttt") {
-            return $this->builder->withoutGlobalScope(UpdatedScope::class)->where("videos.title", "LIKE", "%GMOD TTT%")->inRandomOrder();
+            return $this->builder->withoutGlobalScope(UpdatedScope::class)
+                ->where('description', 'not regexp', '(Sjin|Turps|Caff|sjin|turps|caff)')
+                ->where('title', 'not regexp', '(Sjin|Turps|Caff|sjin|turps|caff)')
+                ->where("videos.title", "LIKE", "%GMOD TTT%")
+                ->inRandomOrder();
         }
 
-		return $this->builder->withoutGlobalScope(UpdatedScope::class)->where("videos.title", "LIKE", "%".$title."%");
+		return $this->builder->withoutGlobalScope(UpdatedScope::class)
+            ->where('description', 'not regexp', '(Sjin|Turps|Caff|sjin|turps|caff)')
+            ->where('title', 'not regexp', '(Sjin|Turps|Caff|sjin|turps|caff)')
+            ->where("videos.title", "LIKE", "%".$title."%");
 	}
 
 	public function description($description) {
