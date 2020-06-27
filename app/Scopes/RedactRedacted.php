@@ -17,7 +17,8 @@ class RedactRedacted implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        return $builder->where('description', 'not regexp', '(Sjin|Turps|Caff|sjin|turps|caff)');
+        return $builder->where('description', 'not regexp', '(Sjin|Turps|Caff|sjin|turps|caff)')
+            ->where('title', 'not regexp', '(Sjin|Turps|Caff|sjin|turps|caff)');
     }
 
 }
