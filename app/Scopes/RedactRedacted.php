@@ -17,25 +17,7 @@ class RedactRedacted implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-
-        $redacteds = [
-            'Sjin',
-            'Caff',
-            'CaffCast',
-            'ASMRCast',
-            'Turps'
-        ];
-
-        foreach ($redacteds as $redacted) {
-            $builder->where('title', 'NOT LIKE', '%'.$redacted.'%')
-                ->where('title', 'NOT LIKE', '%'.strtolower($redacted).'%');
-
-            $builder->where('description', 'NOT LIKE', '%'.$redacted.'%')
-                ->where('description', 'NOT LIKE', '%'.strtolower($redacted).'%');
-        }
-
-        return $builder;
-
+        return $builder->where('description', 'not regexp', '(Sjin|Turps|Caff|sjin|turps|caff)');
     }
 
 }
