@@ -76,7 +76,6 @@ Route::domain($domain)->middleware(['middleware' => 'cors'])->group(function () 
 			->find($id);
 	});
 
-
 	Route::get('stars', function() {
 		return App\Star::with('channel')
 			->paginate(1);
