@@ -38,17 +38,17 @@ class Kernel extends ConsoleKernel {
 		$schedule->command("channel:refresh")
 		         ->cron("5,35 * * * *");
 
-		// $schedule->command("video:fresh --days=2")
-		//          ->daily()
-		//          ->withoutOverlapping();
+		$schedule->command("video:fresh --days=1")
+		         ->daily()
+		         ->withoutOverlapping();
 
 		// $schedule->command("video:fresh --days=14")
 		//          ->weekly()
 		//          ->withoutOverlapping();
 
-		// $schedule->command("video:refresh --count=30")
-		//          ->daily()
-		//          ->withoutOverlapping();
+		$schedule->command("video:refresh --count=1")
+		         ->hourly()
+		         ->withoutOverlapping();
 
 		$schedule->command('backup:clean')->daily()->at('01:00');
 		$schedule->command('backup:run')->daily()->at('02:00');
