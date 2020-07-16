@@ -54,8 +54,8 @@ class Video extends Model
 
     protected static function booted()
     {
-        static::addGlobalScope(new UpdatedScope);
-        static::addScope(new RedactRedacted);
+        // static::addGlobalScope(new UpdatedScope);
+        // static::addScope(new RedactRedacted);
         
         parent::booted();
     } 
