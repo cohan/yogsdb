@@ -15,7 +15,7 @@ class SearchController extends Controller
 			return redirect('/search?query=pooping+butt');
 		}
 
-		$videos = Video::search($request->input('query')." -sjin -caff -caffcast -asmrcast -turps")->paginate(24);
+		$videos = Video::search($request->input('query'))->paginate(24);
 
 		return view('ydb.welcome')->with('videos', $videos);
 	}
