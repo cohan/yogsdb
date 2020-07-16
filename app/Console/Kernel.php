@@ -32,23 +32,21 @@ class Kernel extends ConsoleKernel {
 	 * @return void
 	 */
 	protected function schedule(Schedule $schedule) {
-		// $schedule->command('inspire')
-		//          ->hourly();
 
 		$schedule->command("channel:refresh")
 		         ->cron("5,35 * * * *");
 
-		$schedule->command("video:fresh --days=1")
-		         ->daily()
-		         ->withoutOverlapping();
+		// $schedule->command("video:fresh --days=1")
+		//          ->daily()
+		//          ->withoutOverlapping();
 
 		// $schedule->command("video:fresh --days=14")
 		//          ->weekly()
 		//          ->withoutOverlapping();
 
-		$schedule->command("video:refresh --count=1")
-		         ->hourly()
-		         ->withoutOverlapping();
+		// $schedule->command("video:refresh --count=1")
+		//          ->hourly()
+		//          ->withoutOverlapping();
 
 		$schedule->command('backup:clean')->daily()->at('01:00');
 		$schedule->command('backup:run')->daily()->at('02:00');
@@ -57,6 +55,7 @@ class Kernel extends ConsoleKernel {
 		$schedule->command('sitemap:generate')->daily()->at('06:00');
 
 		$schedule->command('horizon:snapshot')->everyFiveMinutes();
+        
 	}
 
 	/**
