@@ -218,8 +218,5 @@
 		</div>
 	</footer>
 
-    <script async defer src="https://stats.yogsdb.com/app.js"></script>
-    <noscript><img src="https://stats.yogsdb.com/image.gif" alt=""></noscript>
-
 </body>
 </html>
