@@ -34,7 +34,7 @@ class Kernel extends ConsoleKernel {
 	protected function schedule(Schedule $schedule) {
 
 		$schedule->command("channel:refresh")
-		         ->cron("5,35 * * * *");
+		         ->cron("00 */6 * * *");
 
 		// $schedule->command("video:fresh --days=1")
 		//          ->daily()
@@ -55,7 +55,7 @@ class Kernel extends ConsoleKernel {
 		$schedule->command('sitemap:generate')->daily()->at('06:00');
 
 		$schedule->command('horizon:snapshot')->everyFiveMinutes();
-        
+
 	}
 
 	/**
