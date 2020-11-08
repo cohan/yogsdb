@@ -49,17 +49,11 @@ Route::domain($domain)->middleware(['middleware' => 'cors'])->group(function () 
             if (!$request->has('limit')) { $limit = 1; }
 
             return App\Video::search($request->input('search'))
-                ->with('channel')
-                ->with('game')
-                ->with('stars')
                 ->paginate($limit)
                 ->appends($request->except(['page']));
         }
         return Cache::remember('video-redacted-'.md5(strtolower(json_encode($request->all())).$limit), 5, function () use ($filters, $limit, $request) {
             return App\Video::filter($filters)
-                ->with('channel')
-                ->with('game')
-                ->with('stars')
                 ->paginate($limit)
                 ->appends($request->except(['page']));
         });
