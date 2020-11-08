@@ -42,7 +42,7 @@ Route::domain($domain)->middleware(['middleware' => 'cors'])->group(function () 
 			$limit = $request->input('limit');
 		}
 		else {
-			$limit = 25;
+			$limit = 5;
 		}
 
         if ($request->has('search')) {
