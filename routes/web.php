@@ -28,7 +28,7 @@ else {
 Route::domain($domain)->group(function () {
 
     Route::get('/schedule', function() {
-        return view('schedule.show');
+		return redirect('https://schedule.yogs.app/');
     });
 
 	Auth::routes();
@@ -37,7 +37,9 @@ Route::domain($domain)->group(function () {
 		return view('home');
 	});
 
-	Route::get('/', "HomeController@welcome");
+	Route::get('/', function() {
+		return redirect('https://schedule.yogs.app/');
+    });
 
     Route::get('/search', "SearchController@search");
 
