@@ -27,12 +27,11 @@ else {
 
 Route::domain($domain)->group(function () {
 
-    Route::get('/schedule', function() {
-		return redirect('https://schedule.yogs.app/');
-    });
+	// Just for the frontend, redirect to something useful
+	// API still works. Frontend was just broken and useless
 
 	Route::fallback( function() {
-		return redirect('https://yogs.stream/');
+		return redirect('https://schedule.yogs.app/#/all');
     });
 
 });
